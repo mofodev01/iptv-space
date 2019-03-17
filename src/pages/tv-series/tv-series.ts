@@ -8,17 +8,11 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 import { Toast } from '@ionic-native/toast';
 
-
-
-/*(ionChange)="loading()"*/
-
 @Component({
-  selector: 'page-animefilms',
-  templateUrl: 'animefilms.html'
+  selector: 'page-tv-series',
+  templateUrl: 'tv-series.html',
 })
-
-export class AnimefilmsPage {
-      
+export class TvSeriesPage {
   title:any;
   categorie:any;
   countries: any;
@@ -56,10 +50,10 @@ column: string = 'tvname';
   }
 
   ngOnInit() {
-    this.getAnimeVod();
+    this.get_Series();
              }
 
-    getAnimeVod() {
+             get_Series() {
 
      
     let loading = this.loadingCtrl.create({
@@ -75,7 +69,7 @@ column: string = 'tvname';
        
        console.log(this.data_storage);
  /**----------------------------------------- */
-this.JsonDataProvider.getAnimeVod(this.data_storage)
+this.JsonDataProvider.getSeries(this.data_storage)
              .subscribe(
                countries =>{
                  this.countries = countries 
@@ -168,5 +162,4 @@ startVideo(url) {
               refresher.complete();
              }, 2000);
          }
-
 }

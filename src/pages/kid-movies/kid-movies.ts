@@ -8,12 +8,12 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 import { Toast } from '@ionic-native/toast';
 
-@Component({
-  selector: 'page-vod-ex-yu-animation-series',
-  templateUrl: 'vod-ex-yu-animation-series.html',
-})
-export class VodExYuAnimationSeriesPage {
 
+@Component({
+  selector: 'page-kid-movies',
+  templateUrl: 'kid-movies.html',
+})
+export class KidMoviesPage {
   title:any;
   categorie:any;
   countries: any;
@@ -37,7 +37,6 @@ column: string = 'tvname';
     ,public menuCtrl:MenuController
     ) {
       this.menuCtrl.enable(true)
-     
   }
 
   ionViewDidLoad() {
@@ -52,10 +51,10 @@ column: string = 'tvname';
   }
 
   ngOnInit() {
-    this.get_VODVOD_EX_YU_Animation_Series();
+    this.get_AnimeVod();
              }
 
-             get_VODVOD_EX_YU_Animation_Series() {
+             get_AnimeVod() {
 
      
     let loading = this.loadingCtrl.create({
@@ -71,7 +70,7 @@ column: string = 'tvname';
        
        console.log(this.data_storage);
  /**----------------------------------------- */
-this.JsonDataProvider.getVODVOD_EX_YU_Animation_Series(this.data_storage)
+this.JsonDataProvider.getAnimeVod(this.data_storage)
              .subscribe(
                countries =>{
                  this.countries = countries 
@@ -164,6 +163,4 @@ startVideo(url) {
               refresher.complete();
              }, 2000);
          }
-
-
 }

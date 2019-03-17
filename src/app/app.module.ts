@@ -9,9 +9,9 @@ import { LivePage } from '../pages/live/live';
 ////import { AnimePage } from '../pages/anime/anime';
 import { FavoratePage } from '../pages/favorate/favorate';
 import { FilmsPage } from '../pages/films/films';
-import { SeriesPage } from '../pages/series/series';
-import { FilterPage } from '../pages/filter/filter';
 
+import { TvSeriesPage } from '../pages/tv-series/tv-series';
+import { KidMoviesPage } from '../pages/kid-movies/kid-movies';
 
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -19,19 +19,14 @@ import { ProfilePage } from '../pages/profile/profile';
 import { SettingPage } from '../pages/setting/setting';
 import { DetailPage } from '../pages/detail/detail'
 import { DetailfilmsPage } from '../pages/detailfilms/detailfilms'
-import { DetailseriesPage } from '../pages/detailseries/detailseries'
-import { DetailanimeseriesPage } from '../pages/detailanimeseries/detailanimeseries'
+
 import { VodExYuPage } from '../pages/vod-ex-yu/vod-ex-yu'
 import { VodGamingPage } from '../pages/vod-gaming/vod-gaming'
-import { VodXMasPage } from '../pages/vod-x-mas/vod-x-mas'
+
 import { VipPage } from '../pages/vip/vip'
-import { VodBoxSetsPage } from '../pages/vod-box-sets/vod-box-sets'
-import { VodLiveConcertsPage } from '../pages/vod-live-concerts/vod-live-concerts'
-import { AnimefilmsPage } from '../pages/animefilms/animefilms';
-import { AnimeseriesPage } from '../pages/animeseries/animeseries';
-import { SportsPage } from '../pages/sports/sports';
+
 import { ContactPage } from '../pages/contact/contact';
-import { VodExYuAnimationSeriesPage } from '../pages/vod-ex-yu-animation-series/vod-ex-yu-animation-series'
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -79,28 +74,23 @@ import {
   SortPipe,
  /// AnimePage,
   FilmsPage,
-  SeriesPage,
+
   FavoratePage,
-  FilterPage,
-  AnimefilmsPage,
-  AnimeseriesPage,
-  SportsPage,
+  
   LoginPage,
   RegisterPage,
   ProfilePage,
   SettingPage,
   DetailPage,
   DetailfilmsPage,
-  DetailseriesPage,
-  DetailanimeseriesPage,
+ 
   VodExYuPage,
   VodGamingPage,
-  VodXMasPage,
+
   VipPage,
-  VodBoxSetsPage,
-  VodLiveConcertsPage,
-  ContactPage,
-  VodExYuAnimationSeriesPage
+  KidMoviesPage,
+  TvSeriesPage,
+  ContactPage
   ],
   imports: [
     BrowserModule,
@@ -116,28 +106,24 @@ import {
     LivePage,
     ///AnimePage,
     FilmsPage,
-    SeriesPage,
+
     FavoratePage,
-    FilterPage,
-    AnimefilmsPage,
-    AnimeseriesPage,
-    SportsPage,
+   
     LoginPage,
     RegisterPage,
     ProfilePage,
     SettingPage,
     DetailPage,
     DetailfilmsPage,
-    DetailseriesPage,
-    DetailanimeseriesPage,
+   
     VodExYuPage,
     VodGamingPage,
-    VodXMasPage,
+  
     VipPage,
-    VodBoxSetsPage,
-    VodLiveConcertsPage,
-    ContactPage,
-    VodExYuAnimationSeriesPage
+    KidMoviesPage,
+    TvSeriesPage,
+    ContactPage
+    
   ],
   providers: [
     StatusBar,

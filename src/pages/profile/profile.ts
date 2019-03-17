@@ -52,7 +52,7 @@ let httpHeaders = new HttpHeaders({
      };
 /**----------------------------------------- */    
   
-this.http.get('http://live.iptvmedia.me/api/fetch_user.php?username='+this.data_storage,options)
+this.http.get('http://space.iptvmedia.me/api/fetch_user.php?username='+this.data_storage,options)
 
    .subscribe(res => {
    
@@ -135,7 +135,7 @@ this.http.get('http://live.iptvmedia.me/api/fetch_user.php?username='+this.data_
            
            
             
-           this.http.post('http://live.iptvmedia.me/api/paid.php',data, options)
+           this.http.post('http://space.iptvmedia.me/api/paid.php',data, options)
            .map(res => res.toString())
            .subscribe(res => {
            
@@ -245,7 +245,7 @@ this.http.get('http://live.iptvmedia.me/api/fetch_user.php?username='+this.data_
             loader.present().then(() => {
               
            //this.http.post('http://127.0.0.1/iptvpay_ss/paid.php',data, options)
-           this.http.post('http://live.iptvmedia.me/api/paid.php',data, options)
+           this.http.post('http://space.iptvmedia.me/api/paid.php',data, options)
            .map(res => res.toString())
            .subscribe(res => {
            
@@ -352,7 +352,7 @@ this.http.get('http://live.iptvmedia.me/api/fetch_user.php?username='+this.data_
             loader.present().then(() => {
               
            //this.http.post('http://127.0.0.1/iptvpay_ss/paid.php',data, options)
-           this.http.post('http://live.iptvmedia.me/api/paid.php',data, options)
+           this.http.post('http://space.iptvmedia.me/api/paid.php',data, options)
            .map(res => res.toString())
            .subscribe(res => {
            
@@ -459,7 +459,7 @@ this.http.get('http://live.iptvmedia.me/api/fetch_user.php?username='+this.data_
             loader.present().then(() => {
               
            //this.http.post('http://127.0.0.1/iptvpay_ss/paid.php',data, options)
-           this.http.post('http://live.iptvmedia.me/api/paid.php',data, options)
+           this.http.post('http://space.iptvmedia.me/api/paid.php',data, options)
            .map(res => res.toString())
            .subscribe(res => {
            

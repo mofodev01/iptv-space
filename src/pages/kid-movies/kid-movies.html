@@ -6,7 +6,7 @@
     </button>
 
     <ion-title *ngIf="!issearchbaroponed">
-      VOD Box Sets
+      Kids Movies
       </ion-title>
      <ion-searchbar  *ngIf="issearchbaroponed"  class="search-box" color="danger" [(ngModel)]="terms"      showCancelButton=true (ionCancel)="issearchbaroponed=false" ></ion-searchbar>
 
@@ -17,7 +17,7 @@
     </ion-buttons>
 
             <ion-buttons end>
-                  <button ion-button left icon-only (click)="get_VODBoxSets()">
+                  <button ion-button left icon-only (click)="get_AnimeVod()">
                      <ion-icon  name="md-refresh" ></ion-icon> 
                   </button>
            </ion-buttons>
@@ -35,7 +35,7 @@
 
     <ion-content padding>
 
-
+        
         <ion-grid >
             <ion-row>
               <ion-col class="showbox" col-3 col-md-4 col-xl-3 *ngFor="let c of countries | slice:0:limit | search : terms | sort: {property: column, order: order}">

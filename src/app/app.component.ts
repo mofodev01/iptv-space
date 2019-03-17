@@ -10,21 +10,18 @@ import { Storage } from '@ionic/storage';
 import { LivePage } from '../pages/live/live';
 import { FavoratePage } from '../pages/favorate/favorate';
 import { FilmsPage } from '../pages/films/films';
-import { SeriesPage } from '../pages/series/series';
-import { FilterPage } from '../pages/filter/filter';
+
+import { TvSeriesPage } from '../pages/tv-series/tv-series';
+import { KidMoviesPage } from '../pages/kid-movies/kid-movies';
 
 
-import { AnimefilmsPage } from '../pages/animefilms/animefilms';
-import { AnimeseriesPage } from '../pages/animeseries/animeseries';
-import { SportsPage } from '../pages/sports/sports';
 import { VodExYuPage } from '../pages/vod-ex-yu/vod-ex-yu';
 import { VodGamingPage } from '../pages/vod-gaming/vod-gaming'
-import { VodXMasPage } from '../pages/vod-x-mas/vod-x-mas'
+
 import { VipPage } from '../pages/vip/vip'
-import { VodBoxSetsPage } from '../pages/vod-box-sets/vod-box-sets'
-import { VodLiveConcertsPage } from '../pages/vod-live-concerts/vod-live-concerts'
+
 import { ContactPage } from '../pages/contact/contact'
-import { VodExYuAnimationSeriesPage } from '../pages/vod-ex-yu-animation-series/vod-ex-yu-animation-series'
+
 import { Market } from '@ionic-native/market';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
@@ -67,25 +64,17 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: ProfilePage,icon : "home" }
       , { title: 'Live Tv', component: LivePage,icon : "desktop" }
-      ,{ title: 'VOD Films', component: FilmsPage,icon : "film" }
-      ,{ title: 'VOD Series', component: SeriesPage,icon : "paper" }
+      ,{ title: 'VOD Movies', component: FilmsPage,icon : "film" }
 
-      ,{ title: 'VOD Anime Films', component: AnimefilmsPage,icon : "recording" }
-      ,{ title: 'VOD Anime Series', component: AnimeseriesPage,icon : "apps" }
-      ,{ title: 'Sports', component: SportsPage,icon : "football" }
-      ,{ title: 'VOD Ex Yu', component: VodExYuPage,icon : "aperture" }
-      ,{ title: 'VOD Gaming', component: VodGamingPage,icon : "game-controller-b" }
-      ,{ title: 'VOD XMas', component: VodXMasPage,icon : "snow" }
-      ,{ title: 'VIP', component: VipPage,icon : "ribbon" }
-      ,{ title: 'VOD Box Sets', component: VodBoxSetsPage,icon : "cube" }
-      ,{ title: 'VOD Live Concerts', component: VodLiveConcertsPage,icon : "microphone" }
+      ,{ title: 'Kid Movies', component: KidMoviesPage,icon : "recording" }
+      ,{ title: 'Tv Series', component: TvSeriesPage,icon : "paper" }
 
-      ,{ title: 'Vod Ex Yu Animation Series', component: VodExYuAnimationSeriesPage,icon : "aperture" }
-      
-
+      ,{ title: 'Ex Yu', component: VodExYuPage,icon : "aperture" }
+      ,{ title: '3D Movies', component: VodGamingPage,icon : "game-controller-b" }
+      ,{ title: 'Vip Channels', component: VipPage,icon : "ribbon" }
       ,{ title: 'Contact', component: ContactPage,icon : "mail" }
       ,{ title: 'favourites', component: FavoratePage,icon : "bookmarks" }
-      ,{ title: 'Search', component: FilterPage,icon : "search" }
+      
      
     ];
 
