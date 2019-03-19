@@ -31,7 +31,7 @@ items:any;
  /*-------------------------------api-post-login---------------------------------*/
       //http://api-web.000webhostapp.com
       //http://space.iptvmedia.me
- apiUrl_post_Login = 'http://live.iptvmedia.me/api/login.php';
+ apiUrl_post_Login = 'http://space.iptvmedia.me/api/login.php';
  
  postLogin(): Observable<{}> {
 
@@ -127,7 +127,7 @@ signUp(){
   
     //this.http.post('http://space.iptvmedia.me/login.php',data,options)
     //this.http.post('http://127.0.0.1/iptvpay_ss/login.php',data,options)
-    this.http.post('http://live.iptvmedia.me/api/login.php',data,options)
+    this.http.post('http://space.iptvmedia.me/api/login.php',data,options)
 
    /// return this.http.post('http://space.iptvmedia.me/login.php',data,options)
     .map(res => res.toString())

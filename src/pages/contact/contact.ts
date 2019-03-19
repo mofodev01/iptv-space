@@ -92,7 +92,7 @@ export class ContactPage {
      });
    
     loader.present().then(() => {
-   this.http.post('http://live.iptvmedia.me/api/contact.php',data, options)
+   this.http.post('http://space.iptvmedia.me/api/contact.php',data, options)
    .map(res => res.toString())
    .subscribe(res => {
    
