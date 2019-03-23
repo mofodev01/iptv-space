@@ -101,7 +101,55 @@ this.http.get('http://space.iptvmedia.me/api/fetch_user.php?username='+this.data
      alert.present();
 
     }
+/*--------------------------------1-day---------------------------------*/
+payement_free(){
 
+
+  let httpHeaders = new HttpHeaders({
+    'Content-Type' : 'application/json',
+    'Cache-Control': 'no-cache'
+       });    
+       let options = {
+    headers: httpHeaders
+       };
+
+ let data = {
+      username: this.data_storage,
+       
+     };
+
+
+
+this.http.post('http://space.iptvmedia.me/api/free_trailer.php',data, options)
+.map(res => res.toString())
+.subscribe(res => {
+
+
+if(res=="Request Successfully Sent ,NOTE: free trailer may take few hours to activated"){
+ let alert = this.alertCtrl.create({
+   title:"CONGRATS",
+   subTitle:(res),
+   buttons: ['OK']
+   });
+  
+   alert.present();
+
+   
+}else
+{
+let alert = this.alertCtrl.create({
+title:"ERROR",
+subTitle:(res),
+buttons: ['OK']
+});
+
+alert.present();
+ } 
+});
+
+ 
+
+}
      
 /*--------------------------------1-month---------------------------------*/
       payement_1_Month(){
