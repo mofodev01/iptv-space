@@ -131,6 +131,8 @@ let  items = JSON.stringify(res);
     ,{ title: 'favourites', component: FavoratePage,icon : "bookmarks" }
   
   ];
+
+  
   }else if(items =='[{"status":"Inactif"}]'){
     this.pages = [
       { title: 'Home', component: ProfilePage,icon : "home" }

@@ -95,9 +95,12 @@
       
       
       <ion-row class="text-card">
-        
-         
           
+         
+          <ion-col *ngIf="item.status == 'Active'" >
+              <h3 class="h-color-text"><strong  style="color: lime;">NOTE : Your subscription is enabled</strong></h3>
+              
+          </ion-col>
        
         <ion-col *ngIf="item.status == 'Free'" >
             <h3 class="h-color-text"><strong  style="color: red;">NOTE : Your account is free</strong></h3>
