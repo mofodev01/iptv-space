@@ -70,12 +70,15 @@ export class MyApp {
     this.initializeApp();
    /// this.showBanner();
     this.localisation();
-    this.fetchuser();
+   // this.fetchuser();
     // used for an example of ngFor and navigation   SeriesPage
    
 
   }
 
+  ionViewWillEnter(){
+   this.fetchuser();
+  }
 
   fetchuser(){
   
