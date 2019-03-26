@@ -20,6 +20,16 @@ import { SettingPage } from '../pages/setting/setting';
 import { DetailPage } from '../pages/detail/detail'
 import { DetailfilmsPage } from '../pages/detailfilms/detailfilms'
 
+import { FreeLivePage } from '../pages/free-live/free-live'
+import { FreeFilmsPage } from '../pages/free-films/free-films'
+import { ListeServeLivePage } from '../pages/liste-serve-live/liste-serve-live'
+import { ListeServerFilmsPage } from '../pages/liste-server-films/liste-server-films'
+import { DetailFreeFilmsPage } from '../pages/detail-free-films/detail-free-films'
+import { DetailFreeLivePage } from '../pages/detail-free-live/detail-free-live'
+
+ 
+
+
 import { VodExYuPage } from '../pages/vod-ex-yu/vod-ex-yu'
 import { VodGamingPage } from '../pages/vod-gaming/vod-gaming'
 
@@ -90,6 +100,12 @@ import {
   VipPage,
   KidMoviesPage,
   TvSeriesPage,
+  FreeLivePage ,
+FreeFilmsPage ,
+ListeServeLivePage ,
+ListeServerFilmsPage ,
+DetailFreeFilmsPage ,
+DetailFreeLivePage ,
   ContactPage
   ],
   imports: [
@@ -122,6 +138,12 @@ import {
     VipPage,
     KidMoviesPage,
     TvSeriesPage,
+    FreeLivePage ,
+FreeFilmsPage ,
+ListeServeLivePage ,
+ListeServerFilmsPage ,
+DetailFreeFilmsPage ,
+DetailFreeLivePage ,
     ContactPage
     
   ],

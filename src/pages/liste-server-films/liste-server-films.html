@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title >
+        Liste Server
+      </ion-title>
+    
+
+    
+
+            <ion-buttons end>
+                  <button ion-button left icon-only (click)="getLiveCountry()">
+                     <ion-icon  name="md-refresh" ></ion-icon> 
+                  </button>
+           </ion-buttons>
+
+           
+
+          
+
+  </ion-navbar>
+</ion-header>
+
+    <ion-content padding>
+<!---
+
+--->
+
+
+<ion-row class="sign-in-button-container" >
+  <ion-col text-center *ngFor="let c of countries">
+    <button ion-button block round color="primary"  (click)="push_data_country_and_server(c.id)" >      
+      {{c.name}}
+    </button>
+  </ion-col>
+</ion-row>
+        
+      <!---  
+      
+--->
+         
+          <ion-infinite-scroll threshold="100px" (ionInfinite)="doInfinite($event)">
+            <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+          </ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+          
+
+</ion-content>

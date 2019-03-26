@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform ,ActionSheetController} from 'ionic-angular';
+import { Nav, Platform ,ActionSheetController,AlertController} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -26,8 +26,15 @@ import { Market } from '@ionic-native/market';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 //import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 
+
+
+import { FreeLivePage } from '../pages/free-live/free-live'
+import { FreeFilmsPage } from '../pages/free-films/free-films'
+
+import { HttpClient,HttpHeaders  } from '@angular/common/http';
 
 
 
@@ -36,11 +43,9 @@ import { LocationAccuracy } from '@ionic-native/location-accuracy';
 })
 export class MyApp {
 
-  /*
-  HomeRoot = LivePage;
-  FavorateRoot = FavoratePage;
-  SearchRoot = FilterPage;
- */
+  data:any;
+  items:any;
+  data_storage:any;
   
 
   @ViewChild(Nav) nav: Nav;
@@ -48,39 +53,148 @@ export class MyApp {
   //rootPage: any = HomePage;
   rootPage: any = LoginPage;
 
+
+
   pages: Array<{title: string , icon: string , component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, 
+  constructor(public http:  HttpClient , 
+    public platform: Platform, 
+    public statusBar: StatusBar, 
     public splashScreen: SplashScreen,private market: Market,
     private socialSharing: SocialSharing,
     public actionsheetCtrl: ActionSheetController,
+    public alertCtrl: AlertController ,
     ///private admobFree: AdMobFree,
     private storage: Storage,
     private locationAccuracy: LocationAccuracy) {
     this.initializeApp();
    /// this.showBanner();
     this.localisation();
+    this.fetchuser();
     // used for an example of ngFor and navigation   SeriesPage
-    this.pages = [
-      { title: 'Home', component: ProfilePage,icon : "home" }
-      , { title: 'Live Tv', component: LivePage,icon : "desktop" }
-      ,{ title: 'VOD Movies', component: FilmsPage,icon : "film" }
-
-      ,{ title: 'Kid Movies', component: KidMoviesPage,icon : "recording" }
-      ,{ title: 'Tv Series', component: TvSeriesPage,icon : "paper" }
-
-      ,{ title: 'Ex Yu', component: VodExYuPage,icon : "aperture" }
-      ,{ title: '3D Movies', component: VodGamingPage,icon : "game-controller-b" }
-      ,{ title: 'Vip Channels', component: VipPage,icon : "ribbon" }
-      ,{ title: 'Contact', component: ContactPage,icon : "mail" }
-      ,{ title: 'favourites', component: FavoratePage,icon : "bookmarks" }
-      
-     
-    ];
-
-    
+   
 
   }
+
+
+  fetchuser(){
+  
+    this.storage.get("session_storage").then((res)=>{
+     this.data_storage=res;
+     
+     console.log(this.data_storage);
+/**----------------------------------------- */
+let httpHeaders = new HttpHeaders({
+  'Content-Type' : 'application/json',
+  'Cache-Control': 'no-cache'
+     });    
+     let options = {
+  headers: httpHeaders
+     };
+/**----------------------------------------- */    
+  
+this.http.get('http://space.iptvmedia.me/api/fetch_status.php?username='+this.data_storage,options)
+
+//.map(res => res.toString())
+.subscribe(res => {
+
+let  items = JSON.stringify(res);
+//var  items = JSON.parse(res);
+  
+  console.log(items);
+ 
+  //this.items=res;
+
+  if(items =='[{"status":"Active"}]'){
+   this.pages = [
+    { title: 'Home', component: ProfilePage,icon : "home" }
+    , { title: 'Live Tv', component: LivePage,icon : "desktop" }
+    ,{ title: 'VOD Movies', component: FilmsPage,icon : "film" }
+
+    ,{ title: 'Kid Movies', component: KidMoviesPage,icon : "recording" }
+    ,{ title: 'Tv Series', component: TvSeriesPage,icon : "paper" }
+
+    ,{ title: 'Ex Yu', component: VodExYuPage,icon : "aperture" }
+    ,{ title: '3D Movies', component: VodGamingPage,icon : "game-controller-b" }
+    ,{ title: 'Vip Channels', component: VipPage,icon : "ribbon" }
+    ,{ title: 'Contact', component: ContactPage,icon : "mail" }
+    ,{ title: 'favourites', component: FavoratePage,icon : "bookmarks" }
+  
+  ]; 
+  }else if(items =='[{"status":"Free"}]'){
+ this.pages = [
+    { title: 'Home', component: ProfilePage,icon : "home" }
+    , { title: 'Free Live Tv', component: FreeLivePage,icon : "desktop" }
+    ,{ title: 'Free VOD Movies', component: FreeFilmsPage,icon : "film" }
+    ,{ title: 'Contact', component: ContactPage,icon : "mail" }
+    ,{ title: 'favourites', component: FavoratePage,icon : "bookmarks" }
+  
+  ];
+  }else if(items =='[{"status":"Inactif"}]'){
+    this.pages = [
+      { title: 'Home', component: ProfilePage,icon : "home" }
+      ,{ title: 'Contact', component: ContactPage,icon : "mail" }
+    ];
+    let alert = this.alertCtrl.create({
+  
+      title:"Notification",
+      subTitle:"Please pay to watch the content",
+      buttons: ['OK']
+      });
+     
+      alert.present();
+  }else if(items =='[{"status":"Pending"}]'){
+    this.pages = [
+      { title: 'Home', component: ProfilePage,icon : "home" }
+      ,{ title: 'Contact', component: ContactPage,icon : "mail" }
+    ];
+    let alert = this.alertCtrl.create({
+  
+      title:"Notification",
+      subTitle:"Your account will be activated as soon as possible",
+      buttons: ['OK']
+      });
+     
+      alert.present();
+       
+  }else if(items =='[{"status":"Expired"}]'){
+
+    this.pages = [
+      { title: 'Home', component: ProfilePage,icon : "home" }
+      ,{ title: 'Contact', component: ContactPage,icon : "mail" }
+      
+    ];
+    let alert = this.alertCtrl.create({
+  
+      title:"Notification",
+      subTitle:"Your subscription has expired, Please pay to watch the content",
+      buttons: ['OK']
+      });
+     
+      alert.present();
+
+  }
+  
+
+ 
+
+   
+   
+   });
+
+
+///-----
+})
+///-----
+
+    }
+
+ 
+
+
+
+
+
 
   localisation(){
     //------------------location-Accuracy-----------------------

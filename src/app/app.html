@@ -6,15 +6,15 @@
   </ion-header>
 
   <ion-content >
+    
     <ion-list no-lines  >
-      <button menuClose ion-item *ngFor="let p of pages" class="listcolor"  (click)="openPage(p)">
-      <strong class="fontcolor"> 
-          <ion-icon name="{{p.icon}}"></ion-icon>
-        {{p.title}}</strong>
 
-       
-
-      </button>
+        <button menuClose ion-item *ngFor="let p of pages" class="listcolor"  (click)="openPage(p)">
+            <strong class="fontcolor"> 
+                <ion-icon name="{{p.icon}}"></ion-icon>
+              {{p.title}}</strong>
+   </button>
+   
 
       <button  menuClose ion-item  class="listcolor"  (click)="rateApp()">
         <strong class="fontcolor"><ion-icon name="star" ></ion-icon>
@@ -28,10 +28,17 @@
       <button lines  menuClose ion-item  class="listcolor"  (click)="shareApp()">
         <strong class="fontcolor"> <ion-icon name="share" ></ion-icon>
         Share</strong>
-
-        
-
       </button>
+
+
+      <button lines  menuClose ion-item  class="listcolor"  *ngFor="let item of items">
+          <strong class="fontcolor"> 
+          <ion-icon name="share" ></ion-icon>
+          {{item.status}}
+        </strong>
+  
+        </button>
+
 
     
 
@@ -39,15 +46,10 @@
     </ion-list>
   </ion-content>
 
+  
+
 </ion-menu>
 
-<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+
+
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
-<!--
-<ion-tabs >
-  <ion-tab [root]="HomeRoot"  tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="FavorateRoot"  tabTitle="Favorate" tabIcon="bookmarks"></ion-tab>
-  <ion-tab [root]="SearchRoot"  tabTitle="Search" tabIcon="search"></ion-tab>
-  <ion-tab (ionSelect)="shareApp()"  tabTitle="Share" tabIcon="share"></ion-tab>
- </ion-tabs>
- -->

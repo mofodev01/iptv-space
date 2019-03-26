@@ -16,11 +16,7 @@
       </ion-title>
      
 
-<ion-buttons end>
-              <button ion-button left icon-only (click)="setting()">
-                 <ion-icon  name="settings" ></ion-icon> 
-              </button>
-       </ion-buttons>
+
             <ion-buttons end>
                   <button ion-button left icon-only (click)="logout()">
                      <ion-icon  name="log-out" ></ion-icon> 
@@ -69,8 +65,59 @@
         <ion-col *ngIf="item.status == 'Active'" >
           <strong style="color: lime">{{item.status}}</strong> 
         </ion-col>
-        <ion-col *ngIf="item.status != 'Active'" >
+        <ion-col *ngIf="item.status == 'Free'" >
           <strong style="color: red">{{item.status}}</strong>
+        </ion-col>
+
+        <ion-col *ngIf="item.status == 'Inactif'" >
+            <strong style="color: red">{{item.status}}</strong>
+          </ion-col>
+
+          <ion-col *ngIf="item.status == 'Pending'" >
+              <strong style="color: lime">{{item.status}}</strong>
+            </ion-col>
+
+            <ion-col *ngIf="item.status == 'Expired'" >
+                <strong style="color: red">{{item.status}}</strong>
+              </ion-col>
+      
+      </ion-row>
+        </ion-item>
+    
+      
+      </ion-card>
+
+
+  <ion-card >
+
+        <ion-item *ngFor="let item of items" class="card">
+           
+      
+      
+      <ion-row class="text-card">
+        
+         
+          
+       
+        <ion-col *ngIf="item.status == 'Free'" >
+            <h3 class="h-color-text"><strong  style="color: red;">NOTE : Your account is free</strong></h3>
+            <h3 class="h-color-text"> <strong  style="color: red;">for one week</strong></h3>
+        </ion-col>
+
+        <ion-col *ngIf="item.status == 'Inactif'" >
+            <h3 class="h-color-text"> <strong  style="color: red;">NOTE : Please pay to watch the content</strong></h3>
+            
+        </ion-col>
+        
+        <ion-col *ngIf="item.status == 'Expired'" >
+            <h3 class="h-color-text"> <strong  style="color: red;">NOTE : Your subscription has expired</strong></h3>
+              <h3 class="h-color-text"> <strong  style="color: red;">Please pay to watch the content</strong></h3>
+            
+        </ion-col>
+
+        <ion-col *ngIf="item.status == 'Pending'" >
+            <h3 class="h-color-text"> <strong style="color: lime;">NOTE : Your account will be activated as</strong></h3>
+              <h3 class="h-color-text"> <strong  style="color: lime;"> soon as possible</strong></h3>
         </ion-col>
       
       </ion-row>
@@ -78,6 +125,8 @@
     
       
       </ion-card>
+
+
 
 <ion-card >
 
