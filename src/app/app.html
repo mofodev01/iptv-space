@@ -9,6 +9,11 @@
     
     <ion-list no-lines  >
 
+        <button lines  menuClose ion-item  class="listcolor"  (click)="fetchuser()">
+            <strong class="fontcolor"> <ion-icon name="md-refresh" ></ion-icon>
+            Refresh</strong>
+          </button>
+
         <button menuClose ion-item *ngFor="let p of pages" class="listcolor"  (click)="openPage(p)">
             <strong class="fontcolor"> 
                 <ion-icon name="{{p.icon}}"></ion-icon>
@@ -30,17 +35,6 @@
         Share</strong>
       </button>
 
-
-      <button lines  menuClose ion-item  class="listcolor"  *ngFor="let item of items">
-          <strong class="fontcolor"> 
-          <ion-icon name="share" ></ion-icon>
-          {{item.status}}
-        </strong>
-  
-        </button>
-
-
-    
 
 
     </ion-list>
