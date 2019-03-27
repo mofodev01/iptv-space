@@ -38,10 +38,13 @@ import { HttpClient,HttpHeaders  } from '@angular/common/http';
 
 
 
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+
+  
 
   data:any;
   items:any;
@@ -72,11 +75,10 @@ export class MyApp {
     this.localisation();
     this.fetchuser();
     // used for an example of ngFor and navigation   SeriesPage
-   
+    
 
   }
 
-  
 
   fetchuser(){
   
@@ -189,6 +191,8 @@ let  items = JSON.stringify(res);
 ///-----
 })
 ///-----
+
+
 
     }
 
@@ -317,32 +321,8 @@ let  items = JSON.stringify(res);
         });
         actionSheet.present();
       }
-/*
-      showBanner(){
 
-        const bannerConfig: AdMobFreeBannerConfig = {
-          // add your config here
-          // for the sake of this example we will just use the test config
-         // isTesting: true,// Remove in production
-          autoShow: true,
-          id:'ca-app-pub-3000905870244951/4572444957'
-         };
-         this.admobFree.banner.config(bannerConfig);
-         
-         this.admobFree.banner.prepare()
-           .then(() => {
-             // banner Ad is ready
-             // if we set autoShow to false, then we will need to call the show method here
-           })
-           .catch(e => console.log(e));
-      
-      }
-
-
-      ///source push notification :  https://www.youtube.com/watch?v=xxhcKe1C4-I
-
-     */
-
-      
+     
+     
 
 }

@@ -5,6 +5,8 @@ import { Storage } from '@ionic/storage';
 import { SettingPage } from '../setting/setting'
 import { LoginPage } from '../login/login';
 
+//import { MyApp } from '../../app/app.component';
+
 import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 
@@ -30,12 +32,18 @@ data_storage:any;
     , public appCtrl: App , public alertCtrl: AlertController
     ,public menuCtrl:MenuController
     ,private payPal: PayPal
+   // ,public MyApp: MyApp
     
     
     ) {
-      this.menuCtrl.enable(true)
+      this.menuCtrl.enable(true);
+      //this.refresh_menu();
   }
-
+/** 
+  refresh_menu(){
+    this.MyApp.fetchuser();
+  }
+*/
   ionViewWillEnter(){
   
     this.storage.get("session_storage").then((res)=>{

@@ -184,50 +184,7 @@
 </ion-card>
 <!-------------------------------------------------------------------------------------------------->
 <!-------------------------------------------------------------------------------------------------->
-<ion-card >
 
-    
-
-  <ion-card-content>
-      <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
-          1 Day
-      </ion-card-title>
-    <ion-card-title text-center class="text-card">
-       <strong style="color:rgb(250, 32, 3);">€ 0</strong> 
-    </ion-card-title>
-        <p class="text-card"> Over 6000 Channels</p>
-        <p class="text-card"> Over 4000 Movies & TV Shows</p>
-        <p class="text-card"> Free Updates</p>
-        <p class="text-card"> HD & SD Channels</p>
-        <p class="text-card"> Premium Channels</p>
-        <p class="text-card"> TV Guide (EPG)</p>
-        <p class="text-card"> Support All Devices</p>
-        <p class="text-card"> 24/7 support</p>
-        <p class="text-card">  AntiFreeze Technology</p>
-        <p class="text-card">  99.9% Uptime</p>
-        <p class="text-card">  2019 Best IPTV Service</p>
-    
-  </ion-card-content>
-
-  <div *ngFor="let item of items">
-
-  <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
-      <ion-col text-center >
-        <button ion-button block round color="primary" [disabled]="true" (click)="payement_free()" >      
-            BUY NOW 
-        </button>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-      <ion-col text-center >
-        <button ion-button block round color="primary" [disabled]="false" (click)="payement_free()" >      
-            BUY NOW 
-        </button>
-      </ion-col>
-    </ion-row>
-</div>
-</ion-card>
 <!-------------------------------------------------------------------------------------------------->
 <ion-card >
 
@@ -265,12 +222,16 @@
       </ion-row>
 
       <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-        <ion-col text-center >
-          <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
-              BUY NOW 
-          </button>
-        </ion-col>
-      </ion-row>
+          <ion-col text-center >
+            <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
+                BUY NOW 
+            </button>
+          </ion-col>
+        </ion-row>
+
+        
+
+    
 </div>
 </ion-card>
 
@@ -306,21 +267,23 @@
 
 <div *ngFor="let item of items">
 
-<ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
-    <ion-col text-center >
-      <button ion-button block round color="primary" [disabled]="true" (click)="payement_3_Month()" >      
-          BUY NOW 
-      </button>
-    </ion-col>
-  </ion-row>
+    <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
+        <ion-col text-center >
+          <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
+              BUY NOW 
+          </button>
+        </ion-col>
+      </ion-row>
 
-  <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-    <ion-col text-center >
-      <button ion-button block round color="primary" [disabled]="false" (click)="payement_3_Month()" >      
-          BUY NOW 
-      </button>
-    </ion-col>
-  </ion-row>
+      <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
+          <ion-col text-center >
+            <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
+                BUY NOW 
+            </button>
+          </ion-col>
+        </ion-row>
+
+
 </div>
 </ion-card>
 
@@ -355,21 +318,23 @@
 
 <div *ngFor="let item of items">
 
-<ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
-    <ion-col text-center >
-      <button ion-button block round color="primary" [disabled]="true" (click)="payement_6_Month()" >      
-          BUY NOW 
-      </button>
-    </ion-col>
-  </ion-row>
+    <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
+        <ion-col text-center >
+          <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
+              BUY NOW 
+          </button>
+        </ion-col>
+      </ion-row>
 
-  <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-    <ion-col text-center >
-      <button ion-button block round color="primary" [disabled]="false" (click)="payement_6_Month()" >      
-          BUY NOW 
-      </button>
-    </ion-col>
-  </ion-row>
+      <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
+          <ion-col text-center >
+            <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
+                BUY NOW 
+            </button>
+          </ion-col>
+        </ion-row>
+
+  
 </div>
 </ion-card>
 
@@ -407,21 +372,22 @@
 
 <div *ngFor="let item of items">
 
-<ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
-    <ion-col text-center >
-      <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Years()" >      
-          BUY NOW 
-      </button>
-    </ion-col>
-  </ion-row>
+    <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
+        <ion-col text-center >
+          <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
+              BUY NOW 
+          </button>
+        </ion-col>
+      </ion-row>
 
-  <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-    <ion-col text-center >
-      <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Years()" >      
-          BUY NOW 
-      </button>
-    </ion-col>
-  </ion-row>
+      <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
+          <ion-col text-center >
+            <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
+                BUY NOW 
+            </button>
+          </ion-col>
+        </ion-row>
+
 </div>
 </ion-card>
 
