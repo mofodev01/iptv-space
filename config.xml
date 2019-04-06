@@ -20,6 +20,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="70000" />
     <preference name="loadUrlTimeoutValue" value="60000" />
+    <preference name="YouTubeDataApiKey" value="AIzaSyCSllJn0jW7kf9zIpWyPbORJ1WQ3yBGzXM" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -99,4 +100,5 @@
     <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <plugin name="cordova-plugin-android-downloadmanager" spec="^0.5.0" />
+    <plugin name="cordova-plugin-youtube-video-player" spec="^2.3.0" />
 </widget>

@@ -41,14 +41,18 @@ $toolbar-wp-title-text-color: #16a085;
 $tabbar-md-background:                    #0e1516;
 
 // Change the color of the tabs text
-$tab-button-md-active-color:              rgb(250, 32, 3);
-$tab-button-md-inactive-color:            #8c8c8c;
+//$tab-button-md-active-color:              rgb(250, 32, 3);
+//$tab-button-md-inactive-color:            #8c8c8c;
 
 // Change the color of the segment button text
+$toolbar-md-active-color:                 #16a085;
+$toolbar-md-inactive-color:               #16a085;
+$segment-button-md-text-color-activated:  #16a085;
+/*
 $toolbar-md-active-color:                 rgb(250, 32, 3);
 $toolbar-md-inactive-color:               rgb(250, 32, 3);
 $segment-button-md-text-color-activated:  rgb(250, 32, 3);
-
+*/
 
 // Named Color Variables
 // --------------------------------------------------

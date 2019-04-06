@@ -27,6 +27,8 @@ import { ListeServerFilmsPage } from '../pages/liste-server-films/liste-server-f
 import { DetailFreeFilmsPage } from '../pages/detail-free-films/detail-free-films'
 import { DetailFreeLivePage } from '../pages/detail-free-live/detail-free-live'
 
+import { DownloadPage } from '../pages/download/download';
+import { AndroidAppPage } from '../pages/android-app/android-app'
  
 
 
@@ -69,7 +71,7 @@ import {
 import {  
   File  
 } from '@ionic-native/file';
-
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 
 
@@ -106,7 +108,9 @@ ListeServeLivePage ,
 ListeServerFilmsPage ,
 DetailFreeFilmsPage ,
 DetailFreeLivePage ,
-  ContactPage
+  ContactPage,
+  DownloadPage,
+  AndroidAppPage
   ],
   imports: [
     BrowserModule,
@@ -144,7 +148,9 @@ ListeServeLivePage ,
 ListeServerFilmsPage ,
 DetailFreeFilmsPage ,
 DetailFreeLivePage ,
-    ContactPage
+    ContactPage,
+    DownloadPage,
+    AndroidAppPage
     
   ],
   providers: [
@@ -170,6 +176,7 @@ DetailFreeLivePage ,
     FileTransfer,  
     FileTransferObject,  
     File ,
+    YoutubeVideoPlayer ,
    
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     JsonDataProvider,

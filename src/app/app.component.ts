@@ -34,6 +34,9 @@ import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { FreeLivePage } from '../pages/free-live/free-live'
 import { FreeFilmsPage } from '../pages/free-films/free-films'
 
+import { DownloadPage } from '../pages/download/download';
+import { AndroidAppPage } from '../pages/android-app/android-app'
+
 import { HttpClient,HttpHeaders  } from '@angular/common/http';
 
 
@@ -120,9 +123,12 @@ let  items = JSON.stringify(res);
     ,{ title: 'Ex Yu', component: VodExYuPage,icon : "aperture" }
     ,{ title: '3D Movies', component: VodGamingPage,icon : "game-controller-b" }
     ,{ title: 'Vip Channels', component: VipPage,icon : "ribbon" }
-    ,{ title: 'Contact', component: ContactPage,icon : "mail" }
+    ,{ title: 'Download', component: DownloadPage,icon : "download" }
+    ,{ title: 'Android Box And Kodi',component: AndroidAppPage,icon : "logo-android"}
+   // ,{ title: 'Contact', component: ContactPage,icon : "mail" }
     ,{ title: 'favourites', component: FavoratePage,icon : "bookmarks" }
-  
+    
+    
   ]; 
   }else if(items =='[{"status":"Free"}]'){
  this.pages = [
