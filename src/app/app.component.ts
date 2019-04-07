@@ -124,8 +124,8 @@ let  items = JSON.stringify(res);
     ,{ title: '3D Movies', component: VodGamingPage,icon : "game-controller-b" }
     ,{ title: 'Vip Channels', component: VipPage,icon : "ribbon" }
     ,{ title: 'Download', component: DownloadPage,icon : "download" }
-    ,{ title: 'Android Box And Kodi',component: AndroidAppPage,icon : "logo-android"}
-   // ,{ title: 'Contact', component: ContactPage,icon : "mail" }
+    ,{ title: 'tutorial',component: AndroidAppPage,icon : "book"}
+    ,{ title: 'support', component: ContactPage,icon : "mail" }
     ,{ title: 'favourites', component: FavoratePage,icon : "bookmarks" }
     
     

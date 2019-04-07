@@ -17,14 +17,24 @@ import { Clipboard } from '@ionic-native/clipboard';
 })
 export class DownloadPage {
 
-  CopyTextAreaText:string ;
+  CopyTextAreaEPG:string ;
+  CopyTextAreaM3U:string ;
+  CopyTextAreaM3U8:string ;
+  CopyTextAreaEnigma:string ;
+  CopyTextAreaSpark:string ;
+  CopyTextAreaCFG:string ;
+  CopyTextAreaSimpleList:string ;
+  CopyTextAreaWebTV:string ;
+  CopyTextAreaWebStream:string ;
+  
 
 data:any;
 //username:any;
 items:any;
 data_storage:any;
 
-  por: string = "Portal";
+  //por: string = "Portal";
+  //por: string;
   isAndroid: boolean = false;
 
   constructor(platform: Platform,
@@ -40,17 +50,14 @@ data_storage:any;
     ) {
     this.menuCtrl.enable(true);
     this.isAndroid = platform.is('android');
+    //this.por = "Portal";
     }
-    protected adjustTextarea(event: any): void {
-      let textarea: any		= event.target;
-      textarea.style.overflow = 'hidden';
-      textarea.style.height 	= 'auto';
-      textarea.style.height 	= textarea.scrollHeight + 'px';
-      return;
-    }
+    por: string = "Portal";
+
 
 
     ionViewWillEnter(){
+      this.por ;
   
       this.storage.get("session_storage").then((res)=>{
        this.data_storage=res;
@@ -147,8 +154,32 @@ open_youtube_video(){
   this.youtube.openVideo('AH_4sr4jYlA');
   
 }
-copyText(){
-  this.clipboard.copy(this.CopyTextAreaText);
+copyTextEPG(){
+  this.clipboard.copy(this.CopyTextAreaEPG);
+}
+copyTextM3U(){
+  this.clipboard.copy(this.CopyTextAreaM3U);
+}
+copyTextM3U8(){
+  this.clipboard.copy(this.CopyTextAreaM3U8);
+}
+copyTextEnigma(){
+  this.clipboard.copy(this.CopyTextAreaEnigma);
+}
+copyTextSpark(){
+  this.clipboard.copy(this.CopyTextAreaSpark);
+}
+copyTextCFG(){
+  this.clipboard.copy(this.CopyTextAreaCFG);
+}
+copyTextSimpleList(){
+  this.clipboard.copy(this.CopyTextAreaSimpleList);
+}
+copyTextWebTV(){
+  this.clipboard.copy(this.CopyTextAreaWebTV);
+}
+copyTextWebStream(){
+  this.clipboard.copy(this.CopyTextAreaWebStream);
 }
 
 }

@@ -15,7 +15,7 @@
   <ion-toolbar no-border-top>
     <ion-segment [(ngModel)]="por">
 
-      <ion-segment-button value="portal">
+      <ion-segment-button value="portal" >
         Portal
       </ion-segment-button>
       <ion-segment-button value="portalmag">
@@ -134,7 +134,17 @@
                 <h3 class="h-color-text"> <strong  style="color: red;">For : KODI , smart tv , VLC , tsmedia, android box,</strong></h3>
                 <h3 class="h-color-text"> <strong  style="color: red;">webtv(spark),computer, phone via media players ...etc</strong></h3>
                 
-                <ion-textarea type="text"    value="{{item.host}}/get.php?username={{item.server_name}}&password={{item.server_pass}}&type=m3u_plus&output=ts"></ion-textarea>
+                <ion-textarea type="text"  [(ngModel)]="CopyTextAreaM3U"  value="{{item.host}}/get.php?username={{item.server_name}}&password={{item.server_pass}}&type=m3u_plus&output=ts"></ion-textarea>
+
+                <ion-row class="text-card">
+                        <ion-col >
+    
+              <button ion-button block round color="primary"  (click)="copyTextM3U()" >      
+                copy
+              </button>
+    
+                     </ion-col>       
+                      </ion-row>
             </ion-card-content>
           </ion-card>
 
@@ -145,7 +155,17 @@
               </ion-card-header>
               <ion-card-content class="text-card" *ngFor="let item of items">
                 
-                  <ion-textarea type="text"   value="{{item.host}}/get.php?username={{item.server_name}}&password={{item.server_pass}}&type=m3u_plus&output=m3u8"></ion-textarea>
+                  <ion-textarea type="text" [(ngModel)]="CopyTextAreaM3U8"  value="{{item.host}}/get.php?username={{item.server_name}}&password={{item.server_pass}}&type=m3u_plus&output=m3u8"></ion-textarea>
+
+                  <ion-row class="text-card">
+                        <ion-col >
+    
+              <button ion-button block round color="primary"  (click)="copyTextM3U8()" >      
+                copy
+              </button>
+    
+                     </ion-col>       
+                      </ion-row>
 
               </ion-card-content>
             </ion-card>
@@ -159,7 +179,17 @@
                 </ion-card-header>
                 <ion-card-content class="text-card" *ngFor="let item of items">
                 <h3 class="h-color-text"> <strong  style="color: red;">For : install throught ssh command</strong></h3>
-                    <ion-textarea type="text"   value='wget -O /etc/enigma2/iptv.sh "{{item.host}}/get.php?username={{item.server_name}}&password={{item.server_pass}}&type=enigma22_script&output=ts" && chmod 777 /etc/enigma2/iptv.sh && /etc/enigma2/iptv.sh'></ion-textarea>
+                    <ion-textarea type="text" [(ngModel)]="CopyTextAreaEnigma"  value='wget -O /etc/enigma2/iptv.sh "{{item.host}}/get.php?username={{item.server_name}}&password={{item.server_pass}}&type=enigma22_script&output=ts" && chmod 777 /etc/enigma2/iptv.sh && /etc/enigma2/iptv.sh'></ion-textarea>
+
+                    <ion-row class="text-card">
+                            <ion-col >
+        
+                  <button ion-button block round color="primary"  (click)="copyTextEnigma()" >      
+                    copy
+                  </button>
+        
+                         </ion-col>       
+                          </ion-row>
   
                 </ion-card-content>
             </ion-card>
@@ -172,7 +202,17 @@
                 </ion-card-header>
                 <ion-card-content class="text-card" *ngFor="let item of items">
                 <h3 class="h-color-text"> <strong  style="color: red;">For : truman, golden media, and all device with spark system</strong></h3>
-                <ion-textarea type="text" value="{{item.host}}/get.php?username={{item.server_name}}&password={{item.server_pass}}&type=spark&output=ts"></ion-textarea>
+                <ion-textarea type="text" [(ngModel)]="CopyTextAreaSpark" value="{{item.host}}/get.php?username={{item.server_name}}&password={{item.server_pass}}&type=spark&output=ts"></ion-textarea>
+
+                <ion-row class="text-card">
+                        <ion-col >
+    
+              <button ion-button block round color="primary"  (click)="copyTextSpark()" >      
+                copy
+              </button>
+    
+                     </ion-col>       
+                      </ion-row>
   
                 </ion-card-content>
             </ion-card>
@@ -184,7 +224,18 @@
             </ion-card-header>
             <ion-card-content class="text-card" *ngFor="let item of items">
             <h3 class="h-color-text"> <strong  style="color: red;">For : Geant, starsat , tiger and all devices accept cfg file type</strong></h3>
-            <ion-textarea type="text"  value="{{item.host}}/get.php?username={{item.server_name}}&password={{item.server_pass}}&type=gst&output=ts"></ion-textarea>
+
+            <ion-textarea type="text" [(ngModel)]="CopyTextAreaCFG" value="{{item.host}}/get.php?username={{item.server_name}}&password={{item.server_pass}}&type=gst&output=ts"></ion-textarea>
+
+            <ion-row class="text-card">
+                    <ion-col >
+
+          <button ion-button block round color="primary"  (click)="copyTextCFG()" >      
+            copy
+          </button>
+
+                 </ion-col>       
+                  </ion-row>
 
             </ion-card-content>
         </ion-card>
@@ -195,8 +246,20 @@
                 Simple List (TXT)
             </ion-card-header>
             <ion-card-content class="text-card" *ngFor="let item of items">
+
+                    
            
-            <ion-textarea type="text"  value="{{item.host}}/get.php?username={{item.server_name}}&password={{item.server_pass}}&type=simple&output=ts"></ion-textarea>
+            <ion-textarea [(ngModel)]="CopyTextAreaSimpleList" type="text"  value="{{item.host}}/get.php?username={{item.server_name}}&password={{item.server_pass}}&type=simple&output=ts"></ion-textarea>
+
+            <ion-row class="text-card">
+                    <ion-col >
+
+          <button ion-button block round color="primary"  (click)="copyTextSimpleList()" >      
+            copy
+          </button>
+
+                 </ion-col>       
+                  </ion-row>
 
             </ion-card-content>
         </ion-card>
@@ -209,7 +272,19 @@
               </ion-card-header>
               <ion-card-content class="text-card" *ngFor="let item of items">
              
-                  <ion-textarea type="text" value="{{item.host}}/get.php?username={{item.server_name}}&password={{item.server_pass}}&type=webtvlist&output=ts"></ion-textarea>
+                    
+
+                  <ion-textarea [(ngModel)]="CopyTextAreaWebTV" type="text" value="{{item.host}}/get.php?username={{item.server_name}}&password={{item.server_pass}}&type=webtvlist&output=ts"></ion-textarea>
+
+                  <ion-row class="text-card">
+                        <ion-col > 
+
+                  <button ion-button block round color="primary"  (click)="copyTextWebTV()" >      
+                    copy
+                  </button>
+
+                </ion-col>       
+            </ion-row>
   
               </ion-card-content>
           </ion-card>
@@ -221,11 +296,21 @@
                   EPG Link
               </ion-card-header>
               <ion-card-content class="text-card" *ngFor="let item of items">
-             
-                  <ion-textarea [(ngModel)]="CopyTextAreaText" type="text"  value="{{item.host}}/xmltv.php?username={{item.server_name}}&password={{item.server_pass}}"></ion-textarea>
-                  <button ion-button block round color="primary"  (click)="copyText()" >      
+
+                
+
+                  <ion-textarea [(ngModel)]="CopyTextAreaEPG" type="text"  value="{{item.host}}/xmltv.php?username={{item.server_name}}&password={{item.server_pass}}"></ion-textarea>
+
+                  <ion-row class="text-card">
+                        <ion-col > 
+
+                  <button ion-button block round color="primary"  (click)="copyTextEPG()" >      
                     copy
                   </button>
+
+                </ion-col>       
+            </ion-row>
+
               </ion-card-content>
           </ion-card>
           <!---------------------------------------------->
@@ -360,15 +445,7 @@
               
                 <ion-item class="card" *ngFor="let item of items">
              
-                    <ion-row class="text-card">
-                          <ion-col >
-                              Web Stream :
-                          </ion-col>
-                          <ion-col >
-                              http://iptv-webplayer.com:25461/webplayer/ 
-                          </ion-col> 
-                         
-                      </ion-row>
+             
           
                       <ion-row class="text-card">
                           <ion-col >
@@ -393,8 +470,39 @@
                      
                         </ion-item>
 
+                        
+
             </ion-card-content>
           </ion-card>
+
+          <ion-card  class="card">
+                <ion-card-header class="card-header">
+
+                <button ion-button block round color="primary"  (click)="copyTextWebStream()" >      
+                                Copy
+                </button>
+
+                </ion-card-header>
+                <ion-card-content class="text-card">
+                  
+                    <ion-item class="card">
+                 
+                             <ion-textarea [(ngModel)]="CopyTextAreaWebStream" type="text"  value="http://iptv-webplayer.com:25461/webplayer/"></ion-textarea>
+    
+                                
+                            
+                                    
+                           
+                                    
+    
+                         
+                            </ion-item>
+    
+                            
+    
+                </ion-card-content>
+              </ion-card>
+          
       </ion-list>
   </div>
 </ion-content>
