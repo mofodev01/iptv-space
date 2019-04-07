@@ -72,7 +72,7 @@ import {
   File  
 } from '@ionic-native/file';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
-
+import { Clipboard } from '@ionic-native/clipboard';
 
 
 
@@ -177,6 +177,7 @@ DetailFreeLivePage ,
     FileTransferObject,  
     File ,
     YoutubeVideoPlayer ,
+    Clipboard ,
    
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     JsonDataProvider,

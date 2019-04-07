@@ -10,11 +10,14 @@ import {
   File  
 } from '@ionic-native/file';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { Clipboard } from '@ionic-native/clipboard';
 @Component({
   selector: 'page-download',
   templateUrl: 'download.html',
 })
 export class DownloadPage {
+
+  CopyTextAreaText:string ;
 
 data:any;
 //username:any;
@@ -33,6 +36,7 @@ data_storage:any;
     ,private market: Market
     , private file: File
     ,private youtube: YoutubeVideoPlayer
+    ,private clipboard: Clipboard
     ) {
     this.menuCtrl.enable(true);
     this.isAndroid = platform.is('android');
@@ -142,6 +146,9 @@ data_storage:any;
 open_youtube_video(){
   this.youtube.openVideo('AH_4sr4jYlA');
   
+}
+copyText(){
+  this.clipboard.copy(this.CopyTextAreaText);
 }
 
 }
