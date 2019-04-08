@@ -199,20 +199,20 @@ export class RegisterPage {
     this.manufacturer = this.devicemodule.manufacturer;
     
     //-----------------------------------------------------------
-    this.showLoader();
+   // this.showLoader();
     this.geolocation.getCurrentPosition().then((resp) => {
       this.responseObj = resp.coords; 
-      this.hideLoader();
+      //this.hideLoader();
       this.getGeoencoder(this.responseObj.latitude,this.responseObj.longitude);
      }).catch((error) => {
        alert('Error getting location'+ JSON.stringify(error));
-       this.hideLoader();
+       //this.hideLoader();
      });
   }
  
   //geocoder method to fetch address from coordinates passed as arguments
   getGeoencoder(latitude,longitude){
-    this.showLoader();
+    ///this.showLoader();
     let geoencoderOptions: NativeGeocoderOptions = {
       useLocale: true,
       maxResults: 5
@@ -223,11 +223,11 @@ export class RegisterPage {
       //----------------------------------------------------
       
       //----------------------------------------------------
-      this.hideLoader();
+     // this.hideLoader();
     })
     .catch((error: any) => {
       alert('Error getting location'+ JSON.stringify(error));
-      this.hideLoader();
+      //this.hideLoader();
     });
   }
  
@@ -249,12 +249,12 @@ export class RegisterPage {
  
   //Start location update watch
   watchLocation(){
-    this.showLoader();
+    //this.showLoader();
     this.isWatching = true;
     this.watchLocationUpdates = this.geolocation.watchPosition();
     this.watchLocationUpdates.subscribe((resp) => {
       //alert(JSON.stringify(resp));
-      this.hideLoader();
+      //this.hideLoader();
       this.responseObj = resp.coords;
       this.getGeoencoder(this.responseObj.latitude,this.responseObj.longitude);
       // resp can be a set of coordinates, or an error (if an error occurred).
