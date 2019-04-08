@@ -124,9 +124,9 @@ let  items = JSON.stringify(res);
     ,{ title: '3D Movies', component: VodGamingPage,icon : "game-controller-b" }
     ,{ title: 'Vip Channels', component: VipPage,icon : "ribbon" }
     ,{ title: 'Download', component: DownloadPage,icon : "download" }
-    ,{ title: 'tutorial',component: AndroidAppPage,icon : "book"}
-    ,{ title: 'support', component: ContactPage,icon : "mail" }
-    ,{ title: 'favourites', component: FavoratePage,icon : "bookmarks" }
+    ,{ title: 'Tutorial',component: AndroidAppPage,icon : "book"}
+    ,{ title: 'Support', component: ContactPage,icon : "mail" }
+    ,{ title: 'Favourites', component: FavoratePage,icon : "bookmarks" }
     
     
   ]; 
@@ -135,7 +135,7 @@ let  items = JSON.stringify(res);
     { title: 'Home', component: ProfilePage,icon : "home" }
     , { title: 'Free Live Tv', component: FreeLivePage,icon : "desktop" }
     ,{ title: 'Free VOD Movies', component: FreeFilmsPage,icon : "film" }
-    ,{ title: 'Contact', component: ContactPage,icon : "mail" }
+    //,{ title: 'Contact', component: ContactPage,icon : "mail" }
     ,{ title: 'favourites', component: FavoratePage,icon : "bookmarks" }
   
   ];
@@ -144,7 +144,7 @@ let  items = JSON.stringify(res);
   }else if(items =='[{"status":"Inactif"}]'){
     this.pages = [
       { title: 'Home', component: ProfilePage,icon : "home" }
-      ,{ title: 'Contact', component: ContactPage,icon : "mail" }
+      //,{ title: 'Contact', component: ContactPage,icon : "mail" }
     ];
     let alert = this.alertCtrl.create({
   
@@ -157,7 +157,7 @@ let  items = JSON.stringify(res);
   }else if(items =='[{"status":"Pending"}]'){
     this.pages = [
       { title: 'Home', component: ProfilePage,icon : "home" }
-      ,{ title: 'Contact', component: ContactPage,icon : "mail" }
+      ,{ title: 'Support', component: ContactPage,icon : "mail" }
     ];
     let alert = this.alertCtrl.create({
   
@@ -172,7 +172,7 @@ let  items = JSON.stringify(res);
 
     this.pages = [
       { title: 'Home', component: ProfilePage,icon : "home" }
-      ,{ title: 'Contact', component: ContactPage,icon : "mail" }
+      //,{ title: 'Contact', component: ContactPage,icon : "mail" }
       
     ];
     let alert = this.alertCtrl.create({

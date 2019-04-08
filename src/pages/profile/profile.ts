@@ -24,6 +24,7 @@ data:any;
 //username:any;
 items:any;
 data_storage:any;
+item_pay_show:any;
 
 
   constructor(public http:  HttpClient,
@@ -68,6 +69,20 @@ this.http.get('http://space.iptvmedia.me/api/fetch_user.php?username='+this.data
    this.items=res;
    
    console.log(this.items);
+   });
+
+
+///-----
+/**----------------------------------------- */    
+  
+this.http.get('http://space.iptvmedia.me/api/setting.php')
+
+   .subscribe(res => {
+   
+   
+   this.item_pay_show=res;
+   
+   console.log(this.item_pay_show);
    });
 
 
