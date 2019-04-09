@@ -13,7 +13,7 @@
   </ion-navbar>
 
   <ion-toolbar no-border-top>
-    <ion-segment [(ngModel)]="por">
+    <ion-segment [(ngModel)]="index">
 
       <ion-segment-button value="portal" >
         Portal
@@ -34,7 +34,7 @@
 </ion-header>
 
 <ion-content>
-  <div [ngSwitch]="por">
+  <div [ngSwitch]="index">
     <ion-list *ngSwitchCase="'portal'">
         <ion-card  class="card">
             <ion-card-header class="card-header">

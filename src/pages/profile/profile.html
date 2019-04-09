@@ -1,9 +1,4 @@
-<!--
-  Generated template for the ProfilePage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -22,376 +17,697 @@
                      <ion-icon  name="log-out" ></ion-icon> 
                   </button>
            </ion-buttons>
-           
-
-           
-
-          
-
+      
   </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="index">
+
+      <ion-segment-button value="home" >
+          <ion-icon name="home" ></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="whatisiptv">
+          <ion-icon name="wifi"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="whatisiptvspace">
+          <ion-icon name="apps"></ion-icon>
+      </ion-segment-button>
+      
+</ion-segment>
+</ion-toolbar>
 
 </ion-header>
 
 
 <ion-content >
 
-    <ion-card >
+  <div [ngSwitch]="index">
 
-        <ion-item *ngFor="let item of items" class="card">
-           
-      <ion-row class="text-card">
-        <ion-col >
-          Created Date :
-        </ion-col>
-        <ion-col >
-      {{item.created_date}}
-        </ion-col>
-      
-      </ion-row >
-      <ion-row class="text-card">
-        <ion-col >
-          Expired Date :
-        </ion-col>
-        <ion-col >
-      {{item.expired_date}}
-        </ion-col>
-      
-      </ion-row>
-      <ion-row class="text-card">
-        <ion-col >
-          Status:
-        </ion-col>
+    <ion-list *ngSwitchCase="'home'">
 
-        <ion-col *ngIf="item.status == 'Active'" >
-          <strong style="color: lime">{{item.status}}</strong> 
-        </ion-col>
-        <ion-col *ngIf="item.status == 'Free'" >
-          <strong style="color: red">{{item.status}}</strong>
-        </ion-col>
+        <ion-card >
 
-        <ion-col *ngIf="item.status == 'Inactif'" >
-            <strong style="color: red">{{item.status}}</strong>
-          </ion-col>
-
-          <ion-col *ngIf="item.status == 'Pending'" >
-              <strong style="color: lime">{{item.status}}</strong>
+            <ion-item *ngFor="let item of items" class="card">
+               
+          <ion-row class="text-card">
+            <ion-col >
+              Created Date :
             </ion-col>
-
-            <ion-col *ngIf="item.status == 'Expired'" >
+            <ion-col >
+          {{item.created_date}}
+            </ion-col>
+          
+          </ion-row >
+          <ion-row class="text-card">
+            <ion-col >
+              Expired Date :
+            </ion-col>
+            <ion-col >
+          {{item.expired_date}}
+            </ion-col>
+          
+          </ion-row>
+          <ion-row class="text-card">
+            <ion-col >
+              Status:
+            </ion-col>
+    
+            <ion-col *ngIf="item.status == 'Active'" >
+              <strong style="color: lime">{{item.status}}</strong> 
+            </ion-col>
+            <ion-col *ngIf="item.status == 'Free'" >
+              <strong style="color: red">{{item.status}}</strong>
+            </ion-col>
+    
+            <ion-col *ngIf="item.status == 'Inactif'" >
                 <strong style="color: red">{{item.status}}</strong>
               </ion-col>
-      
-      </ion-row>
-        </ion-item>
     
-      
-      </ion-card>
-
-
-  <ion-card >
-
-        <ion-item *ngFor="let item of items" class="card">
+              <ion-col *ngIf="item.status == 'Pending'" >
+                  <strong style="color: lime">{{item.status}}</strong>
+                </ion-col>
+    
+                <ion-col *ngIf="item.status == 'Expired'" >
+                    <strong style="color: red">{{item.status}}</strong>
+                  </ion-col>
+          
+          </ion-row>
+            </ion-item>
+        
+          
+          </ion-card>
+    
+    
+      <ion-card >
+    
+            <ion-item *ngFor="let item of items" class="card">
+               
+          
+          
+          <ion-row class="text-card">
+              
+             
+              <ion-col *ngIf="item.status == 'Active'" >
+                  <h3 class="h-color-text"><strong  style="color: lime;">NOTE : Your subscription is enabled</strong></h3>
+                  
+              </ion-col>
            
-      
+            <ion-col *ngIf="item.status == 'Free'" >
+                <h3 class="h-color-text"><strong  style="color: red;">NOTE : Your account is free</strong></h3>
+                <h3 class="h-color-text"> <strong  style="color: red;">for one week</strong></h3>
+            </ion-col>
+    
+            <ion-col *ngIf="item.status == 'Inactif'" >
+                <h3 class="h-color-text"> <strong  style="color: red;">NOTE : Please pay to watch the content</strong></h3>
+                
+            </ion-col>
+            
+            <ion-col *ngIf="item.status == 'Expired'" >
+                <h3 class="h-color-text"> <strong  style="color: red;">NOTE : Your subscription has expired</strong></h3>
+                  <h3 class="h-color-text"> <strong  style="color: red;">Please pay to watch the content</strong></h3>
+                
+            </ion-col>
+    
+            <ion-col *ngIf="item.status == 'Pending'" >
+                <h3 class="h-color-text"> <strong style="color: lime;">NOTE : Your account will be activated as</strong></h3>
+                  <h3 class="h-color-text"> <strong  style="color: lime;"> soon as possible</strong></h3>
+            </ion-col>
+          
+          </ion-row>
+            </ion-item>
+        
+          
+          </ion-card>
+    
+    
+    
+    <ion-card >
+    
+      <ion-item *ngFor="let item of items" class="card">
+        
+      <h3 class="h-color-text"><strong>Your profile information is as follows:</strong></h3>
       
       <ion-row class="text-card">
-          
-         
-          <ion-col *ngIf="item.status == 'Active'" >
-              <h3 class="h-color-text"><strong  style="color: lime;">NOTE : Your subscription is enabled</strong></h3>
-              
-          </ion-col>
+        <ion-col >
+         Username   :
+        </ion-col>
+        <ion-col >
+      {{item.username}}
+        </ion-col> 
+        
+     
+    </ion-row>
+    <ion-row class="text-card">
+        <ion-col >
+          Telephone :
+        </ion-col>
+        <ion-col >
+      {{item.telephone}}
+        </ion-col>
+     
+    </ion-row>
+    <ion-row class="text-card">
+        <ion-col >
+          Email     :
+        </ion-col>
+        <ion-col class="text-card">
+      {{item.email}}
+        </ion-col>
+     
+    </ion-row>
+    <ion-row class="text-card">
        
-        <ion-col *ngIf="item.status == 'Free'" >
-            <h3 class="h-color-text"><strong  style="color: red;">NOTE : Your account is free</strong></h3>
-            <h3 class="h-color-text"> <strong  style="color: red;">for one week</strong></h3>
+        <ion-col>
+          <button ion-button icon-start clear small (click)="setting(item.username,item.telephone,item.email)">
+            <ion-icon name="settings"></ion-icon>
+            <div>Setting</div>
+          </button>
         </ion-col>
-
-        <ion-col *ngIf="item.status == 'Inactif'" >
-            <h3 class="h-color-text"> <strong  style="color: red;">NOTE : Please pay to watch the content</strong></h3>
-            
-        </ion-col>
+    
         
-        <ion-col *ngIf="item.status == 'Expired'" >
-            <h3 class="h-color-text"> <strong  style="color: red;">NOTE : Your subscription has expired</strong></h3>
-              <h3 class="h-color-text"> <strong  style="color: red;">Please pay to watch the content</strong></h3>
-            
-        </ion-col>
-
-        <ion-col *ngIf="item.status == 'Pending'" >
-            <h3 class="h-color-text"> <strong style="color: lime;">NOTE : Your account will be activated as</strong></h3>
-              <h3 class="h-color-text"> <strong  style="color: lime;"> soon as possible</strong></h3>
-        </ion-col>
-      
+        
       </ion-row>
-        </ion-item>
+      </ion-item>
     
       
-      </ion-card>
-
-
-
-<ion-card >
-
-  <ion-item *ngFor="let item of items" class="card">
     
-  <h3 class="h-color-text"><strong>Your profile information is as follows:</strong></h3>
-  
-  <ion-row class="text-card">
-    <ion-col >
-     Username   :
-    </ion-col>
-    <ion-col >
-  {{item.username}}
-    </ion-col> 
+    </ion-card>
+    <!-------------------------------------------------------------------------------------------------->
+    <!-------------------------------------------------------------------------------------------------->
+    <div *ngFor="let show_pay of item_pay_show">
+    <div *ngIf="show_pay.pay_state == 'checked'">
+    <!-------------------------------------------------------------------------------------------------->
+    <ion-card >
     
- 
-</ion-row>
-<ion-row class="text-card">
-    <ion-col >
-      Telephone :
-    </ion-col>
-    <ion-col >
-  {{item.telephone}}
-    </ion-col>
- 
-</ion-row>
-<ion-row class="text-card">
-    <ion-col >
-      Email     :
-    </ion-col>
-    <ion-col class="text-card">
-  {{item.email}}
-    </ion-col>
- 
-</ion-row>
-<ion-row class="text-card">
-   
-    <ion-col>
-      <button ion-button icon-start clear small (click)="setting(item.username,item.telephone,item.email)">
-        <ion-icon name="settings"></ion-icon>
-        <div>Setting</div>
-      </button>
-    </ion-col>
-
+        
+    
+        <ion-card-content>
+            <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
+                1 MONTHs
+            </ion-card-title>
+          <ion-card-title text-center class="text-card">
+             <strong style="color:rgb(250, 32, 3);">€ 10</strong> 
+          </ion-card-title>
+              <p class="text-card"> Over 6000 Channels</p>
+              <p class="text-card"> Over 4000 Movies & TV Shows</p>
+              <p class="text-card"> Free Updates</p>
+              <p class="text-card"> HD & SD Channels</p>
+              <p class="text-card"> Premium Channels</p>
+              <p class="text-card"> TV Guide (EPG)</p>
+              <p class="text-card"> Support All Devices</p>
+              <p class="text-card"> 24/7 support</p>
+              <p class="text-card">  AntiFreeze Technology</p>
+              <p class="text-card">  99.9% Uptime</p>
+              <p class="text-card">  2019 Best IPTV Service</p>
+          
+        </ion-card-content>
+    
+        <div *ngFor="let item of items">
+    
+        <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
+            <ion-col text-center >
+              <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
+                  BUY NOW 
+              </button>
+            </ion-col>
+          </ion-row>
+    
+          <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
+              <ion-col text-center >
+                <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
+                    BUY NOW 
+                </button>
+              </ion-col>
+            </ion-row>
+    
+            
+    
+        
+    </div>
+    </ion-card>
+    
+    <!-------------------------------------------------------------------------------------------------->
+    
+    <ion-card>
+    
+        
+    
+        <ion-card-content>
+            <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
+                3 MONTHs
+            </ion-card-title>
+          <ion-card-title text-center class="text-card">
+             <strong style="color:rgb(250, 32, 3);">€ 30</strong> 
+          </ion-card-title>
+              <p class="text-card"> Over 6000 Channels</p>
+              <p class="text-card"> Over 4000 Movies & TV Shows</p>
+              <p class="text-card"> Free Updates</p>
+              <p class="text-card"> HD & SD Channels</p>
+              <p class="text-card"> Premium Channels</p>
+              <p class="text-card"> TV Guide (EPG)</p>
+              <p class="text-card"> Support All Devices</p>
+              <p class="text-card"> 24/7 support</p>
+              <p class="text-card">  AntiFreeze Technology</p>
+              <p class="text-card">  99.9% Uptime</p>
+              <p class="text-card">  2019 Best IPTV Service</p>
+          
+        
     
     
-  </ion-row>
-  </ion-item>
-
-  
-
-</ion-card>
-<!-------------------------------------------------------------------------------------------------->
-<!-------------------------------------------------------------------------------------------------->
-<div *ngFor="let show_pay of item_pay_show">
-<div *ngIf="show_pay.pay_state == 'checked'">
-<!-------------------------------------------------------------------------------------------------->
-<ion-card >
-
-    
-
-    <ion-card-content>
-        <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
-            1 MONTHs
-        </ion-card-title>
-      <ion-card-title text-center class="text-card">
-         <strong style="color:rgb(250, 32, 3);">€ 10</strong> 
-      </ion-card-title>
-          <p class="text-card"> Over 6000 Channels</p>
-          <p class="text-card"> Over 4000 Movies & TV Shows</p>
-          <p class="text-card"> Free Updates</p>
-          <p class="text-card"> HD & SD Channels</p>
-          <p class="text-card"> Premium Channels</p>
-          <p class="text-card"> TV Guide (EPG)</p>
-          <p class="text-card"> Support All Devices</p>
-          <p class="text-card"> 24/7 support</p>
-          <p class="text-card">  AntiFreeze Technology</p>
-          <p class="text-card">  99.9% Uptime</p>
-          <p class="text-card">  2019 Best IPTV Service</p>
-      
     </ion-card-content>
-
+    
     <div *ngFor="let item of items">
-
-    <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
-        <ion-col text-center >
-          <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
-              BUY NOW 
-          </button>
-        </ion-col>
-      </ion-row>
-
-      <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-          <ion-col text-center >
-            <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
-                BUY NOW 
-            </button>
-          </ion-col>
-        </ion-row>
-
+    
+        <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
+            <ion-col text-center >
+              <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
+                  BUY NOW 
+              </button>
+            </ion-col>
+          </ion-row>
+    
+          <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
+              <ion-col text-center >
+                <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
+                    BUY NOW 
+                </button>
+              </ion-col>
+            </ion-row>
+    
+    
+    </div>
+    </ion-card>
+    
+    <!-------------------------------------------------------------------------------------------------->
+    
+    <ion-card>
+    
         
-
     
-</div>
-</ion-card>
-
-<!-------------------------------------------------------------------------------------------------->
-
-<ion-card>
-
+        <ion-card-content>
+            <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
+                6 MONTHs
+            </ion-card-title>
+          <ion-card-title text-center class="text-card">
+             <strong style="color:rgb(250, 32, 3);">€ 60</strong> 
+          </ion-card-title>
+              <p class="text-card"> Over 6000 Channels</p>
+              <p class="text-card"> Over 4000 Movies & TV Shows</p>
+              <p class="text-card"> Free Updates</p>
+              <p class="text-card"> HD & SD Channels</p>
+              <p class="text-card"> Premium Channels</p>
+              <p class="text-card"> TV Guide (EPG)</p>
+              <p class="text-card"> Support All Devices</p>
+              <p class="text-card"> 24/7 support</p>
+              <p class="text-card">  AntiFreeze Technology</p>
+              <p class="text-card">  99.9% Uptime</p>
+              <p class="text-card">  2019 Best IPTV Service</p>
     
-
-    <ion-card-content>
-        <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
-            3 MONTHs
-        </ion-card-title>
-      <ion-card-title text-center class="text-card">
-         <strong style="color:rgb(250, 32, 3);">€ 30</strong> 
-      </ion-card-title>
-          <p class="text-card"> Over 6000 Channels</p>
-          <p class="text-card"> Over 4000 Movies & TV Shows</p>
-          <p class="text-card"> Free Updates</p>
-          <p class="text-card"> HD & SD Channels</p>
-          <p class="text-card"> Premium Channels</p>
-          <p class="text-card"> TV Guide (EPG)</p>
-          <p class="text-card"> Support All Devices</p>
-          <p class="text-card"> 24/7 support</p>
-          <p class="text-card">  AntiFreeze Technology</p>
-          <p class="text-card">  99.9% Uptime</p>
-          <p class="text-card">  2019 Best IPTV Service</p>
+    
+    
+    </ion-card-content>
+    
+    <div *ngFor="let item of items">
+    
+        <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
+            <ion-col text-center >
+              <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
+                  BUY NOW 
+              </button>
+            </ion-col>
+          </ion-row>
+    
+          <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
+              <ion-col text-center >
+                <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
+                    BUY NOW 
+                </button>
+              </ion-col>
+            </ion-row>
+    
+      
+    </div>
+    </ion-card>
+    
+    <!-------------------------------------------------------------------------------------------------->
+    
+    <ion-card>
+    
+        
+    
+        <ion-card-content>
+            <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
+                1 Year
+            </ion-card-title>
+          <ion-card-title text-center class="text-card">
+             <strong style="color:rgb(250, 32, 3);">€ 90</strong> 
+          </ion-card-title>
+              <p class="text-card"> Over 6000 Channels</p>
+              <p class="text-card"> Over 4000 Movies & TV Shows</p>
+              <p class="text-card"> Free Updates</p>
+              <p class="text-card"> HD & SD Channels</p>
+              <p class="text-card"> Premium Channels</p>
+              <p class="text-card"> TV Guide (EPG)</p>
+              <p class="text-card"> Support All Devices</p>
+              <p class="text-card"> 24/7 support</p>
+              <p class="text-card">  AntiFreeze Technology</p>
+              <p class="text-card">  99.9% Uptime</p>
+              <p class="text-card">  2019 Best IPTV Service</p>
+          
       
     
-
-
-</ion-card-content>
-
-<div *ngFor="let item of items">
-
-    <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
-        <ion-col text-center >
-          <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
-              BUY NOW 
-          </button>
-        </ion-col>
-      </ion-row>
-
-      <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-          <ion-col text-center >
-            <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
-                BUY NOW 
-            </button>
-          </ion-col>
-        </ion-row>
-
-
-</div>
-</ion-card>
-
-<!-------------------------------------------------------------------------------------------------->
-
-<ion-card>
-
     
-
-    <ion-card-content>
-        <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
-            6 MONTHs
-        </ion-card-title>
-      <ion-card-title text-center class="text-card">
-         <strong style="color:rgb(250, 32, 3);">€ 60</strong> 
-      </ion-card-title>
-          <p class="text-card"> Over 6000 Channels</p>
-          <p class="text-card"> Over 4000 Movies & TV Shows</p>
-          <p class="text-card"> Free Updates</p>
-          <p class="text-card"> HD & SD Channels</p>
-          <p class="text-card"> Premium Channels</p>
-          <p class="text-card"> TV Guide (EPG)</p>
-          <p class="text-card"> Support All Devices</p>
-          <p class="text-card"> 24/7 support</p>
-          <p class="text-card">  AntiFreeze Technology</p>
-          <p class="text-card">  99.9% Uptime</p>
-          <p class="text-card">  2019 Best IPTV Service</p>
-
-
-
-</ion-card-content>
-
-<div *ngFor="let item of items">
-
-    <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
-        <ion-col text-center >
-          <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
-              BUY NOW 
-          </button>
-        </ion-col>
-      </ion-row>
-
-      <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-          <ion-col text-center >
-            <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
-                BUY NOW 
-            </button>
-          </ion-col>
-        </ion-row>
-
-  
-</div>
-</ion-card>
-
-<!-------------------------------------------------------------------------------------------------->
-
-<ion-card>
-
     
-
-    <ion-card-content>
-        <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
-            1 Year
-        </ion-card-title>
-      <ion-card-title text-center class="text-card">
-         <strong style="color:rgb(250, 32, 3);">€ 90</strong> 
-      </ion-card-title>
-          <p class="text-card"> Over 6000 Channels</p>
-          <p class="text-card"> Over 4000 Movies & TV Shows</p>
-          <p class="text-card"> Free Updates</p>
-          <p class="text-card"> HD & SD Channels</p>
-          <p class="text-card"> Premium Channels</p>
-          <p class="text-card"> TV Guide (EPG)</p>
-          <p class="text-card"> Support All Devices</p>
-          <p class="text-card"> 24/7 support</p>
-          <p class="text-card">  AntiFreeze Technology</p>
-          <p class="text-card">  99.9% Uptime</p>
-          <p class="text-card">  2019 Best IPTV Service</p>
+    
+    </ion-card-content>
+    
+    <div *ngFor="let item of items">
+    
+        <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
+            <ion-col text-center >
+              <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
+                  BUY NOW 
+              </button>
+            </ion-col>
+          </ion-row>
+    
+          <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
+              <ion-col text-center >
+                <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
+                    BUY NOW 
+                </button>
+              </ion-col>
+            </ion-row>
+    
+    </div>
+    </ion-card>
+    </div><!--fin-ngif-show-pay-->
+    </div><!--fin-ngfor-show-pay-->
       
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'whatisiptv'">
+
+       <!------------------wath is iptv?---------------------------->
+ <ion-card  class="card">
+    <ion-card-header class="card-header">
+        What is IPTV? 
+    </ion-card-header>
+    <ion-card-content class="text-card" >
+   
+        <ion-item class="card" >
+             
+
+                     
+            <p class="text-card"> What is iptv – From a TV watcher’s point</p>
+                <p class="text-card"> of view, IPTV</p>
+            <p class="text-card">is very simple: instead of receiving TV </p>
+                <p class="text-card"> programs as broadcast</p>
+            <p class="text-card">signals that enter your home from a </p>
+                <p class="text-card"> rooftop antenna, </p>
+            <p class="text-card">satellite dish, or fiber-optic cable,</p>
+                <p class="text-card">  you get them streamed</p>
+            <p class="text-card">(downloaded and played almost </p>
+                <p class="text-card"> simultaneously) through your </p>
+            <p class="text-card">Internet connection. Unlike downloaded</p>
+                <p class="text-card">  media, IPTV offers</p>
+            <p class="text-card">the ability to stream the source media </p>
+                <p class="text-card">continuously. As a </p>
+            <p class="text-card">result, a client media player can begin</p>
+                <p class="text-card"> playing the content </p>
+            <p class="text-card">(such as a TV channel) almost immediately.</p>
+                <p class="text-card">  This is known </p>
+            <p class="text-card">as streaming media.</p>
+             <p class="text-card"> To understand how IPTV is different from</p>
+                <p class="text-card">   traditional TV, </p>
+            <p class="text-card">let’s compare traditional mode of viewing </p>
+                <p class="text-card"> TV with IPTV.</p>
+        
+             <p class="text-card"> Cable and satellite both function by </p>
+                <p class="text-card"> enabling users</p>
+            <p class="text-card">to adjust to specific channels within </p>
+            <p class="text-card"> that signal </p>
+            <p class="text-card">and the fundamental difference is that </p>
+                <p class="text-card"> cable is </p>
+            <p class="text-card">via a wired connection whereas satellite </p>
+            <p class="text-card">is wireless till it reaches your house.</p>
+             <p class="text-card"> IPTV uses Internet protocol (IP) </p>
+                <p class="text-card">  based network</p>
+            <p class="text-card">to deliver TV channels to users’ </p>
+                <p class="text-card">set-top box. </p>
+            <p class="text-card">Internet networks differ from </p>
+                <p class="text-card"> cable and satellite</p>
+            <p class="text-card">by offering content through the same </p>
+                <p class="text-card"> client-server</p>
+            <p class="text-card">model that renders email, websites, </p>
+                <p class="text-card"> and other</p>
+            <p class="text-card">Internet-based services. As we will</p>
+                <p class="text-card"> see mentioned</p>
+            <p class="text-card">further in this blog, IP or Internet</p>
+                <p class="text-card">  Protocol is</p>
+            <p class="text-card">the language that is used for</p>
+                <p class="text-card"> transferring data</p>
+            <p class="text-card">packets between computers attached </p>
+                <p class="text-card">to the internet</p>
+            <p class="text-card">network.</p>
+        
+             <p class="text-card">Unlike cable or satellite where 
+                <p class="text-card"> content is </p>
+            <p class="text-card"> broadcast in real time, on a transmit
+                <p class="text-card"> and forget</p>
+            <p class="text-card"> the model, IPTV has the ability 
+                <p class="text-card"> to store the </p>
+            <p class="text-card"> programming on servers at transmitting  </p>
+            <p class="text-card">end, allowing users to request the </p>
+            <p class="text-card">content over  the Internet </p>
+            <p class="text-card"> at any time.</p>
+        
+        
   
+                </ion-item>
 
-
-
-
-</ion-card-content>
-
-<div *ngFor="let item of items">
-
-    <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
-        <ion-col text-center >
-          <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
-              BUY NOW 
-          </button>
-        </ion-col>
-      </ion-row>
-
-      <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-          <ion-col text-center >
-            <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
-                BUY NOW 
-            </button>
-          </ion-col>
-        </ion-row>
-
-</div>
+    </ion-card-content>
 </ion-card>
-</div><!--fin-ngif-show-pay-->
-</div><!--fin-ngfor-show-pay-->
+<!---------------------------------------------->
+
+    <!------------------What are IPTV types?---------------------------->
+    <ion-card  class="card">
+        <ion-card-header class="card-header">
+            What are IPTV types? 
+        </ion-card-header>
+        <ion-card-content class="text-card" >
+       
+            <ion-item class="card" >
+                 
+    
+                       
+                <p class="text-card"> IPTV services may be classified into </p>
+                    <p class="text-card">three main groups:</p>
+
+                <p class="text-card"> Video on demand (VOD): you can select</p>
+                    <p class="text-card"> a TV program or movie</p>
+               <p class="text-card">you want to watch from a wide range, </p>
+                  <p class="text-card"> pay your money, and </p>
+               <p class="text-card">watch it there and then.</p>
+                <p class="text-card"> Live television and live media, </p>
+                    <p class="text-card"> with or without related</p>
+               <p class="text-card">interactivity.</p>
+                <p class="text-card"> Time-shifted media: e.g. catch-up</p>
+                    <p class="text-card">  TV (replays a TV show</p>
+               <p class="text-card">that was broadcast hours or days ago),</p>
+                  <p class="text-card">start-over TV </p>
+               <p class="text-card">(replays the current TV show from </p>
+                  <p class="text-card">its beginning)</p>
+             
+                <p class="text-card"> All three forms of IPTV can work </p>
+                    <p class="text-card">either using your</p>
+               <p class="text-card">computer and an ordinary web browser,</p>
+                  <p class="text-card">through a set-top </p>
+               <p class="text-card">box to show on your television screen,</p>
+                  <p class="text-card">even on a mobile </p>
+               <p class="text-card">device like a cell phone or an iPod… </p>
+                  <p class="text-card">All three can be </p>
+               <p class="text-card">delivered either over the public</p>
+                  <p class="text-card"> Internet or through a </p>
+               <p class="text-card">managed, private network that works</p>
+                  <p class="text-card">   in essentially the</p>
+               <p class="text-card">same way.</p>
+            
+            
+      
+                    </ion-item>
+    
+        </ion-card-content>
+    </ion-card>
+    <!---------------------------------------------->
+    <!------------------How does IPTV work?---------------------------->
+    <ion-card  class="card">
+        <ion-card-header class="card-header">
+            How does IPTV work?
+        </ion-card-header>
+        <ion-card-content class="text-card" >
+       
+            <ion-item class="card" >
+                 
+    
+                       
+                
+                 
+                <p class="text-card">IPTV is much similar like browsing </p>
+                    <p class="text-card">   the internet than </p>
+                <p class="text-card">traditional channel surfing. It</p>
+                    <p class="text-card">    merely uses IP </p>
+                <p class="text-card">(Internet Protocol), a transport</p>
+                    <p class="text-card">    protocol which is a </p>
+                <p class="text-card">delivery mechanism to deliver the</p>
+                    <p class="text-card">   videos to the viewer.</p>
+                <p class="text-card"> When the viewer clicks on any TV</p>
+                    <p class="text-card">   program or requests </p>
+                <p class="text-card"> the video, video from different </p>
+                    <p class="text-card">  sources (servers) is</p>
+                <p class="text-card"> divided into data packets and </p>
+                    <p class="text-card">  sent over the internet.</p>
+                <p class="text-card">Video servers transmit programs</p>
+                <p class="text-card">  through fiber-optic </p>
+                <p class="text-card"> cableto existing household via</p>
+                    <p class="text-card">   internet connection</p>
+                <p class="text-card"> and requests are sent out and </p>
+                    <p class="text-card">  shows are sent back. </p>
+            
+            
+      
+                    </ion-item>
+    
+        </ion-card-content>
+    </ion-card>
+    <!---------------------------------------------->
+
+    <!------------------How to use IPTV?---------------------------->
+    <ion-card  class="card">
+        <ion-card-header class="card-header">
+            How to use IPTV?
+        </ion-card-header>
+        <ion-card-content class="text-card" >
+       
+            <ion-item class="card" >
+                 
+    
+               
+                
+                <p class="text-card">At this time definitely, you are </p>
+                    <p class="text-card"> looking forward to </p>
+                <p class="text-card">finding out more about how to </p>
+                    <p class="text-card">  use IPTV, which devices </p>
+                <p class="text-card">are compatible.</p>
+                <p class="text-card">Firstly, you gotta have an </p>
+                    <p class="text-card">  internet connection, </p>
+                <p class="text-card">good speed is highly recommended </p>
+                    <p class="text-card">  ( because some </p>
+                <p class="text-card">FHD channels require a stable </p>
+                    <p class="text-card">  connection)</p>
+                <p class="text-card">Secondly. a device is surely </p>
+                    <p class="text-card">  needed, With Iptv Space</p>
+                <p class="text-card"> you can use on almost devices:</p>
+                    <p class="text-card">  MAG box, Android box,</p>
+                <p class="text-card"> Open box, PC, Smart TV, Apple TV,</p>
+                    <p class="text-card">  Enigma, Dreamlink,</p>
+                <p class="text-card"> KODI till on iPhone, Ipad, Android </p>
+                    <p class="text-card">apps…</p>
+
+                <p class="text-card">Now starting to register an account</p>
+                    <p class="text-card">  cannot be easier,</p>
+                <p class="text-card"> all you have to do is enter your</p>
+                    <p class="text-card">  email address and</p>
+                <p class="text-card"> select your device type, then wait </p>
+                    <p class="text-card">  for an email</p>
+                <p class="text-card"> with login information.</p>
+
+                <p class="text-card">After having a trial account, you go </p>
+                    <p class="text-card"> to set up </p>
+                <p class="text-card">your device and begin to enjoy !!!</p>
+                
+            
+            
+      
+                    </ion-item>
+    
+        </ion-card-content>
+    </ion-card>
+    <!---------------------------------------------->
+    
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'whatisiptvspace'">
+
+       <!------------------What is IPTV SPACE? ---------------------------->
+    <ion-card  class="card">
+        <ion-card-header class="card-header">
+            What is IPTV SPACE? 
+        </ion-card-header>
+        <ion-card-content class="text-card" >
+       
+            <ion-item class="card" >
+               
+                <h2 class="card-header"> Iptv Space offers an impressive </h2>
+                <h2 class="card-header"> collection of on-demand </h2>
+                <h2 class="card-header">movies, live action, and TV Shows</h2>
+           </ion-item>
+                <ion-item class="card" >
+                  <h3 class="card-header">-Iptv Space STREAMING</h3>
+                  <p class="text-card"> Excellent picture quality (Most</p>
+                  <p class="text-card"> videos are in HD). Also, </p>
+                  <p class="text-card">  almost channels work without any </p>
+                  <p class="text-card">  lag/buffering.</p>
+                  <p class="text-card"> We update new content nearly daily.</p>
+                  
+                  <h3 class="card-header"> -VOD (Video on Demand)</h3>
+                  <p class="text-card"> We provide about 20 packages of </p>
+                <p class="text-card">  VOD. Our VOD list was </p>
+                <p class="text-card"> sorted by the country like English</p>
+                <p class="text-card">  Movie, , Indian Movie,</p>
+                <p class="text-card"> Kid Movie, 3D Movie, etc.</p>
+                  
+                <h3 class="card-header"> -Compatible With All Devices</h3>
+                 <p class="text-card">  You can use any devices you want </p>
+                <p class="text-card">  and find instruction </p>
+                 <p class="text-card">  step by step for each device.</p>
+                </ion-item>
+                <ion-item class="card" >
+                  <p class="text-card"> Imagine that every day when you</p>
+                  <p class="text-card">   get back from work or school,</p>
+                  <p class="text-card">   you turn the TV on for a relaxing </p>
+                  <p class="text-card"> time and your favorite show </p>
+                  <p class="text-card">has been ended. You have to watch </p>
+                  <p class="text-card">some boring TV programs </p>
+                  <p class="text-card">instead of a fascinating reality </p>
+                 <p class="text-card">TV show. Wouldn’t it be</p>
+                  <p class="text-card">better if watching TV were more </p>
+                   <p class="text-card">like browsing the Web, so you </p>
+                  <p class="text-card"> could pick the program you wanted</p>
+                   <p class="text-card">to watch whenever and </p>
+                   <p class="text-card">wherever you felt like watching it?</p>
+                  <p class="text-card"> So Internet Protocol</p>
+                 <p class="text-card">Television (IPTV) absolutely is </p>
+                <p class="text-card">the solution you are looking </p>
+                <p class="text-card">for, IPTV uses Internet technology</p>
+                <p class="text-card">to deliver TV programs</p>
+                 <p class="text-card">“on demand. And the question here is”</p>
+                <p class="text-card">How does it work?</p>
+                 <p class="text-card"> What benefits will it bring us? Why</p>
+                <p class="text-card">you should use IPTV?</p>
+                <p class="text-card">Let’s take a closer look!</p>
+             
+                
+            
+            
+      
+                    </ion-item>
+    
+        </ion-card-content>
+    </ion-card>
+    <!---------------------------------------------->
+
+    </ion-list>
+
+  </div>
 </ion-content>
 

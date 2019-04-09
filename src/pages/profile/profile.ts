@@ -25,7 +25,7 @@ data:any;
 items:any;
 data_storage:any;
 item_pay_show:any;
-
+index: string
 
   constructor(public http:  HttpClient,
     public navCtrl: NavController, public navParams: NavParams
@@ -38,7 +38,7 @@ item_pay_show:any;
     
     ) {
       this.menuCtrl.enable(true);
-      //this.refresh_menu();
+      this.index = "home";
   }
 /** 
   refresh_menu(){

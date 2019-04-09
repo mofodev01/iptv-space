@@ -32,11 +32,10 @@ data:any;
 //username:any;
 items:any;
 data_storage:any;
-
+index: string
   //por: string = "Portal";
-  //por: string;
   isAndroid: boolean = false;
-
+  
   constructor(platform: Platform,
     public http:  HttpClient,
     public navCtrl: NavController, public navParams: NavParams
@@ -50,14 +49,15 @@ data_storage:any;
     ) {
     this.menuCtrl.enable(true);
     this.isAndroid = platform.is('android');
-    //this.por = "Portal";
+    this.index = "portal";
+   
     }
-    por: string = "Portal";
+    
 
 
 
     ionViewWillEnter(){
-      this.por ;
+      
   
       this.storage.get("session_storage").then((res)=>{
        this.data_storage=res;
