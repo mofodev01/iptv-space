@@ -5,6 +5,9 @@ import { JsonDataProvider } from '../../providers/json-data/json-data';
 
 import { DetailFreeLivePage } from '../detail-free-live/detail-free-live'
 
+import { Storage } from '@ionic/storage';
+import { HttpClient,HttpHeaders  } from '@angular/common/http';
+
 @Component({
   selector: 'page-liste-serve-live',
   templateUrl: 'liste-serve-live.html',
@@ -14,12 +17,15 @@ export class ListeServeLivePage {
   title:any;
   categorie:any;
   countries: any;
-         
+  data_storage:any; 
   errorMessage: string;
 
   limit = 100;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams
+  constructor(
+    public http:  HttpClient,
+    public storage: Storage ,
+    public navCtrl: NavController, public navParams: NavParams
     , public JsonDataProvider: JsonDataProvider, public loadingCtrl: LoadingController 
     ,public menuCtrl:MenuController) {
   }
@@ -33,31 +39,44 @@ export class ListeServeLivePage {
     console.log(this.title);
     
   }
-  ngOnInit() {
+  ionViewWillEnter(){
     this.getLiveserver();
              }
 
   getLiveserver() {
 
-     
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+    this.storage.get("session_storage").then((res)=>{
+      this.data_storage=res;
+      
+      console.log(this.data_storage);
+   /**----------------------------------------- */
+   let httpHeaders = new HttpHeaders({
+   'Content-Type' : 'application/json',
+   'Cache-Control': 'no-cache'
+      });    
+      let options = {
+   headers: httpHeaders
+      };
+   /**----------------------------------------- */    
+   
+   this.http.get('http://space.iptvmedia.me/api/liste_free_server.php?username='+this.data_storage,options)
+   
+    .subscribe(res => {
+    
+    
+    this.countries=res;
+    
+    console.log(this.countries);
     });
-  
-    loading.present();
-
-    this.JsonDataProvider.getLiveserver()
-             .subscribe(
-               countries =>{
-                 this.countries = countries 
-                     loading.dismiss();
-                           } ,
-               error => {
-                 this.errorMessage = <any>error
-                    loading.dismiss();
-                        });
-  
-   }
+   
+   
+   
+   ///-----
+   })
+   ///-----
+}
+ 
+   
 
   push_data_country_and_server(id: Number){
 

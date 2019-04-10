@@ -38,7 +38,7 @@ import { DownloadPage } from '../pages/download/download';
 import { AndroidAppPage } from '../pages/android-app/android-app'
 
 import { HttpClient,HttpHeaders  } from '@angular/common/http';
-
+import { PrivacyTermsPage } from '../pages/privacy-terms/privacy-terms'
 
 
 
@@ -126,6 +126,7 @@ let  items = JSON.stringify(res);
     ,{ title: 'Download', component: DownloadPage,icon : "download" }
     ,{ title: 'Tutorial',component: AndroidAppPage,icon : "book"}
     ,{ title: 'Support', component: ContactPage,icon : "mail" }
+    ,{ title: 'Privacy & Terms', component: PrivacyTermsPage,icon : "md-lock" }
     ,{ title: 'Favourites', component: FavoratePage,icon : "bookmarks" }
     
     
@@ -135,7 +136,7 @@ let  items = JSON.stringify(res);
     { title: 'Home', component: ProfilePage,icon : "home" }
     , { title: 'Free Live Tv', component: FreeLivePage,icon : "desktop" }
     ,{ title: 'Free VOD Movies', component: FreeFilmsPage,icon : "film" }
-    //,{ title: 'Contact', component: ContactPage,icon : "mail" }
+    ,{ title: 'Privacy & Terms', component: PrivacyTermsPage,icon : "md-lock" }
     ,{ title: 'favourites', component: FavoratePage,icon : "bookmarks" }
   
   ];
@@ -144,7 +145,7 @@ let  items = JSON.stringify(res);
   }else if(items =='[{"status":"Inactif"}]'){
     this.pages = [
       { title: 'Home', component: ProfilePage,icon : "home" }
-      //,{ title: 'Contact', component: ContactPage,icon : "mail" }
+      ,{ title: 'Privacy & Terms', component: PrivacyTermsPage,icon : "md-lock" }
     ];
     let alert = this.alertCtrl.create({
   
@@ -158,6 +159,7 @@ let  items = JSON.stringify(res);
     this.pages = [
       { title: 'Home', component: ProfilePage,icon : "home" }
       ,{ title: 'Support', component: ContactPage,icon : "mail" }
+      ,{ title: 'Privacy & Terms', component: PrivacyTermsPage,icon : "md-lock" }
     ];
     let alert = this.alertCtrl.create({
   
@@ -172,7 +174,7 @@ let  items = JSON.stringify(res);
 
     this.pages = [
       { title: 'Home', component: ProfilePage,icon : "home" }
-      //,{ title: 'Contact', component: ContactPage,icon : "mail" }
+      ,{ title: 'Privacy & Terms', component: PrivacyTermsPage,icon : "md-lock" }
       
     ];
     let alert = this.alertCtrl.create({
@@ -250,7 +252,7 @@ let  items = JSON.stringify(res);
   }
 
   rateApp(){
-    this.market.open('com.iptvmedia.streaming');
+    this.market.open('com.iptvmedia.space');
     }
 
     shareApp() {
@@ -266,7 +268,7 @@ let  items = JSON.stringify(res);
              // cssClass: 'action-red',
               handler: () => {
                
-                  this.socialSharing.shareViaFacebook("", "", "https://play.google.com/store/apps/details?id=com.iptvmedia.streaming").then(() => {
+                  this.socialSharing.shareViaFacebook("", "", "https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
                     console.log("shareViaFacebook: Success");
                   }).catch(() => {
                     console.error("shareViaFacebook: failed");
@@ -282,7 +284,7 @@ let  items = JSON.stringify(res);
               icon: 'logo-whatsapp',
            
               handler: () => {
-                this.socialSharing.shareViaWhatsApp("", "https://image.prntscr.com/image/QJOULXi5RYiCKu0RwpiupQ.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.streaming").then(() => {
+                this.socialSharing.shareViaWhatsApp("", "https://image.prntscr.com/image/S7BtcLA-RM_7P4zO_YkQkA.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
                   console.log("shareViaWhatsApp: Success");
                 }).catch(() => {
                   console.error("shareViaWhatsApp: failed");
@@ -295,7 +297,7 @@ let  items = JSON.stringify(res);
               icon: 'logo-twitter',
            
               handler: () => {
-                this.socialSharing.shareViaTwitter("", "https://image.prntscr.com/image/QJOULXi5RYiCKu0RwpiupQ.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.streaming").then(() => {
+                this.socialSharing.shareViaTwitter("", "https://image.prntscr.com/image/S7BtcLA-RM_7P4zO_YkQkA.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
                   console.log("shareViatwitter: Success");
                 }).catch(() => {
                   console.error("shareViatwitter: failed");
@@ -308,7 +310,7 @@ let  items = JSON.stringify(res);
               icon: 'paper-plane',
             
               handler: () => {
-                this.socialSharing.share("","", "https://image.prntscr.com/image/QJOULXi5RYiCKu0RwpiupQ.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.streaming").then(() => {
+                this.socialSharing.share("","", "https://image.prntscr.com/image/S7BtcLA-RM_7P4zO_YkQkA.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
                   console.log("shareViatwitter: Success");
                 }).catch(() => {
                   console.error("shareViatwitter: failed");

@@ -11,7 +11,7 @@
 
     
             <ion-buttons end>
-                  <button ion-button left icon-only (click)="getLiveCountry()">
+                  <button ion-button left icon-only (click)="getLiveserver()">
                      <ion-icon  name="md-refresh" ></ion-icon> 
                   </button>
            </ion-buttons>
@@ -42,12 +42,7 @@
       
 --->
          
-          <ion-infinite-scroll threshold="100px" (ionInfinite)="doInfinite($event)">
-            <ion-infinite-scroll-content
-            loadingSpinner="bubbles"
-            loadingText="Loading more data...">
-          </ion-infinite-scroll-content>
-          </ion-infinite-scroll>
+        
           
 
 </ion-content>

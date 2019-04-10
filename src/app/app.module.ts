@@ -74,7 +74,7 @@ import {
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { Clipboard } from '@ionic-native/clipboard';
 import { EmailComposer } from '@ionic-native/email-composer';
-
+import { PrivacyTermsPage } from '../pages/privacy-terms/privacy-terms'
 
 /**/
 @NgModule({
@@ -110,7 +110,8 @@ DetailFreeFilmsPage ,
 DetailFreeLivePage ,
   ContactPage,
   DownloadPage,
-  AndroidAppPage
+  AndroidAppPage,
+  PrivacyTermsPage
   ],
   imports: [
     BrowserModule,
@@ -150,7 +151,8 @@ DetailFreeFilmsPage ,
 DetailFreeLivePage ,
     ContactPage,
     DownloadPage,
-    AndroidAppPage
+    AndroidAppPage,
+    PrivacyTermsPage
     
   ],
   providers: [
