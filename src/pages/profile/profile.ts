@@ -5,8 +5,8 @@ import { Storage } from '@ionic/storage';
 import { SettingPage } from '../setting/setting'
 import { LoginPage } from '../login/login';
 
-//import { MyApp } from '../../app/app.component';
-
+import { DownloadPage } from '../download/download';
+import { AndroidAppPage } from '../android-app/android-app';
 import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 
@@ -40,11 +40,14 @@ index: string
       this.menuCtrl.enable(true);
       this.index = "home";
   }
-/** 
-  refresh_menu(){
-    this.MyApp.fetchuser();
+
+  godownloadPage() {
+    this.navCtrl.setRoot(DownloadPage);
   }
-*/
+  gotutorialPage() {
+    this.navCtrl.setRoot(AndroidAppPage);
+  }
+
   ionViewWillEnter(){
   
     this.storage.get("session_storage").then((res)=>{
