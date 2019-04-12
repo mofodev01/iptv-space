@@ -97,59 +97,79 @@
           </ion-card>
     
     
-      <ion-card >
+          <ion-card  class="card">
+              <ion-card-header class="card-header">
+                  NOTE :
+              </ion-card-header>
+              
+              <ion-card-content class="text-card" >
     
-            <ion-item *ngFor="let item of items" class="card">
-               
-          
-          
-          <ion-row class="text-card">
+          <ion-row class="text-card" *ngFor="let item of items">
               
              
               <ion-col *ngIf="item.status == 'Active'" >
 
-                  <h3 class="h-color-text"><strong  style="color: lime;">NOTE : Your subscription is enabled</strong></h3>
-                  <h3 class="h-color-text"><strong  style="color: lime;">To diversify operating sources,</strong></h3>
-                  <h3 class="h-color-text"><strong  style="color: lime;">Please visit the
-                      <a (click)="godownloadPage()">download</a>  
-                     or </strong></h3>
-                  <h3 class="h-color-text"><strong  style="color: lime;">
-                      <a  (click)="gotutorialPage()">tutorial</a> 
-                     page in the menu </strong></h3>
+             <p class="text-card">
+                <strong  style="color: lime;">
+                      Your subscription is enabled.To diversify
+                     operating sources,Please visit the<a (click)="godownloadPage()">download</a> 
+                     or <a  (click)="gotutorialPage()">tutorial</a> page in the menu 
+                </strong>
+              </p>
+                    
+                 
 
               </ion-col>
            
             <ion-col *ngIf="item.status == 'Free'" >
 
-                <h3 class="h-color-text"> <strong  style="color: red;">NOTE : Your account is free</strong></h3>
-                <h3 class="h-color-text"> <strong  style="color: red;">for one week.</strong></h3>
-                <h3 class="h-color-text"> <strong  style="color: red;"> You will experience some</strong></h3>
-                <h3 class="h-color-text"> <strong  style="color: red;"> problems and interruptions</strong></h3>
-                <h3 class="h-color-text"> <strong  style="color: red;">due to pressure on free servers.</strong></h3>
-                <h3 class="h-color-text"> <strong  style="color: red;"> Please pay for the best service.</strong></h3>
+                <p class="text-card">
+                  <strong  style="color: red;">
+                    Your account is free for one week.
+                  </strong>
+                </p>
+               
+                <p class="text-card">
+                  <strong  style="color: red;"> 
+                     You will experience some problems and
+                     interruptions due to pressure on free servers. Please pay for the best service.
+                  </strong>
+                </p>
  
             </ion-col>
     
             <ion-col *ngIf="item.status == 'Inactif'" >
-            <h3 class="h-color-text"> <strong  style="color: red;">NOTE : Please pay to watch the content</strong></h3>
+            <p class="text-card">
+               <strong  style="color: red;">
+                Please pay to watch the content
+              </strong>
+            </p>
                 
             </ion-col>
             
             <ion-col *ngIf="item.status == 'Expired'" >
-                <h3 class="h-color-text"> <strong  style="color: red;">NOTE : Your subscription has expired</strong></h3>
-                  <h3 class="h-color-text"> <strong  style="color: red;">Please pay to watch the content</strong></h3>
+                <p class="text-card">
+                  <strong  style="color: red;">
+                  Your subscription has expired
+                  Please pay to watch the content
+                </strong>
+              </p>
                 
             </ion-col>
     
             <ion-col *ngIf="item.status == 'Pending'" >
-                <h3 class="h-color-text"> <strong style="color: lime;">NOTE : Your account will be activated as</strong></h3>
-                  <h3 class="h-color-text"> <strong  style="color: lime;"> soon as possible</strong></h3>
+                <p class="text-card">
+                  <strong style="color: lime;">
+                  Your account will be activated as
+                   soon as possible
+                  </strong>
+                </p>
             </ion-col>
           
           </ion-row>
-            </ion-item>
+         
         
-          
+          </ion-card-content>
           </ion-card>
     
     
