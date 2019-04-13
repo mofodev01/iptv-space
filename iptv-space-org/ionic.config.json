@@ -1,8 +1,0 @@
-{
-  "name": "iptv-space-org",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular",
-  "pro_id": "5d3342ab"
-}
