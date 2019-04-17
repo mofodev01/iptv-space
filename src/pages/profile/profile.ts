@@ -133,14 +133,14 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
       payement_1_Month(){
         
         this.payPal.init({
-          PayPalEnvironmentProduction: '',
-          PayPalEnvironmentSandbox: 'AXWsAUvf8mmS2KG1xQft-jISAKnT-B8Hw-RRAdOKKzIm0YzIJLfpTdL4Sq8c6elPPKhS7zozaMVMpYGB'
+          PayPalEnvironmentProduction: 'AXWsAUvf8mmS2KG1xQft-jISAKnT-B8Hw-RRAdOKKzIm0YzIJLfpTdL4Sq8c6elPPKhS7zozaMVMpYGB',
+          PayPalEnvironmentSandbox: ''
         }).then(() => {
          
-          this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+          this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
             
           })).then(() => {
-            let payment = new PayPalPayment('10', 'EUR', '1 Month', 'sale');
+            let payment = new PayPalPayment('15', 'USD', '1 Month', 'sale');
             this.payPal.renderSinglePaymentUI(payment).then(() => {
               // Successfully paid
               let httpHeaders = new HttpHeaders({
@@ -153,7 +153,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
            
              let data = {
                   username: this.data_storage,
-                  amount: this.amount=10,
+                  amount: this.amount=15,
                   duration: this.duration='1 Month',
                   gateway: this.gateway='paypal'   
                  };
@@ -227,14 +227,14 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
       payement_3_Month(){
 
         this.payPal.init({
-          PayPalEnvironmentProduction: '',
-          PayPalEnvironmentSandbox: 'AXWsAUvf8mmS2KG1xQft-jISAKnT-B8Hw-RRAdOKKzIm0YzIJLfpTdL4Sq8c6elPPKhS7zozaMVMpYGB'
+          PayPalEnvironmentProduction: 'AXWsAUvf8mmS2KG1xQft-jISAKnT-B8Hw-RRAdOKKzIm0YzIJLfpTdL4Sq8c6elPPKhS7zozaMVMpYGB',
+          PayPalEnvironmentSandbox: ''
         }).then(() => {
          
-          this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+          this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
             
           })).then(() => {
-            let payment = new PayPalPayment('30', 'EUR', '3 Month', 'sale');
+            let payment = new PayPalPayment('35', 'USD', '3 Month', 'sale');
             this.payPal.renderSinglePaymentUI(payment).then(() => {
               // Successfully paid
               let httpHeaders = new HttpHeaders({
@@ -247,7 +247,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
            
              let data = {
                   username: this.data_storage,
-                  amount: this.amount=30,
+                  amount: this.amount=35,
                   duration: this.duration='3 Month',
                   gateway: this.gateway='paypal'   
                  };
@@ -321,14 +321,14 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
       payement_6_Month(){
 
         this.payPal.init({
-          PayPalEnvironmentProduction: '',
-          PayPalEnvironmentSandbox: 'AXWsAUvf8mmS2KG1xQft-jISAKnT-B8Hw-RRAdOKKzIm0YzIJLfpTdL4Sq8c6elPPKhS7zozaMVMpYGB'
+          PayPalEnvironmentProduction: 'AXWsAUvf8mmS2KG1xQft-jISAKnT-B8Hw-RRAdOKKzIm0YzIJLfpTdL4Sq8c6elPPKhS7zozaMVMpYGB',
+          PayPalEnvironmentSandbox: ''
         }).then(() => {
          
-          this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+          this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
             
           })).then(() => {
-            let payment = new PayPalPayment('60', 'EUR', '6 Month', 'sale');
+            let payment = new PayPalPayment('55', 'USD', '6 Month', 'sale');
             this.payPal.renderSinglePaymentUI(payment).then(() => {
               // Successfully paid
               let httpHeaders = new HttpHeaders({
@@ -341,7 +341,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
            
              let data = {
                   username: this.data_storage,
-                  amount: this.amount=60,
+                  amount: this.amount=55,
                   duration: this.duration='6 Month',
                   gateway: this.gateway='paypal'   
                  };
@@ -415,14 +415,14 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
       payement_1_Years(){
 
         this.payPal.init({
-          PayPalEnvironmentProduction: '',
-          PayPalEnvironmentSandbox: 'AXWsAUvf8mmS2KG1xQft-jISAKnT-B8Hw-RRAdOKKzIm0YzIJLfpTdL4Sq8c6elPPKhS7zozaMVMpYGB'
+          PayPalEnvironmentProduction: 'AXWsAUvf8mmS2KG1xQft-jISAKnT-B8Hw-RRAdOKKzIm0YzIJLfpTdL4Sq8c6elPPKhS7zozaMVMpYGB',
+          PayPalEnvironmentSandbox: ''
         }).then(() => {
          
-          this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+          this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
             
           })).then(() => {
-            let payment = new PayPalPayment('90', 'EUR', '1 Year', 'sale');
+            let payment = new PayPalPayment('75', 'USD', '1 Year', 'sale');
             this.payPal.renderSinglePaymentUI(payment).then(() => {
               // Successfully paid
               let httpHeaders = new HttpHeaders({
@@ -435,7 +435,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
            
              let data = {
                   username: this.data_storage,
-                  amount: this.amount=90,
+                  amount: this.amount=75,
                   duration: this.duration='1 Year',
                   gateway: this.gateway='paypal'   
                  };

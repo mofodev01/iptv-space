@@ -127,7 +127,7 @@ let  items = JSON.stringify(res);
     ,{ title: 'Tutorial',component: AndroidAppPage,icon : "book"}
     ,{ title: 'Support', component: ContactPage,icon : "mail" }
     ,{ title: 'Privacy & Terms', component: PrivacyTermsPage,icon : "md-lock" }
-    ,{ title: 'Favourites', component: FavoratePage,icon : "bookmarks" }
+    ,{ title: 'Favourite', component: FavoratePage,icon : "bookmarks" }
     
     
   ]; 
@@ -137,7 +137,7 @@ let  items = JSON.stringify(res);
     , { title: 'Free Live Tv', component: FreeLivePage,icon : "desktop" }
     ,{ title: 'Free VOD Movies', component: FreeFilmsPage,icon : "film" }
     ,{ title: 'Privacy & Terms', component: PrivacyTermsPage,icon : "md-lock" }
-    ,{ title: 'favourites', component: FavoratePage,icon : "bookmarks" }
+    ,{ title: 'Favourite', component: FavoratePage,icon : "bookmarks" }
   
   ];
 
@@ -164,7 +164,7 @@ let  items = JSON.stringify(res);
     let alert = this.alertCtrl.create({
   
       title:"Notification",
-      subTitle:"Your account will be activated as soon as possible",
+      subTitle:"Your account will be activated soon",
       buttons: ['OK']
       });
      

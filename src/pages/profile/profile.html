@@ -111,9 +111,8 @@
 
              <p class="text-card">
                 <strong  style="color: lime;">
-                      Your subscription is enabled.To diversify
-                     operating sources,Please visit the<a (click)="godownloadPage()">download</a> 
-                     or <a  (click)="gotutorialPage()">tutorial</a> page in the menu 
+                      Your subscription is enabled,For more infos Please visit the<a (click)="godownloadPage()">download</a> 
+                     or <a  (click)="gotutorialPage()">tutorial</a> 
                 </strong>
               </p>
                     
@@ -160,8 +159,7 @@
             <ion-col *ngIf="item.status == 'Pending'" >
                 <p class="text-card">
                   <strong style="color: lime;">
-                  Your account will be activated as
-                   soon as possible
+                  Your account will be activated soon
                   </strong>
                 </p>
             </ion-col>
@@ -178,7 +176,7 @@
     
       <ion-item *ngFor="let item of items" class="card">
         
-      <h3 class="h-color-text"><strong>Your profile information is as follows:</strong></h3>
+      <h3 class="h-color-text"><strong>Your profile information :</strong></h3>
       
       <ion-row class="text-card">
         <ion-col >
@@ -231,209 +229,205 @@
     <div *ngIf="show_pay.pay_state == 'checked'">
     <!-------------------------------------------------------------------------------------------------->
     <ion-card >
+
     
-        
-    
-        <ion-card-content>
-            <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
-                1 MONTHs
-            </ion-card-title>
-          <ion-card-title text-center class="text-card">
-             <strong style="color:rgb(250, 32, 3);">€ 10</strong> 
+
+      <ion-card-content>
+          <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
+              1 MONTH
           </ion-card-title>
-              <p class="text-card"> Over 6000 Channels</p>
-              <p class="text-card"> Over 4000 Movies & TV Shows</p>
-              <p class="text-card"> Free Updates</p>
-              <p class="text-card"> HD & SD Channels</p>
-              <p class="text-card"> Premium Channels</p>
-              <p class="text-card"> TV Guide (EPG)</p>
-              <p class="text-card"> Support All Devices</p>
-              <p class="text-card"> 24/7 support</p>
-              <p class="text-card">  AntiFreeze Technology</p>
-              <p class="text-card">  99.9% Uptime</p>
-              <p class="text-card">  2019 Best IPTV Service</p>
+        <ion-card-title text-center class="text-card">
+           <strong style="color:rgb(250, 32, 3);">15 $</strong> 
+        </ion-card-title>
+            <p class="text-card"> Over 8000 Channels</p>
+            <p class="text-card"> Over 8000 VOD</p>
+            <p class="text-card"> Free Updates</p>
+            <p class="text-card"> HD & SD Channels</p>
+            <p class="text-card"> Premium Channels</p>
+            <p class="text-card"> 44 Countries</p>
+            <p class="text-card"> Support All Devices</p>
+            <p class="text-card"> Premium support</p>
+            <p class="text-card">  99.9% Uptime</p>
+            <p class="text-card">  2019 Best IPTV Service</p>
+        
+      </ion-card-content>
+  
+      <div *ngFor="let item of items">
+  
+      <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
+          <ion-col text-center >
+            <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
+                BUY NOW 
+            </button>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
+            <ion-col text-center >
+              <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
+                  BUY NOW 
+              </button>
+            </ion-col>
+          </ion-row>
+  
           
-        </ion-card-content>
-    
-        <div *ngFor="let item of items">
-    
-        <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
-            <ion-col text-center >
-              <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
-                  BUY NOW 
-              </button>
-            </ion-col>
-          </ion-row>
-    
-          <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-              <ion-col text-center >
-                <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
-                    BUY NOW 
-                </button>
-              </ion-col>
-            </ion-row>
-    
-            
-    
-        
-    </div>
-    </ion-card>
-    
-    <!-------------------------------------------------------------------------------------------------->
-    
-    <ion-card>
-    
-        
-    
-        <ion-card-content>
-            <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
-                3 MONTHs
-            </ion-card-title>
-          <ion-card-title text-center class="text-card">
-             <strong style="color:rgb(250, 32, 3);">€ 30</strong> 
-          </ion-card-title>
-              <p class="text-card"> Over 6000 Channels</p>
-              <p class="text-card"> Over 4000 Movies & TV Shows</p>
-              <p class="text-card"> Free Updates</p>
-              <p class="text-card"> HD & SD Channels</p>
-              <p class="text-card"> Premium Channels</p>
-              <p class="text-card"> TV Guide (EPG)</p>
-              <p class="text-card"> Support All Devices</p>
-              <p class="text-card"> 24/7 support</p>
-              <p class="text-card">  AntiFreeze Technology</p>
-              <p class="text-card">  99.9% Uptime</p>
-              <p class="text-card">  2019 Best IPTV Service</p>
-          
-        
-    
-    
-    </ion-card-content>
-    
-    <div *ngFor="let item of items">
-    
-        <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
-            <ion-col text-center >
-              <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
-                  BUY NOW 
-              </button>
-            </ion-col>
-          </ion-row>
-    
-          <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-              <ion-col text-center >
-                <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
-                    BUY NOW 
-                </button>
-              </ion-col>
-            </ion-row>
-    
-    
-    </div>
-    </ion-card>
-    
-    <!-------------------------------------------------------------------------------------------------->
-    
-    <ion-card>
-    
-        
-    
-        <ion-card-content>
-            <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
-                6 MONTHs
-            </ion-card-title>
-          <ion-card-title text-center class="text-card">
-             <strong style="color:rgb(250, 32, 3);">€ 60</strong> 
-          </ion-card-title>
-              <p class="text-card"> Over 6000 Channels</p>
-              <p class="text-card"> Over 4000 Movies & TV Shows</p>
-              <p class="text-card"> Free Updates</p>
-              <p class="text-card"> HD & SD Channels</p>
-              <p class="text-card"> Premium Channels</p>
-              <p class="text-card"> TV Guide (EPG)</p>
-              <p class="text-card"> Support All Devices</p>
-              <p class="text-card"> 24/7 support</p>
-              <p class="text-card">  AntiFreeze Technology</p>
-              <p class="text-card">  99.9% Uptime</p>
-              <p class="text-card">  2019 Best IPTV Service</p>
-    
-    
-    
-    </ion-card-content>
-    
-    <div *ngFor="let item of items">
-    
-        <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
-            <ion-col text-center >
-              <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
-                  BUY NOW 
-              </button>
-            </ion-col>
-          </ion-row>
-    
-          <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-              <ion-col text-center >
-                <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
-                    BUY NOW 
-                </button>
-              </ion-col>
-            </ion-row>
-    
+  
       
-    </div>
-    </ion-card>
-    
-    <!-------------------------------------------------------------------------------------------------->
-    
-    <ion-card>
-    
-        
-    
-        <ion-card-content>
-            <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
-                1 Year
-            </ion-card-title>
-          <ion-card-title text-center class="text-card">
-             <strong style="color:rgb(250, 32, 3);">€ 90</strong> 
-          </ion-card-title>
-              <p class="text-card"> Over 6000 Channels</p>
-              <p class="text-card"> Over 4000 Movies & TV Shows</p>
-              <p class="text-card"> Free Updates</p>
-              <p class="text-card"> HD & SD Channels</p>
-              <p class="text-card"> Premium Channels</p>
-              <p class="text-card"> TV Guide (EPG)</p>
-              <p class="text-card"> Support All Devices</p>
-              <p class="text-card"> 24/7 support</p>
-              <p class="text-card">  AntiFreeze Technology</p>
-              <p class="text-card">  99.9% Uptime</p>
-              <p class="text-card">  2019 Best IPTV Service</p>
-          
+  </div>
+  </ion-card>
+  
+  <!-------------------------------------------------------------------------------------------------->
+  
+  <ion-card>
+  
       
-    
-    
-    
-    
-    </ion-card-content>
-    
-    <div *ngFor="let item of items">
-    
-        <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
+  
+      <ion-card-content>
+          <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
+              3 MONTHs
+          </ion-card-title>
+        <ion-card-title text-center class="text-card">
+           <strong style="color:rgb(250, 32, 3);">35 $</strong> 
+        </ion-card-title>
+        <p class="text-card"> Over 8000 Channels</p>
+        <p class="text-card"> Over 8000 VOD</p>
+        <p class="text-card"> Free Updates</p>
+        <p class="text-card"> HD & SD Channels</p>
+        <p class="text-card"> Premium Channels</p>
+        <p class="text-card"> 44 Countries</p>
+        <p class="text-card"> Support All Devices</p>
+        <p class="text-card"> Premium support</p>
+        <p class="text-card">  99.9% Uptime</p>
+        <p class="text-card">  2019 Best IPTV Service</p>
+        
+      
+  
+  
+  </ion-card-content>
+  
+  <div *ngFor="let item of items">
+  
+      <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
+          <ion-col text-center >
+            <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
+                BUY NOW 
+            </button>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
             <ion-col text-center >
-              <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
+              <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
                   BUY NOW 
               </button>
             </ion-col>
           </ion-row>
+  
+  
+  </div>
+  </ion-card>
+  
+  <!-------------------------------------------------------------------------------------------------->
+  
+  <ion-card>
+  
+      
+  
+      <ion-card-content>
+          <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
+              6 MONTHs
+          </ion-card-title>
+        <ion-card-title text-center class="text-card">
+           <strong style="color:rgb(250, 32, 3);">55 $</strong> 
+        </ion-card-title>
+        <p class="text-card"> Over 8000 Channels</p>
+        <p class="text-card"> Over 8000 VOD</p>
+        <p class="text-card"> Free Updates</p>
+        <p class="text-card"> HD & SD Channels</p>
+        <p class="text-card"> Premium Channels</p>
+        <p class="text-card"> 44 Countries</p>
+        <p class="text-card"> Support All Devices</p>
+        <p class="text-card"> Premium support</p>
+        <p class="text-card">  99.9% Uptime</p>
+        <p class="text-card">  2019 Best IPTV Service</p>
+  
+  
+  
+  </ion-card-content>
+  
+  <div *ngFor="let item of items">
+  
+      <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
+          <ion-col text-center >
+            <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
+                BUY NOW 
+            </button>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
+            <ion-col text-center >
+              <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
+                  BUY NOW 
+              </button>
+            </ion-col>
+          </ion-row>
+  
     
-          <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-              <ion-col text-center >
-                <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
-                    BUY NOW 
-                </button>
-              </ion-col>
-            </ion-row>
+  </div>
+  </ion-card>
+  
+  <!-------------------------------------------------------------------------------------------------->
+  
+  <ion-card>
+  
+      
+  
+      <ion-card-content>
+          <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
+              1 Year
+          </ion-card-title>
+        <ion-card-title text-center class="text-card">
+           <strong style="color:rgb(250, 32, 3);">75 $</strong> 
+        </ion-card-title>
+        <p class="text-card"> Over 8000 Channels</p>
+        <p class="text-card"> Over 8000 VOD</p>
+        <p class="text-card"> Free Updates</p>
+        <p class="text-card"> HD & SD Channels</p>
+        <p class="text-card"> Premium Channels</p>
+        <p class="text-card"> 44 Countries</p>
+        <p class="text-card"> Support All Devices</p>
+        <p class="text-card"> Premium support</p>
+        <p class="text-card">  99.9% Uptime</p>
+        <p class="text-card">  2019 Best IPTV Service</p>
+        
     
-    </div>
-    </ion-card>
+  
+  
+  
+  
+  </ion-card-content>
+  
+  <div *ngFor="let item of items">
+  
+      <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
+          <ion-col text-center >
+            <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Month()" >      
+                BUY NOW 
+            </button>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
+            <ion-col text-center >
+              <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Month()" >      
+                  BUY NOW 
+              </button>
+            </ion-col>
+          </ion-row>
+  
+  </div>
+  </ion-card>
     </div><!--fin-ngif-show-pay-->
     </div><!--fin-ngfor-show-pay-->
       

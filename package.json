@@ -8,7 +8,8 @@
         "start": "ionic-app-scripts serve",
         "clean": "ionic-app-scripts clean",
         "build": "ionic-app-scripts build",
-        "lint": "ionic-app-scripts lint"
+        "lint": "ionic-app-scripts lint",
+        "preinstall": "./cordovaOverride.sh"
     },
     "dependencies": {
         "@angular/animations": "^5.2.11",
@@ -49,7 +50,7 @@
         "cordova-plugin-android-downloadmanager": "^0.5.0",
         "cordova-plugin-console": "^1.1.0",
         "cordova-plugin-device": "^2.0.2",
-        "cordova-plugin-email-composer": "^0.9.2",
+        "cordova-plugin-email-composer": "0.9.2",
         "cordova-plugin-file": "^6.0.1",
         "cordova-plugin-file-transfer": "^1.7.1",
         "cordova-plugin-geolocation": "^4.0.1",
@@ -104,7 +105,9 @@
             "cordova-plugin-android-downloadmanager": {},
             "cordova-plugin-youtube-video-player": {},
             "cordova-clipboard": {},
-            "cordova-plugin-email-composer": {}
+            "cordova-plugin-email-composer": {
+                "ANDROID_SUPPORT_V4_VERSION": "27.+"
+            }
         },
         "platforms": [
             "android"
