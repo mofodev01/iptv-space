@@ -133,7 +133,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
       payement_1_Month(){
         
         this.payPal.init({
-          PayPalEnvironmentProduction: 'AXWsAUvf8mmS2KG1xQft-jISAKnT-B8Hw-RRAdOKKzIm0YzIJLfpTdL4Sq8c6elPPKhS7zozaMVMpYGB',
+          PayPalEnvironmentProduction: 'AVRQ7igUT9AjJgnzCapuKNc_s3pHhCNXoOiNAPeLg7hwFsn2dtBg2P_App179qm_nAm1mON5R5AUxn08',
           PayPalEnvironmentSandbox: ''
         }).then(() => {
          
@@ -227,7 +227,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
       payement_3_Month(){
 
         this.payPal.init({
-          PayPalEnvironmentProduction: 'AXWsAUvf8mmS2KG1xQft-jISAKnT-B8Hw-RRAdOKKzIm0YzIJLfpTdL4Sq8c6elPPKhS7zozaMVMpYGB',
+          PayPalEnvironmentProduction: 'AVRQ7igUT9AjJgnzCapuKNc_s3pHhCNXoOiNAPeLg7hwFsn2dtBg2P_App179qm_nAm1mON5R5AUxn08',
           PayPalEnvironmentSandbox: ''
         }).then(() => {
          
@@ -321,7 +321,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
       payement_6_Month(){
 
         this.payPal.init({
-          PayPalEnvironmentProduction: 'AXWsAUvf8mmS2KG1xQft-jISAKnT-B8Hw-RRAdOKKzIm0YzIJLfpTdL4Sq8c6elPPKhS7zozaMVMpYGB',
+          PayPalEnvironmentProduction: 'AVRQ7igUT9AjJgnzCapuKNc_s3pHhCNXoOiNAPeLg7hwFsn2dtBg2P_App179qm_nAm1mON5R5AUxn08',
           PayPalEnvironmentSandbox: ''
         }).then(() => {
          
@@ -415,7 +415,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
       payement_1_Years(){
 
         this.payPal.init({
-          PayPalEnvironmentProduction: 'AXWsAUvf8mmS2KG1xQft-jISAKnT-B8Hw-RRAdOKKzIm0YzIJLfpTdL4Sq8c6elPPKhS7zozaMVMpYGB',
+          PayPalEnvironmentProduction: 'AVRQ7igUT9AjJgnzCapuKNc_s3pHhCNXoOiNAPeLg7hwFsn2dtBg2P_App179qm_nAm1mON5R5AUxn08',
           PayPalEnvironmentSandbox: ''
         }).then(() => {
          
