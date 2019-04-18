@@ -52,7 +52,7 @@ export class RegisterPage {
   }
 
   Register(){
-    //// check to confirm the username, email, telephone and password fields are filled
+   
    
      if(this.username.value=="" ){
    

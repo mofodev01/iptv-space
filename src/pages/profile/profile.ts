@@ -1,5 +1,5 @@
 import { Component,ViewChild } from '@angular/core';
-import { /*IonicPage,*/ NavController, NavParams } from 'ionic-angular';
+import {  NavController, NavParams } from 'ionic-angular';
 import { LoadingController, App , AlertController,MenuController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { SettingPage } from '../setting/setting'
@@ -21,7 +21,7 @@ export class ProfilePage {
   @ViewChild("duration") duration;
   @ViewChild("gateway") gateway;
 data:any;
-//username:any;
+
 items:any;
 data_storage:any;
 item_pay_show:any;
