@@ -13,12 +13,6 @@
     
     <ion-list no-lines  >
 
-        <button lines  menuClose ion-item  class="color_refresh"  (click)="fetchuser()">
-            <strong class="font_refresh_color"> 
-          <ion-icon name="md-refresh" ></ion-icon> 
-          Refresh content menu
-           </strong>
-        </button>
 
         <button menuClose ion-item *ngFor="let p of pages" class="listcolor"  (click)="openPage(p)">
             <strong class="fontcolor"> 

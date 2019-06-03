@@ -26,6 +26,7 @@ import { ListeServeLivePage } from '../pages/liste-serve-live/liste-serve-live'
 import { ListeServerFilmsPage } from '../pages/liste-server-films/liste-server-films'
 import { DetailFreeFilmsPage } from '../pages/detail-free-films/detail-free-films'
 import { DetailFreeLivePage } from '../pages/detail-free-live/detail-free-live'
+import { InfoPage } from '../pages/info/info'
 
 import { DownloadPage } from '../pages/download/download';
 import { AndroidAppPage } from '../pages/android-app/android-app'
@@ -75,7 +76,7 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { Clipboard } from '@ionic-native/clipboard';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { PrivacyTermsPage } from '../pages/privacy-terms/privacy-terms'
-
+import { OneSignal } from '@ionic-native/onesignal';
 /**/
 @NgModule({
   declarations: [
@@ -111,7 +112,8 @@ DetailFreeLivePage ,
   ContactPage,
   DownloadPage,
   AndroidAppPage,
-  PrivacyTermsPage
+  PrivacyTermsPage,
+  InfoPage
   ],
   imports: [
     BrowserModule,
@@ -152,7 +154,8 @@ DetailFreeLivePage ,
     ContactPage,
     DownloadPage,
     AndroidAppPage,
-    PrivacyTermsPage
+    PrivacyTermsPage,
+    InfoPage
     
   ],
   providers: [
@@ -181,7 +184,7 @@ DetailFreeLivePage ,
     YoutubeVideoPlayer ,
     Clipboard ,
     EmailComposer ,
-   
+    OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     JsonDataProvider,
     DatabaseProvider

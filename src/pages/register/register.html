@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>register</ion-title>
+    <ion-title>Register</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,6 +10,14 @@
 
 <ion-content padding>
   <form >
+
+      <ion-item  class="listcolor" [hidden]="true">
+          <ion-label floating>
+            uuid
+          </ion-label>
+         
+          <ion-input type="text"  value="{{id}}{{serial}}" class="text-input" name="uuid" #uuid></ion-input>
+     </ion-item>
 
       <ion-item  class="listcolor" [hidden]="true">
           <ion-label floating>
@@ -60,6 +68,14 @@
    Confirm Password 
 </ion-label>
 <ion-input type="password" class="text-input"  name="confirm_password" #confirm_password></ion-input>
+</ion-item>
+
+<ion-item  class="listcolor" [hidden]="true">
+  <ion-label floating>
+   app name
+  </ion-label>
+ 
+  <ion-input type="text"  value="iptv-space" class="text-input" name="app_name" #app_name></ion-input>
 </ion-item>
 
 

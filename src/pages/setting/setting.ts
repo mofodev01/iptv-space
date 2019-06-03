@@ -17,11 +17,12 @@ export class SettingPage {
 @ViewChild("mobile") mobile;
 @ViewChild("password") password;
 @ViewChild("confirm_password") confirm_password;
+@ViewChild("mac_add") mac_add;
 items_user: string;
 items_password: string;
 items_telephone: string;
 items_email: string;
-
+mac_addr: string;
   constructor(public navCtrl: NavController, public navParams: NavParams,  private http: HttpClient, public storage: Storage, public loading: LoadingController, public alertCtrl: AlertController
     ,public menuCtrl:MenuController
     ) {
@@ -32,6 +33,10 @@ items_email: string;
     ///this.items_password = navParams.get('password');
     this.items_telephone = navParams.get('telephone');
     this.items_email = navParams.get('email');
+    this.mac_addr= navParams.get('mac_addr');
+
+    console.log(this.mac_addr);
+    
     console.log(this.items_user);
     //console.log(this.items_password);
     console.log(this.items_telephone);
@@ -116,7 +121,8 @@ items_email: string;
            username: this.username.value,
            password: this.password.value,
            mobile: this.mobile.value,
-           email: this.email.value      
+           email: this.email.value  ,
+           mac_add: this.mac_add.value,
          };
    
    

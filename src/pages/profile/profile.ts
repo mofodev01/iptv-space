@@ -9,7 +9,7 @@ import { DownloadPage } from '../download/download';
 import { AndroidAppPage } from '../android-app/android-app';
 import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
-
+import { Content } from 'ionic-angular';
 
 @Component({
   selector: 'page-profile',
@@ -20,11 +20,20 @@ export class ProfilePage {
   @ViewChild("amount") amount;
   @ViewChild("duration") duration;
   @ViewChild("gateway") gateway;
+  @ViewChild(Content) content: Content;
+
+  scrollTo() {
+   
+   // this.content.scrollTo(0, 500, 200);
+   this.content.scrollToBottom(1500);
+  }
 data:any;
 
 items:any;
 data_storage:any;
 item_pay_show:any;
+item_free_show:any;
+item_pay_stop:any;
 index: string
 
   constructor(public http:  HttpClient,
@@ -90,22 +99,128 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
 
 
 ///-----
+/**----------------------------------------- */    
+/**----------------------------------------- */    
+  
+this.http.get('http://space.iptvmedia.me/api/setting.php')
+
+   .subscribe(res => {
+   
+   
+   this.item_free_show=res;
+   
+   console.log(this.item_free_show);
+   });
+
+
+///-----
+/**----------------------------------------- */    
+  
+this.http.get('http://space.iptvmedia.me/api/setting.php')
+
+   .subscribe(res => {
+   
+   
+   this.item_pay_stop=res;
+   
+   console.log(this.item_pay_stop);
+   });
+
+
+///-----
 })
 ///-----
 
     }
+
+    refresh(){
+  
+      this.storage.get("session_storage").then((res)=>{
+       this.data_storage=res;
+       
+       console.log(this.data_storage);
+  /**----------------------------------------- */
+  let httpHeaders = new HttpHeaders({
+    'Content-Type' : 'application/json',
+    'Cache-Control': 'no-cache'
+       });    
+       let options = {
+    headers: httpHeaders
+       };
+  /**----------------------------------------- */    
+    
+  this.http.get('http://space.iptvmedia.me/api/fetch_user.php?username='+this.data_storage,options)
+  
+     .subscribe(res => {
+     
+     
+     this.items=res;
+     
+     console.log(this.items);
+     });
+  
+  
+  ///-----
+  /**----------------------------------------- */    
+    
+  this.http.get('http://space.iptvmedia.me/api/setting.php')
+  
+     .subscribe(res => {
+     
+     
+     this.item_pay_show=res;
+     
+     console.log(this.item_pay_show);
+     });
+  
+  
+  ///-----
+  /**----------------------------------------- */    
+  /**----------------------------------------- */    
+    
+  this.http.get('http://space.iptvmedia.me/api/setting.php')
+  
+     .subscribe(res => {
+     
+     
+     this.item_free_show=res;
+     
+     console.log(this.item_free_show);
+     });
+  
+  
+  ///-----
+  /**----------------------------------------- */    
+    
+  this.http.get('http://space.iptvmedia.me/api/setting.php')
+  
+     .subscribe(res => {
+     
+     
+     this.item_pay_stop=res;
+     
+     console.log(this.item_pay_stop);
+     });
+  
+  
+  ///-----
+  })
+  ///-----
+  
+      }
    
     setting(
       username :number,
       telephone:String,
       email :String,
+      mac_addr :String
       
     ){
      this.storage.get("session_storage").then((res)=>{
        this.data_storage=res;
 
       this.navCtrl.push(SettingPage,{
-        username: username,telephone: telephone,email: email
+        username: username,telephone: telephone,email: email,mac_addr: mac_addr
  });
 
 })
@@ -127,11 +242,83 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
      alert.present();
 
     }
+    /*--------------------------------free-2-day-------------------------------*/
+    free(){
 
+      let httpHeaders = new HttpHeaders({
+        'Content-Type' : 'application/json',
+        'Cache-Control': 'no-cache'
+           });    
+           let options = {
+        headers: httpHeaders
+           };
+   
+     let data = {
+          username: this.data_storage   
+         };
+   
+   
+    
+   this.http.post('http://space.iptvmedia.me/api/free_trailer.php',data, options)
+   .map(res => res.toString())
+   .subscribe(res => {
+   
+    
+   if(res=="You have enable 2 Day Free trailer"){
+     let alert = this.alertCtrl.create({
+       title:"CONGRATS",
+       subTitle:(res),
+       buttons: ['OK']
+       });
+      
+       alert.present();
+      this.refresh();
+      
+   }else
+   {
+    let alert = this.alertCtrl.create({
+    title:"ERROR",
+    subTitle:(res),
+    buttons: ['OK']
+    });
+   
+    alert.present();
+     } 
+   });
+   
+
+    }
+
+    /*--------------------------------Before-free---------------------------------*/
+    confirm_free(){
+    const confirm = this.alertCtrl.create({
+      title: 'Free 2 Day',
+      message: 'Are you sure want to test free 2 Day ?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            //console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+           this.free();
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+    /*--------------------------------Before-free---------------------------------*/
      
+
 /*--------------------------------1-month---------------------------------*/
       payement_1_Month(){
-        
+
+         
+        /**/
         this.payPal.init({
           PayPalEnvironmentProduction: 'AVRQ7igUT9AjJgnzCapuKNc_s3pHhCNXoOiNAPeLg7hwFsn2dtBg2P_App179qm_nAm1mON5R5AUxn08',
           PayPalEnvironmentSandbox: ''
@@ -140,8 +327,9 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
           this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
             
           })).then(() => {
-            let payment = new PayPalPayment('15', 'USD', '1 Month', 'sale');
+            let payment = new PayPalPayment('12', 'USD', '1 Month', 'sale');
             this.payPal.renderSinglePaymentUI(payment).then(() => {
+              
               // Successfully paid
               let httpHeaders = new HttpHeaders({
                 'Content-Type' : 'application/json',
@@ -153,7 +341,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
            
              let data = {
                   username: this.data_storage,
-                  amount: this.amount=15,
+                  amount: this.amount=12,
                   duration: this.duration='1 Month',
                   gateway: this.gateway='paypal'   
                  };
@@ -187,7 +375,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
              } 
            });
            
-             
+            
             }, () => {
               // Error or render dialog closed without being successful
               
@@ -221,6 +409,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
            
             alert.present();
         });
+         /* */
       }
 
       /*-------------------------------------------3-month------30-----EUR------3 Month------------------------------*/
@@ -234,7 +423,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
           this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
             
           })).then(() => {
-            let payment = new PayPalPayment('35', 'USD', '3 Month', 'sale');
+            let payment = new PayPalPayment('30', 'USD', '3 Month', 'sale');
             this.payPal.renderSinglePaymentUI(payment).then(() => {
               // Successfully paid
               let httpHeaders = new HttpHeaders({
@@ -247,7 +436,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
            
              let data = {
                   username: this.data_storage,
-                  amount: this.amount=35,
+                  amount: this.amount=30,
                   duration: this.duration='3 Month',
                   gateway: this.gateway='paypal'   
                  };
@@ -328,7 +517,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
           this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
             
           })).then(() => {
-            let payment = new PayPalPayment('55', 'USD', '6 Month', 'sale');
+            let payment = new PayPalPayment('50', 'USD', '6 Month', 'sale');
             this.payPal.renderSinglePaymentUI(payment).then(() => {
               // Successfully paid
               let httpHeaders = new HttpHeaders({
@@ -341,7 +530,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
            
              let data = {
                   username: this.data_storage,
-                  amount: this.amount=55,
+                  amount: this.amount=50,
                   duration: this.duration='6 Month',
                   gateway: this.gateway='paypal'   
                  };
@@ -422,7 +611,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
           this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
             
           })).then(() => {
-            let payment = new PayPalPayment('75', 'USD', '1 Year', 'sale');
+            let payment = new PayPalPayment('80', 'USD', '1 Year', 'sale');
             this.payPal.renderSinglePaymentUI(payment).then(() => {
               // Successfully paid
               let httpHeaders = new HttpHeaders({
@@ -435,7 +624,7 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
            
              let data = {
                   username: this.data_storage,
-                  amount: this.amount=75,
+                  amount: this.amount=80,
                   duration: this.duration='1 Year',
                   gateway: this.gateway='paypal'   
                  };

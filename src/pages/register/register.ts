@@ -25,6 +25,9 @@ export class RegisterPage {
  model: any;
  version: any;
  manufacturer: any;
+ id: any ;
+ serial: any ;
+
 
   @ViewChild("device") device;
   @ViewChild("geolocal") geolocal;
@@ -33,6 +36,8 @@ export class RegisterPage {
   @ViewChild("mobile") mobile;
   @ViewChild("password") password;
   @ViewChild("confirm_password") confirm_password;
+  @ViewChild("app_name") app_name;
+  @ViewChild("uuid") uuid;
   constructor(public navCtrl: NavController, public navParams: NavParams,
      public alertCtrl: AlertController,  private http: HttpClient,  public loading: LoadingController
      ,
@@ -120,7 +125,7 @@ export class RegisterPage {
       let httpHeaders = new HttpHeaders({
         'Content-Type' : 'application/json',
         'Cache-Control': 'no-cache'
-           });    
+           });      
            let options = {
         headers: httpHeaders
            };
@@ -131,7 +136,9 @@ export class RegisterPage {
            username: this.username.value,
            password: this.password.value,
            mobile: this.mobile.value,
-           email: this.email.value      
+           email: this.email.value,      
+           app_name: this.app_name.value,
+           uuid: this.uuid.value    
          };
    
    
@@ -142,13 +149,14 @@ export class RegisterPage {
     loader.present().then(() => {
 
    this.http.post('http://space.iptvmedia.me/api/register.php',data, options)
+   //this.http.post('http://127.0.0.1/i/api/register.php',data, options)
    .map(res => res.toString())
    .subscribe(res => {
    
     loader.dismiss()
    if(res=="Registration successfull"){
      let alert = this.alertCtrl.create({
-       title:"Congratulation",
+       title:"CONGRATS",
        subTitle:(res),
        buttons: ['OK']
        });
@@ -159,7 +167,7 @@ export class RegisterPage {
    }else
    {
     let alert = this.alertCtrl.create({
-    title:"Error",
+    title:"ERROR",
     subTitle:(res),
     buttons: ['OK']
     });
@@ -197,6 +205,8 @@ export class RegisterPage {
     this.platform = this.devicemodule.platform;
     this.version = this.devicemodule.version;
     this.manufacturer = this.devicemodule.manufacturer;
+    this.id= this.devicemodule.uuid;
+    this.serial=this.devicemodule.serial;
     
     //-----------------------------------------------------------
    // this.showLoader();

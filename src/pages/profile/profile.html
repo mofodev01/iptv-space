@@ -70,6 +70,10 @@
             <ion-col >
               Status:
             </ion-col>
+
+            <ion-col *ngIf="item.status == 'New'" >
+                <strong style="color: rgb(255, 174, 0)">Inactive</strong>
+              </ion-col>
     
             <ion-col *ngIf="item.status == 'Active'" >
               <strong style="color: lime">{{item.status}}</strong> 
@@ -111,8 +115,8 @@
 
              <p class="text-card">
                 <strong  style="color: lime;">
-                      Your subscription is enabled,For more infos Please visit the<a (click)="godownloadPage()">download</a> 
-                     or <a  (click)="gotutorialPage()">tutorial</a> 
+                      Your subscription is enabled,For more infos Please visit the <a (click)="godownloadPage()"> download </a> 
+                     or <a  (click)="gotutorialPage()"> tutorials </a> 
                 </strong>
               </p>
                     
@@ -120,27 +124,15 @@
 
               </ion-col>
            
-            <ion-col *ngIf="item.status == 'Free'" >
-
-                <p class="text-card">
-                  <strong  style="color: red;">
-                    Your account is free for one week.
-                  </strong>
-                </p>
-               
-                <p class="text-card">
-                  <strong  style="color: red;"> 
-                     You will experience some problems and
-                     interruptions due to pressure on free servers. Please pay for the best service.
-                  </strong>
-                </p>
- 
-            </ion-col>
+         
     
-            <ion-col *ngIf="item.status == 'Inactif'" >
+            <ion-col *ngIf="item.status == 'New'" >
             <p class="text-card">
-               <strong  style="color: red;">
-                Please pay to watch the content
+               <strong  style="color: rgb(255, 174, 0);">
+                Welcome!,have a good time with our space</strong></p>
+                <p class="text-card">  <strong  style="color: rgb(255, 174, 0);"> The content is empty, Please click the "Free trailer" button to 
+                <a (click)="scrollTo()"> activate</a>
+                 your account.
               </strong>
             </p>
                 
@@ -156,13 +148,7 @@
                 
             </ion-col>
     
-            <ion-col *ngIf="item.status == 'Pending'" >
-                <p class="text-card">
-                  <strong style="color: lime;">
-                  Your account will be activated soon
-                  </strong>
-                </p>
-            </ion-col>
+            
           
           </ion-row>
          
@@ -176,7 +162,7 @@
     
       <ion-item *ngFor="let item of items" class="card">
         
-      <h3 class="h-color-text"><strong>Your profile information :</strong></h3>
+      <h3 class="h-color-text"><strong>Account information :</strong></h3>
       
       <ion-row class="text-card">
         <ion-col >
@@ -209,7 +195,7 @@
     <ion-row class="text-card">
        
         <ion-col>
-          <button ion-button icon-start clear small (click)="setting(item.username,item.telephone,item.email)">
+          <button ion-button icon-start clear small (click)="setting(item.username,item.telephone,item.email,item.mac_add)">
             <ion-icon name="settings"></ion-icon>
             <div>Setting</div>
           </button>
@@ -225,9 +211,69 @@
     </ion-card>
     <!-------------------------------------------------------------------------------------------------->
     <!-------------------------------------------------------------------------------------------------->
-    <div *ngFor="let show_pay of item_pay_show">
-    <div *ngIf="show_pay.pay_state == 'checked'">
+    <div *ngFor="let show_free of item_free_show">
+    <div *ngIf="show_free.free_state == 'checked'">
+
+ <!-------------------------------------------------------------------------------------------------->
+ <ion-card >
+
+    
+
+    <ion-card-content>
+        <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
+            Free
+        </ion-card-title>
+      <ion-card-title text-center class="text-card">
+         <strong style="color:rgb(250, 32, 3);">0 $</strong> 
+      </ion-card-title>
+          <p class="text-card"> Over 8000 Channels</p>
+          <p class="text-card"> Over 8000 VOD</p>
+          <p class="text-card"> Free Updates</p>
+          <p class="text-card"> HD & SD Channels</p>
+          <p class="text-card"> Premium Channels</p>
+          <p class="text-card"> 44 Countries</p>
+          <p class="text-card"> Support All Devices</p>
+          <p class="text-card"> Premium support</p>
+          <p class="text-card">  99.9% Uptime</p>
+          <p class="text-card">  2019 Best IPTV Service</p>
+      
+    </ion-card-content>
+
+    <div *ngFor="let item of items">
+
+    <ion-row class="sign-in-button-container" *ngIf="item.status != 'New'">
+        <ion-col text-center >
+          <button ion-button block round color="primary" [disabled]="true" (click)="confirm_free()" >      
+             FREE TRAILER
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="sign-in-button-container" *ngIf="item.status == 'New'">
+          <ion-col text-center >
+            <button ion-button block round color="primary" [disabled]="false" (click)="confirm_free()" >      
+                FREE TRAILER 
+            </button>
+          </ion-col>
+        </ion-row>
+
+        
+
+    
+</div>
+</ion-card>
+
+<!-------------------------------------------------------------------------------------------------->
+</div><!--fin-ngif-show-free-->
+</div><!--fin-ngfor-show-free-->
+
     <!-------------------------------------------------------------------------------------------------->
+
+    <!-------------------------------------------------------------------------------------------------->
+    <div *ngFor="let show_pay of item_pay_show">
+      <div *ngIf="show_pay.pay_state == 'checked'">
+  
+   <!-------------------------------------------------------------------------------------------------->
     <ion-card >
 
     
@@ -237,7 +283,7 @@
               1 MONTH
           </ion-card-title>
         <ion-card-title text-center class="text-card">
-           <strong style="color:rgb(250, 32, 3);">15 $</strong> 
+           <strong style="color:rgb(250, 32, 3);">12 $</strong> 
         </ion-card-title>
             <p class="text-card"> Over 8000 Channels</p>
             <p class="text-card"> Over 8000 VOD</p>
@@ -278,160 +324,49 @@
   
   <!-------------------------------------------------------------------------------------------------->
   
-  <ion-card>
-  
-      
-  
-      <ion-card-content>
-          <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
-              3 MONTHs
-          </ion-card-title>
-        <ion-card-title text-center class="text-card">
-           <strong style="color:rgb(250, 32, 3);">35 $</strong> 
-        </ion-card-title>
-        <p class="text-card"> Over 8000 Channels</p>
-        <p class="text-card"> Over 8000 VOD</p>
-        <p class="text-card"> Free Updates</p>
-        <p class="text-card"> HD & SD Channels</p>
-        <p class="text-card"> Premium Channels</p>
-        <p class="text-card"> 44 Countries</p>
-        <p class="text-card"> Support All Devices</p>
-        <p class="text-card"> Premium support</p>
-        <p class="text-card">  99.9% Uptime</p>
-        <p class="text-card">  2019 Best IPTV Service</p>
-        
-      
-  
-  
-  </ion-card-content>
-  
-  <div *ngFor="let item of items">
-  
-      <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
-          <ion-col text-center >
-            <button ion-button block round color="primary" [disabled]="true" (click)="payement_3_Month()" >      
-                BUY NOW 
-            </button>
-          </ion-col>
-        </ion-row>
-  
-        <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-            <ion-col text-center >
-              <button ion-button block round color="primary" [disabled]="false" (click)="payement_3_Month()" >      
-                  BUY NOW 
-              </button>
-            </ion-col>
-          </ion-row>
-  
-  
-  </div>
-  </ion-card>
-  
+ 
   <!-------------------------------------------------------------------------------------------------->
   
-  <ion-card>
-  
-      
-  
-      <ion-card-content>
-          <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
-              6 MONTHs
-          </ion-card-title>
-        <ion-card-title text-center class="text-card">
-           <strong style="color:rgb(250, 32, 3);">55 $</strong> 
-        </ion-card-title>
-        <p class="text-card"> Over 8000 Channels</p>
-        <p class="text-card"> Over 8000 VOD</p>
-        <p class="text-card"> Free Updates</p>
-        <p class="text-card"> HD & SD Channels</p>
-        <p class="text-card"> Premium Channels</p>
-        <p class="text-card"> 44 Countries</p>
-        <p class="text-card"> Support All Devices</p>
-        <p class="text-card"> Premium support</p>
-        <p class="text-card">  99.9% Uptime</p>
-        <p class="text-card">  2019 Best IPTV Service</p>
-  
-  
-  
-  </ion-card-content>
-  
-  <div *ngFor="let item of items">
-  
-      <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
-          <ion-col text-center >
-            <button ion-button block round color="primary" [disabled]="true" (click)="payement_6_Month()" >      
-                BUY NOW 
-            </button>
-          </ion-col>
-        </ion-row>
-  
-        <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-            <ion-col text-center >
-              <button ion-button block round color="primary" [disabled]="false" (click)="payement_6_Month()" >      
-                  BUY NOW 
-              </button>
-            </ion-col>
-          </ion-row>
-  
-    
-  </div>
-  </ion-card>
-  
+ 
   <!-------------------------------------------------------------------------------------------------->
   
-  <ion-card>
   
-      
-  
-      <ion-card-content>
-          <ion-card-title  class="text-card" text-center style="background-color: #16a085;">
-              1 Year
-          </ion-card-title>
-        <ion-card-title text-center class="text-card">
-           <strong style="color:rgb(250, 32, 3);">75 $</strong> 
-        </ion-card-title>
-        <p class="text-card"> Over 8000 Channels</p>
-        <p class="text-card"> Over 8000 VOD</p>
-        <p class="text-card"> Free Updates</p>
-        <p class="text-card"> HD & SD Channels</p>
-        <p class="text-card"> Premium Channels</p>
-        <p class="text-card"> 44 Countries</p>
-        <p class="text-card"> Support All Devices</p>
-        <p class="text-card"> Premium support</p>
-        <p class="text-card">  99.9% Uptime</p>
-        <p class="text-card">  2019 Best IPTV Service</p>
-        
-    
-  
-  
-  
-  
-  </ion-card-content>
-  
-  <div *ngFor="let item of items">
-  
-      <ion-row class="sign-in-button-container" *ngIf="item.status == 'Active'">
-          <ion-col text-center >
-            <button ion-button block round color="primary" [disabled]="true" (click)="payement_1_Years()" >      
-                BUY NOW 
-            </button>
-          </ion-col>
-        </ion-row>
-  
-        <ion-row class="sign-in-button-container" *ngIf="item.status != 'Active'">
-            <ion-col text-center >
-              <button ion-button block round color="primary" [disabled]="false" (click)="payement_1_Years()" >      
-                  BUY NOW 
-              </button>
-            </ion-col>
-          </ion-row>
-  
-  </div>
-  </ion-card>
     </div><!--fin-ngif-show-pay-->
     </div><!--fin-ngfor-show-pay-->
       
     </ion-list>
+
+        <!-------------------------------------------------------------------------------------------------->
+        <div class="card" *ngFor="let show_stop of item_pay_stop"  >
+          <div *ngIf="show_stop.pay_stop == 'enable'" >
+          <!-------------------------------------------------------------------------------------------------->
+          <ion-card  >
+            <ion-card-header class="card-header">
+                NOTE :
+            </ion-card-header>
+            
+            <ion-card-content class="text-card" >
+  
+        <ion-row class="text-card" >
+          <ion-col >
+            <p class="text-card">
+              <strong  style="color: red;">
+              The payment methods currently stoped , please try later or  
+              contact us
+            </strong>
+          </p>
+            
+        </ion-col>
+      </ion-row>
+         
+        
+    </ion-card-content>
+    </ion-card>
+
+
+
+        </div><!--fin-ngif-show-stop-->
+      </div><!--fin-ngfor-show-stop-->
 
     <ion-list *ngSwitchCase="'whatisiptv'">
 
@@ -629,5 +564,11 @@
     </ion-list>
 
   </div>
+
+  <ion-fab right bottom>
+    <button (click)="scrollTo()" ion-fab color="primary"><ion-icon name="arrow-down"></ion-icon></button>
+  
+</ion-fab>
+
 </ion-content>
 

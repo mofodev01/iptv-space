@@ -32,6 +32,7 @@
         "@ionic-native/location-accuracy": "^4.20.0",
         "@ionic-native/market": "^4.12.2",
         "@ionic-native/native-geocoder": "^4.20.0",
+        "@ionic-native/onesignal": "^4.20.0",
         "@ionic-native/paypal": "^4.20.0",
         "@ionic-native/sms": "^4.20.0",
         "@ionic-native/social-sharing": "^4.12.2",
@@ -69,6 +70,7 @@
         "es6-promise-plugin": "^4.2.2",
         "ionic-angular": "3.9.2",
         "ionicons": "3.0.0",
+        "onesignal-cordova-plugin": "^2.4.7",
         "rxjs": "5.5.11",
         "sw-toolbox": "3.6.0",
         "uk.co.workingedge.cordova.plugin.sqliteporter": "^1.0.5",
@@ -107,7 +109,8 @@
             "cordova-clipboard": {},
             "cordova-plugin-email-composer": {
                 "ANDROID_SUPPORT_V4_VERSION": "27.+"
-            }
+            },
+            "onesignal-cordova-plugin": {}
         },
         "platforms": [
             "android"

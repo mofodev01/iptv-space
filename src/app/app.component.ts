@@ -21,6 +21,8 @@ import { VodGamingPage } from '../pages/vod-gaming/vod-gaming'
 import { VipPage } from '../pages/vip/vip'
 
 import { ContactPage } from '../pages/contact/contact'
+//import { InfoPage } from '../pages/info/info'
+
 
 import { Market } from '@ionic-native/market';
 import { SocialSharing } from '@ionic-native/social-sharing';
@@ -30,16 +32,16 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 
 
-
+/*
 import { FreeLivePage } from '../pages/free-live/free-live'
 import { FreeFilmsPage } from '../pages/free-films/free-films'
-
+*/
 import { DownloadPage } from '../pages/download/download';
 import { AndroidAppPage } from '../pages/android-app/android-app'
 
 import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { PrivacyTermsPage } from '../pages/privacy-terms/privacy-terms'
-
+import { OneSignal } from '@ionic-native/onesignal';
 
 
 @Component({
@@ -63,7 +65,7 @@ export class MyApp {
 
   pages: Array<{title: string , icon: string , component: any}>;
 
-  constructor(public http:  HttpClient , 
+  constructor(private oneSignal: OneSignal ,public http:  HttpClient ,  
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,private market: Market,
@@ -77,41 +79,35 @@ export class MyApp {
    /// this.showBanner();
     this.localisation();
     this.fetchuser();
+    this.push_notification();
+    this.fetch_message();
     // used for an example of ngFor and navigation   SeriesPage
     
+
+  }
+
+  push_notification(){
+
+    this.oneSignal.startInit('02637e80-539c-4982-876e-09f0cb8260bb', '111011916546');
+
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+    
+    this.oneSignal.handleNotificationReceived().subscribe(() => {
+     // do something when notification is received
+    });
+    
+    this.oneSignal.handleNotificationOpened().subscribe(() => {
+      // do something when a notification is opened
+    });
+    
+    this.oneSignal.endInit();
 
   }
 
 
   fetchuser(){
   
-    this.storage.get("session_storage").then((res)=>{
-     this.data_storage=res;
-     
-     console.log(this.data_storage);
-/**----------------------------------------- */
-let httpHeaders = new HttpHeaders({
-  'Content-Type' : 'application/json',
-  'Cache-Control': 'no-cache'
-     });    
-     let options = {
-  headers: httpHeaders
-     };
-/**----------------------------------------- */    
   
-this.http.get('http://space.iptvmedia.me/api/fetch_status.php?username='+this.data_storage,options)
-
-//.map(res => res.toString())
-.subscribe(res => {
-
-let  items = JSON.stringify(res);
-//var  items = JSON.parse(res);
-  
-  console.log(items);
- 
-  //this.items=res;
-
-  if(items =='[{"status":"Active"}]'){
    this.pages = [
     { title: 'Home', component: ProfilePage,icon : "home" }
     , { title: 'Live Tv', component: LivePage,icon : "desktop" }
@@ -124,87 +120,77 @@ let  items = JSON.stringify(res);
     ,{ title: '3D Movies', component: VodGamingPage,icon : "game-controller-b" }
     ,{ title: 'Vip Channels', component: VipPage,icon : "ribbon" }
     ,{ title: 'Download', component: DownloadPage,icon : "download" }
-    ,{ title: 'Tutorial',component: AndroidAppPage,icon : "book"}
+    ,{ title: 'Tutorials',component: AndroidAppPage,icon : "book"}
     ,{ title: 'Support', component: ContactPage,icon : "mail" }
     ,{ title: 'Privacy & Terms', component: PrivacyTermsPage,icon : "md-lock" }
     ,{ title: 'Favourite', component: FavoratePage,icon : "bookmarks" }
     
     
   ]; 
-  }else if(items =='[{"status":"Free"}]'){
- this.pages = [
-    { title: 'Home', component: ProfilePage,icon : "home" }
-    , { title: 'Free Live Tv', component: FreeLivePage,icon : "desktop" }
-    ,{ title: 'Free VOD Movies', component: FreeFilmsPage,icon : "film" }
-    ,{ title: 'Privacy & Terms', component: PrivacyTermsPage,icon : "md-lock" }
-    ,{ title: 'Favourite', component: FavoratePage,icon : "bookmarks" }
   
-  ];
-
-  
-  }else if(items =='[{"status":"Inactif"}]'){
-    this.pages = [
-      { title: 'Home', component: ProfilePage,icon : "home" }
-      ,{ title: 'Privacy & Terms', component: PrivacyTermsPage,icon : "md-lock" }
-    ];
-    let alert = this.alertCtrl.create({
-  
-      title:"Notification",
-      subTitle:"Please pay to watch the content",
-      buttons: ['OK']
-      });
-     
-      alert.present();
-  }else if(items =='[{"status":"Pending"}]'){
-    this.pages = [
-      { title: 'Home', component: ProfilePage,icon : "home" }
-      ,{ title: 'Support', component: ContactPage,icon : "mail" }
-      ,{ title: 'Privacy & Terms', component: PrivacyTermsPage,icon : "md-lock" }
-    ];
-    let alert = this.alertCtrl.create({
-  
-      title:"Notification",
-      subTitle:"Your account will be activated soon",
-      buttons: ['OK']
-      });
-     
-      alert.present();
-       
-  }else if(items =='[{"status":"Expired"}]'){
-
-    this.pages = [
-      { title: 'Home', component: ProfilePage,icon : "home" }
-      ,{ title: 'Privacy & Terms', component: PrivacyTermsPage,icon : "md-lock" }
-      
-    ];
-    let alert = this.alertCtrl.create({
-  
-      title:"Notification",
-      subTitle:"Your subscription has expired, Please pay to watch the content",
-      buttons: ['OK']
-      });
-     
-      alert.present();
-
-  }
-  
-
  
-
-   
-   
-   });
-
-
-///-----
-})
-///-----
-
-
 
     }
 
- 
+    fetch_message(){
+      this.storage.get("session_storage").then((res)=>{
+        this.data_storage=res;
+        
+        console.log(this.data_storage);
+   /**----------------------------------------- */
+   let httpHeaders = new HttpHeaders({
+     'Content-Type' : 'application/json',
+     'Cache-Control': 'no-cache'
+        });    
+        let options = {
+     headers: httpHeaders
+        };
+   /**----------------------------------------- */    
+     
+   this.http.get('http://space.iptvmedia.me/api/fetch_status.php?username='+this.data_storage,options)
+   
+   //.map(res => res.toString())
+   .subscribe(res => {
+   
+   let  items = JSON.stringify(res);
+   //var  items = JSON.parse(res);
+     
+     console.log(items);
+    
+     //this.items=res;
+   
+    if (items =='[{"status":"New"}]'){
+  
+  
+    let alert = this.alertCtrl.create({
+    
+      title:"Notification",
+      subTitle:"The content is empty, Please click the 'Free trailer' button to activate your account.",
+      buttons: ['OK']
+      });
+     
+      alert.present();
+  
+  }
+  else if (items =='[{"status":"Expired"}]'){
+  
+    let alert = this.alertCtrl.create({
+    
+      title:"Notification",
+      subTitle:"Your subscription has expired Please pay to view the content.",
+      buttons: ['OK']
+      });
+     
+      alert.present();
+  
+  }
+  });
+  
+  
+  ///-----
+  })
+  ///-----
+    }
 
 
 
