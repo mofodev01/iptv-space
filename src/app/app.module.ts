@@ -64,7 +64,7 @@ import { Geolocation } from  '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { Device } from '@ionic-native/device';
-
+import { Network } from '@ionic-native/network';
 import {  
   FileTransfer,  
   FileTransferObject  
@@ -185,6 +185,7 @@ DetailFreeLivePage ,
     Clipboard ,
     EmailComposer ,
     OneSignal,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     JsonDataProvider,
     DatabaseProvider

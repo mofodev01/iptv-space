@@ -42,7 +42,7 @@ import { AndroidAppPage } from '../pages/android-app/android-app'
 import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { PrivacyTermsPage } from '../pages/privacy-terms/privacy-terms'
 import { OneSignal } from '@ionic-native/onesignal';
-
+import { Network } from '@ionic-native/network';
 
 @Component({
   templateUrl: 'app.html'
@@ -65,7 +65,7 @@ export class MyApp {
 
   pages: Array<{title: string , icon: string , component: any}>;
 
-  constructor(private oneSignal: OneSignal ,public http:  HttpClient ,  
+  constructor(private network: Network,private oneSignal: OneSignal ,public http:  HttpClient ,  
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,private market: Market,
@@ -81,9 +81,27 @@ export class MyApp {
     this.fetchuser();
     this.push_notification();
     this.fetch_message();
+    this.network_space();
     // used for an example of ngFor and navigation   SeriesPage
     
 
+  }
+
+  network_space(){
+    this.network.onDisconnect().subscribe(() => {
+      let alert = this.alertCtrl.create({
+      title: "The connection failed !",
+      subTitle: "There may be a problem in your Internet connection. Try Again !",
+      buttons: [{
+  
+      text: ("d'accord")
+      }]
+      });
+      alert.present();
+      });
+      this.network.onConnect().subscribe(() => {
+  
+      });
   }
 
   push_notification(){

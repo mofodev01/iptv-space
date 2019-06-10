@@ -242,77 +242,89 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
      alert.present();
 
     }
-    /*--------------------------------free-2-day-------------------------------*/
-    free(){
-
-      let httpHeaders = new HttpHeaders({
-        'Content-Type' : 'application/json',
-        'Cache-Control': 'no-cache'
-           });    
-           let options = {
-        headers: httpHeaders
-           };
-   
-     let data = {
-          username: this.data_storage   
-         };
-   
-   
+      /*--------------------------------free-2-day-------------------------------*/
     
-   this.http.post('http://space.iptvmedia.me/api/free_trailer.php',data, options)
-   .map(res => res.toString())
-   .subscribe(res => {
-   
+      free(){
+        let loading = this.loadingCtrl.create({
+          content: 'Attendez...'
+        });
+      
+        loading.present();
     
-   if(res=="You have enable 2 Day Free trailer"){
-     let alert = this.alertCtrl.create({
-       title:"CONGRATS",
-       subTitle:(res),
-       buttons: ['OK']
-       });
-      
-       alert.present();
-      this.refresh();
-      
-   }else
-   {
-    let alert = this.alertCtrl.create({
-    title:"ERROR",
-    subTitle:(res),
-    buttons: ['OK']
-    });
-   
-    alert.present();
-     } 
-   });
-   
-
-    }
-
-    /*--------------------------------Before-free---------------------------------*/
-    confirm_free(){
-    const confirm = this.alertCtrl.create({
-      title: 'Free 2 Day',
-      message: 'Are you sure want to test free 2 Day ?',
-      buttons: [
-        {
-          text: 'No',
-          handler: () => {
-            //console.log('Disagree clicked');
-          }
-        },
-        {
-          text: 'Yes',
-          handler: () => {
-           this.free();
-          }
-        }
-      ]
-    });
-    confirm.present();
-  }
-    /*--------------------------------Before-free---------------------------------*/
+       /**----------------------------------------- */
      
+  
+  
+        let httpHeaders = new HttpHeaders({
+          'Content-Type' : 'application/json',
+          'Cache-Control': 'no-cache'
+             });    
+             let options = {
+          headers: httpHeaders
+             };
+     
+       let data = {
+            username: this.data_storage   
+           };
+     
+  
+     
+      
+     this.http.post('http://space.iptvmedia.me/api/free_trailer.php',data, options)
+     .map(res => res.toString())
+     .subscribe(res => {
+     
+      loading.dismiss();
+      
+     if(res=="You have enable 2 Day Free trailer"){
+       let alert = this.alertCtrl.create({
+         title:"CONGRATS",
+         subTitle:(res),
+         buttons: ['OK']
+         });
+        
+         alert.present();
+        this.refresh();
+        
+     }else
+     {
+      let alert = this.alertCtrl.create({
+      title:"ERROR",
+      subTitle:(res),
+      buttons: ['OK']
+      });
+     
+      alert.present();
+       } 
+     });
+     
+  
+      }
+  
+      /*--------------------------------Before-free---------------------------------*/
+      confirm_free(){
+      const confirm = this.alertCtrl.create({
+        title: 'Free 2 Day',
+        message: 'Are you sure want to test free 2 Day ?',
+        buttons: [
+          {
+            text: 'No',
+            handler: () => {
+              //console.log('Disagree clicked');
+            }
+          },
+          {
+            text: 'Yes',
+            handler: () => {
+              
+             this.free();
+            }
+          }
+        ]
+      });
+      confirm.present();
+    }
+      /*--------------------------------Before-free---------------------------------*/
 
 /*--------------------------------1-month---------------------------------*/
       payement_1_Month(){
