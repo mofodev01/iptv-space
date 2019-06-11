@@ -94,7 +94,7 @@ export class MyApp {
       subTitle: "There may be a problem in your Internet connection. Try Again !",
       buttons: [{
   
-      text: ("d'accord")
+      text: ("Okay")
       }]
       });
       alert.present();
