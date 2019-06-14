@@ -77,6 +77,7 @@ import { Clipboard } from '@ionic-native/clipboard';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { PrivacyTermsPage } from '../pages/privacy-terms/privacy-terms'
 import { OneSignal } from '@ionic-native/onesignal';
+import { RecoveryPasswordPage } from '../pages/recovery-password/recovery-password';
 /**/
 @NgModule({
   declarations: [
@@ -113,7 +114,8 @@ DetailFreeLivePage ,
   DownloadPage,
   AndroidAppPage,
   PrivacyTermsPage,
-  InfoPage
+  InfoPage,
+  RecoveryPasswordPage
   ],
   imports: [
     BrowserModule,
@@ -155,7 +157,8 @@ DetailFreeLivePage ,
     DownloadPage,
     AndroidAppPage,
     PrivacyTermsPage,
-    InfoPage
+    InfoPage,
+    RecoveryPasswordPage
     
   ],
   providers: [
