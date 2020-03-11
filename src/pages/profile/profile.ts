@@ -1,62 +1,173 @@
-import { Component,ViewChild } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
-import { LoadingController, App , AlertController,MenuController } from 'ionic-angular';
+import { Component,ViewChild  } from '@angular/core';
+import { IonicPage, NavController, App, AlertController, NavParams,MenuController ,Content} from 'ionic-angular';
+//import { LoadingController, App , AlertController,MenuController,Platform  } from 'ionic-angular';
+import { HttpClient,HttpHeaders  } from '@angular/common/http';
+
+
+import { LivePage } from '../live/live';
+import { FilmsPage } from '../films/films';
+
 import { Storage } from '@ionic/storage';
 import { SettingPage } from '../setting/setting'
 import { LoginPage } from '../login/login';
 
-import { DownloadPage } from '../download/download';
-import { AndroidAppPage } from '../android-app/android-app';
-import { HttpClient,HttpHeaders  } from '@angular/common/http';
-import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
-import { Content } from 'ionic-angular';
+//import { SafariViewController } from '@ionic-native/safari-view-controller';
 
+//import { Downloader,DownloadRequest,NotificationVisibility } from '@ionic-native/downloader';
+import { InAppBrowser, InAppBrowserOptions } from "@ionic-native/in-app-browser";
+import { AdMobFree,AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
+import { AppRate } from '@ionic-native/app-rate';
+import * as dl from 'cordova-plugin-android-downloadmanager';
+import {  
+  File  
+} from '@ionic-native/file';
+
+@IonicPage()
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-  @ViewChild("username") username;
-  @ViewChild("amount") amount;
-  @ViewChild("duration") duration;
-  @ViewChild("gateway") gateway;
   @ViewChild(Content) content: Content;
+  app_link:any;
+  app_title:any;
+  data_storage:any;
+  items:any;
+  index: string
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public menuCtrl:MenuController,public storage: Storage, public appCtrl: App, public alertCtrl: AlertController,
+    public http:  HttpClient,
+   // private downloader: Downloader,
+    private inAppBrowser: InAppBrowser,
+    private admobFree: AdMobFree,
+     private file: File
+     ,private appRate: AppRate
+) {this.menuCtrl.enable(true);
+  this.index = "home";
+  this.rateMe();
+}
+/**/
+rateMe() {
+ 
+this.appRate.preferences.storeAppURL = {
+ // ios: '< my_app_id >',
+  android: 'market://details?id=com.iptvmedia.space',
+ // windows: 'ms-windows-store://review/?ProductId=< Store_ID >'
+  };
 
+  this.appRate.promptForRating(true);
+}
+
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ProfilePage');
+    //this.download_app();
+  }
+  gotolive() {
+    this.launchInterstitial();
+    this.navCtrl.setRoot(LivePage);
+  }
+  gotovod() {
+    this.launchInterstitial();
+    this.navCtrl.setRoot(FilmsPage);
+  }
   scrollTo() {
    
-   // this.content.scrollTo(0, 500, 200);
-   this.content.scrollToBottom(1500);
-  }
-data:any;
+    // this.content.scrollTo(0, 500, 200);
+    this.content.scrollToBottom(1500);
+   }
 
-items:any;
-data_storage:any;
-item_pay_show:any;
-item_free_show:any;
-item_pay_stop:any;
-index: string
+download_app(){
+  let httpHeaders = new HttpHeaders({
+    'Content-Type' : 'application/json',
+    'Cache-Control': 'no-cache'
+       });    
+       let options = {
+    headers: httpHeaders
+       };
 
-  constructor(public http:  HttpClient,
-    public navCtrl: NavController, public navParams: NavParams
-    ,public loadingCtrl: LoadingController,public storage: Storage 
-    , public appCtrl: App , public alertCtrl: AlertController
-    ,public menuCtrl:MenuController
-    ,private payPal: PayPal
-   // ,public MyApp: MyApp
+       this.http.get('http://space.appmofix.com/api/setting.php',options)
+              .subscribe(res => {
+       
+       
+       this.app_link=res[0].appmofix_pro;
+       //console.log(this.app_link);
+       this.app_title=res[0].appmofix_title;
+       //console.log(this.app_title);
+
+
+       });
+              let req = {
+                
+                //uri: 'http://iptvreseller.xyz:1234/Premium_IptvTVBox.apk',
+                uri: ''+this.app_link+'',
+                title: ''+this.app_title+'',
+                description: 'Appmofix Pro apk',
+                mimeType: 'application/vnd.android.package-archive',
+              
+                visibleInDownloadsUi: true,
+                notificationVisibility: 0,
+              
+                // Either of the next three properties
+                destinationInExternalFilesDir: {
+                  dirType: this.file.externalRootDirectory + '/Download/',
+                  subPath: ''
+                }
+              };
+                console.log(dl);
+                let dl2= dl.__proto__;
+                console.log(dl2);
+                  dl2.enqueue(req, console.info);
+          //----------------------------------------------------------
+}
+
+
+
+openWebpage(){
+  
+ const options: InAppBrowserOptions = {
+  zoom: 'yes',
+  shouldPauseOnSuspend: 'yes',
+  location: 'yes'
+
+}
+
+this.inAppBrowser.create('http://appmofix.com/', '_system', options);
+
+}
+
+logout(){
+  this.storage.clear();
+  this.storage.remove("session_storage");
+  this.appCtrl.getRootNav().setRoot(LoginPage);
+ 
+  let alert = this.alertCtrl.create({
+ 
+    title:"Au revoir",
+    subTitle:"Déconnexion réussie",
+    buttons: ['OK']
+    });
+   
+    alert.present();
+
+   }
+
+   setting(
+    username :number,
+    telephone:String,
+    email :String,
+    mac_addr :String
     
-    
-    ) {
-      this.menuCtrl.enable(true);
-      this.index = "home";
-  }
+  ){
+   this.storage.get("session_storage").then((res)=>{
+     this.data_storage=res;
 
-  godownloadPage() {
-    this.navCtrl.setRoot(DownloadPage);
-  }
-  gotutorialPage() {
-    this.navCtrl.setRoot(AndroidAppPage);
-  }
+    this.navCtrl.push(SettingPage,{
+      username: username,telephone: telephone,email: email,mac_addr: mac_addr
+});
 
+})
+  }
   ionViewWillEnter(){
   
     this.storage.get("session_storage").then((res)=>{
@@ -73,7 +184,7 @@ let httpHeaders = new HttpHeaders({
      };
 /**----------------------------------------- */    
   
-this.http.get('http://space.iptvmedia.me/api/fetch_user.php?username='+this.data_storage,options)
+this.http.get('http://space.appmofix.com/api/fetch_user.php?username='+this.data_storage,options)
 
    .subscribe(res => {
    
@@ -84,47 +195,6 @@ this.http.get('http://space.iptvmedia.me/api/fetch_user.php?username='+this.data
    });
 
 
-///-----
-/**----------------------------------------- */    
-  
-this.http.get('http://space.iptvmedia.me/api/setting.php')
-
-   .subscribe(res => {
-   
-   
-   this.item_pay_show=res;
-   
-   console.log(this.item_pay_show);
-   });
-
-
-///-----
-/**----------------------------------------- */    
-/**----------------------------------------- */    
-  
-this.http.get('http://space.iptvmedia.me/api/setting.php')
-
-   .subscribe(res => {
-   
-   
-   this.item_free_show=res;
-   
-   console.log(this.item_free_show);
-   });
-
-
-///-----
-/**----------------------------------------- */    
-  
-this.http.get('http://space.iptvmedia.me/api/setting.php')
-
-   .subscribe(res => {
-   
-   
-   this.item_pay_stop=res;
-   
-   console.log(this.item_pay_stop);
-   });
 
 
 ///-----
@@ -133,577 +203,24 @@ this.http.get('http://space.iptvmedia.me/api/setting.php')
 
     }
 
-    refresh(){
-  
-      this.storage.get("session_storage").then((res)=>{
-       this.data_storage=res;
-       
-       console.log(this.data_storage);
-  /**----------------------------------------- */
-  let httpHeaders = new HttpHeaders({
-    'Content-Type' : 'application/json',
-    'Cache-Control': 'no-cache'
-       });    
-       let options = {
-    headers: httpHeaders
-       };
-  /**----------------------------------------- */    
+    launchInterstitial() {
+         
+      const interstitialConfig: AdMobFreeInterstitialConfig = {
+              isTesting: true,// Remove in production
+              autoShow: true,
+          //id: Your Ad Unit ID goes here
+             //id:'ca-app-pub-3000905870244951/8267257006'
+      };
     
-  this.http.get('http://space.iptvmedia.me/api/fetch_user.php?username='+this.data_storage,options)
-  
-     .subscribe(res => {
-     
-     
-     this.items=res;
-     
-     console.log(this.items);
-     });
-  
-  
-  ///-----
-  /**----------------------------------------- */    
+      this.admobFree.interstitial.config(interstitialConfig);
     
-  this.http.get('http://space.iptvmedia.me/api/setting.php')
-  
-     .subscribe(res => {
-     
-     
-     this.item_pay_show=res;
-     
-     console.log(this.item_pay_show);
-     });
-  
-  
-  ///-----
-  /**----------------------------------------- */    
-  /**----------------------------------------- */    
-    
-  this.http.get('http://space.iptvmedia.me/api/setting.php')
-  
-     .subscribe(res => {
-     
-     
-     this.item_free_show=res;
-     
-     console.log(this.item_free_show);
-     });
-  
-  
-  ///-----
-  /**----------------------------------------- */    
-    
-  this.http.get('http://space.iptvmedia.me/api/setting.php')
-  
-     .subscribe(res => {
-     
-     
-     this.item_pay_stop=res;
-     
-     console.log(this.item_pay_stop);
-     });
-  
-  
-  ///-----
-  })
-  ///-----
-  
-      }
-   
-    setting(
-      username :number,
-      telephone:String,
-      email :String,
-      mac_addr :String
       
-    ){
-     this.storage.get("session_storage").then((res)=>{
-       this.data_storage=res;
-
-      this.navCtrl.push(SettingPage,{
-        username: username,telephone: telephone,email: email,mac_addr: mac_addr
- });
-
-})
-    }
-
-
-    logout(){
-   this.storage.clear();
-   this.storage.remove("session_storage");
-   this.appCtrl.getRootNav().setRoot(LoginPage);
-  
-   let alert = this.alertCtrl.create({
-  
-     title:"Bye",
-     subTitle:"Logout Succesfull",
-     buttons: ['OK']
-     });
-    
-     alert.present();
-
-    }
-      /*--------------------------------free-2-day-------------------------------*/
-    
-      free(){
-        let loading = this.loadingCtrl.create({
-          content: 'Attendez...'
-        });
-      
-        loading.present();
-    
-       /**----------------------------------------- */
-     
-  
-  
-        let httpHeaders = new HttpHeaders({
-          'Content-Type' : 'application/json',
-          'Cache-Control': 'no-cache'
-             });    
-             let options = {
-          headers: httpHeaders
-             };
-     
-       let data = {
-            username: this.data_storage   
-           };
-     
-  
-     
-      
-     this.http.post('http://space.iptvmedia.me/api/free_trailer.php',data, options)
-     .map(res => res.toString())
-     .subscribe(res => {
-     
-      loading.dismiss();
-      
-     if(res=="You have enable 2 Day Free trailer"){
-       let alert = this.alertCtrl.create({
-         title:"CONGRATS",
-         subTitle:(res),
-         buttons: ['OK']
-         });
-        
-         alert.present();
-        this.refresh();
-        
-     }else
-     {
-      let alert = this.alertCtrl.create({
-      title:"ERROR",
-      subTitle:(res),
-      buttons: ['OK']
+      this.admobFree.interstitial.prepare().then(() => {
+          // success
+          
       });
-     
-      alert.present();
-       } 
-     });
-     
-  
-      }
-  
-      /*--------------------------------Before-free---------------------------------*/
-      confirm_free(){
-      const confirm = this.alertCtrl.create({
-        title: 'Free 2 Day',
-        message: 'Are you sure want to test free 2 Day ?',
-        buttons: [
-          {
-            text: 'No',
-            handler: () => {
-              //console.log('Disagree clicked');
-            }
-          },
-          {
-            text: 'Yes',
-            handler: () => {
-              
-             this.free();
-            }
-          }
-        ]
-      });
-      confirm.present();
-    }
-      /*--------------------------------Before-free---------------------------------*/
-
-/*--------------------------------1-month---------------------------------*/
-      payement_1_Month(){
-
-         
-        /**/
-        this.payPal.init({
-          PayPalEnvironmentProduction: 'AVRQ7igUT9AjJgnzCapuKNc_s3pHhCNXoOiNAPeLg7hwFsn2dtBg2P_App179qm_nAm1mON5R5AUxn08',
-          PayPalEnvironmentSandbox: ''
-        }).then(() => {
-         
-          this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
-            
-          })).then(() => {
-            let payment = new PayPalPayment('12', 'USD', '1 Month', 'sale');
-            this.payPal.renderSinglePaymentUI(payment).then(() => {
-              
-              // Successfully paid
-              let httpHeaders = new HttpHeaders({
-                'Content-Type' : 'application/json',
-                'Cache-Control': 'no-cache'
-                   });    
-                   let options = {
-                headers: httpHeaders
-                   };
-           
-             let data = {
-                  username: this.data_storage,
-                  amount: this.amount=12,
-                  duration: this.duration='1 Month',
-                  gateway: this.gateway='paypal'   
-                 };
-           
-           
-            
-           this.http.post('http://space.iptvmedia.me/api/paid.php',data, options)
-           .map(res => res.toString())
-           .subscribe(res => {
-           
-            
-           if(res=="payment successfull"){
-             let alert = this.alertCtrl.create({
-               title:"CONGRATS",
-               subTitle:(res),
-               buttons: ['OK']
-               });
-              
-               alert.present();
-           
-              
-           }else
-           {
-            let alert = this.alertCtrl.create({
-            title:"ERROR",
-            subTitle:(res),
-            buttons: ['OK']
-            });
-           
-            alert.present();
-             } 
-           });
-           
-            
-            }, () => {
-              // Error or render dialog closed without being successful
-              
-              let alert = this.alertCtrl.create({
-                title:"Error",
-                subTitle:"Error or render dialog closed without being successful",
-                buttons: ['OK']
-                });
-               
-                alert.present();
-            });
-          }, () => {
-            // Error in configuration
-            
-            let alert = this.alertCtrl.create({
-              title:"Error",
-              subTitle:"Error in configuration",
-              buttons: ['OK']
-              });
-             
-              alert.present();
-          });
-        }, () => {
-          // Error in initialization, maybe PayPal isn't supported or something else
-         
-          let alert = this.alertCtrl.create({
-            title:"Error",
-            subTitle:"Error in initialization, maybe PayPal isn't supported or something else",
-            buttons: ['OK']
-            });
-           
-            alert.present();
-        });
-         /* */
-      }
-
-      /*-------------------------------------------3-month------30-----EUR------3 Month------------------------------*/
-      payement_3_Month(){
-
-        this.payPal.init({
-          PayPalEnvironmentProduction: 'AVRQ7igUT9AjJgnzCapuKNc_s3pHhCNXoOiNAPeLg7hwFsn2dtBg2P_App179qm_nAm1mON5R5AUxn08',
-          PayPalEnvironmentSandbox: ''
-        }).then(() => {
-         
-          this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
-            
-          })).then(() => {
-            let payment = new PayPalPayment('30', 'USD', '3 Month', 'sale');
-            this.payPal.renderSinglePaymentUI(payment).then(() => {
-              // Successfully paid
-              let httpHeaders = new HttpHeaders({
-                'Content-Type' : 'application/json',
-                'Cache-Control': 'no-cache'
-                   });    
-                   let options = {
-                headers: httpHeaders
-                   };
-           
-             let data = {
-                  username: this.data_storage,
-                  amount: this.amount=30,
-                  duration: this.duration='3 Month',
-                  gateway: this.gateway='paypal'   
-                 };
-           
-           
-            
-           this.http.post('http://space.iptvmedia.me/api/paid.php',data, options)
-           .map(res => res.toString())
-           .subscribe(res => {
-           
-            
-           if(res=="payment successfull"){
-             let alert = this.alertCtrl.create({
-               title:"CONGRATS",
-               subTitle:(res),
-               buttons: ['OK']
-               });
-              
-               alert.present();
-           
-               
-           }else
-           {
-            let alert = this.alertCtrl.create({
-            title:"ERROR",
-            subTitle:(res),
-            buttons: ['OK']
-            });
-           
-            alert.present();
-             } 
-           });
-           
-             
-            }, () => {
-              // Error or render dialog closed without being successful
-              
-              let alert = this.alertCtrl.create({
-                title:"Error",
-                subTitle:"Error or render dialog closed without being successful",
-                buttons: ['OK']
-                });
-               
-                alert.present();
-            });
-          }, () => {
-            // Error in configuration
-            
-            let alert = this.alertCtrl.create({
-              title:"Error",
-              subTitle:"Error in configuration",
-              buttons: ['OK']
-              });
-             
-              alert.present();
-          });
-        }, () => {
-          // Error in initialization, maybe PayPal isn't supported or something else
-         
-          let alert = this.alertCtrl.create({
-            title:"Error",
-            subTitle:"Error in initialization, maybe PayPal isn't supported or something else",
-            buttons: ['OK']
-            });
-           
-            alert.present();
-        });
-      
-      }
-      /*---------------------------------------6-month----60---EUR----6 Month------sale--------------------------*/
-      payement_6_Month(){
-
-        this.payPal.init({
-          PayPalEnvironmentProduction: 'AVRQ7igUT9AjJgnzCapuKNc_s3pHhCNXoOiNAPeLg7hwFsn2dtBg2P_App179qm_nAm1mON5R5AUxn08',
-          PayPalEnvironmentSandbox: ''
-        }).then(() => {
-         
-          this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
-            
-          })).then(() => {
-            let payment = new PayPalPayment('50', 'USD', '6 Month', 'sale');
-            this.payPal.renderSinglePaymentUI(payment).then(() => {
-              // Successfully paid
-              let httpHeaders = new HttpHeaders({
-                'Content-Type' : 'application/json',
-                'Cache-Control': 'no-cache'
-                   });    
-                   let options = {
-                headers: httpHeaders
-                   };
-           
-             let data = {
-                  username: this.data_storage,
-                  amount: this.amount=50,
-                  duration: this.duration='6 Month',
-                  gateway: this.gateway='paypal'   
-                 };
-           
-           
-            
-           this.http.post('http://space.iptvmedia.me/api/paid.php',data, options)
-           .map(res => res.toString())
-           .subscribe(res => {
-           
-            
-           if(res=="payment successfull"){
-             let alert = this.alertCtrl.create({
-               title:"CONGRATS",
-               subTitle:(res),
-               buttons: ['OK']
-               });
-              
-               alert.present();
-           
-               
-           }else
-           {
-            let alert = this.alertCtrl.create({
-            title:"ERROR",
-            subTitle:(res),
-            buttons: ['OK']
-            });
-           
-            alert.present();
-             } 
-           });
-           
-             
-            }, () => {
-              // Error or render dialog closed without being successful
-              
-              let alert = this.alertCtrl.create({
-                title:"Error",
-                subTitle:"Error or render dialog closed without being successful",
-                buttons: ['OK']
-                });
-               
-                alert.present();
-            });
-          }, () => {
-            // Error in configuration
-            
-            let alert = this.alertCtrl.create({
-              title:"Error",
-              subTitle:"Error in configuration",
-              buttons: ['OK']
-              });
-             
-              alert.present();
-          });
-        }, () => {
-          // Error in initialization, maybe PayPal isn't supported or something else
-         
-          let alert = this.alertCtrl.create({
-            title:"Error",
-            subTitle:"Error in initialization, maybe PayPal isn't supported or something else",
-            buttons: ['OK']
-            });
-           
-            alert.present();
-        });
-        
-      }
-      /*---------------------------------1-years---90----EUR-----1 Year------sale---------------------- */
-      payement_1_Years(){
-
-        this.payPal.init({
-          PayPalEnvironmentProduction: 'AVRQ7igUT9AjJgnzCapuKNc_s3pHhCNXoOiNAPeLg7hwFsn2dtBg2P_App179qm_nAm1mON5R5AUxn08',
-          PayPalEnvironmentSandbox: ''
-        }).then(() => {
-         
-          this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
-            
-          })).then(() => {
-            let payment = new PayPalPayment('80', 'USD', '1 Year', 'sale');
-            this.payPal.renderSinglePaymentUI(payment).then(() => {
-              // Successfully paid
-              let httpHeaders = new HttpHeaders({
-                'Content-Type' : 'application/json',
-                'Cache-Control': 'no-cache'
-                   });    
-                   let options = {
-                headers: httpHeaders
-                   };
-           
-             let data = {
-                  username: this.data_storage,
-                  amount: this.amount=80,
-                  duration: this.duration='1 Year',
-                  gateway: this.gateway='paypal'   
-                 };
-           
-           
-            
-           this.http.post('http://space.iptvmedia.me/api/paid.php',data, options)
-           .map(res => res.toString())
-           .subscribe(res => {
-           
-            
-           if(res=="payment successfull"){
-             let alert = this.alertCtrl.create({
-               title:"CONGRATS",
-               subTitle:(res),
-               buttons: ['OK']
-               });
-              
-               alert.present();
-           
-           }else
-           {
-            let alert = this.alertCtrl.create({
-            title:"ERROR",
-            subTitle:(res),
-            buttons: ['OK']
-            });
-           
-            alert.present();
-             } 
-           });
-           
-             
-            }, () => {
-              // Error or render dialog closed without being successful
-              
-              let alert = this.alertCtrl.create({
-                title:"Error",
-                subTitle:"Error or render dialog closed without being successful",
-                buttons: ['OK']
-                });
-               
-                alert.present();
-            });
-          }, () => {
-            // Error in configuration
-            
-            let alert = this.alertCtrl.create({
-              title:"Error",
-              subTitle:"Error in configuration",
-              buttons: ['OK']
-              });
-             
-              alert.present();
-          });
-        }, () => {
-          // Error in initialization, maybe PayPal isn't supported or something else
-         
-          let alert = this.alertCtrl.create({
-            title:"Error",
-            subTitle:"Error in initialization, maybe PayPal isn't supported or something else",
-            buttons: ['OK']
-            });
-           
-            alert.present();
-        });
-
-      }
+    
+    
+     }
 
 }

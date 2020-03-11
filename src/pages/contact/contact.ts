@@ -43,7 +43,7 @@ let httpHeaders = new HttpHeaders({
      };
 /**----------------------------------------- */    
   
-this.http.get('http://space.iptvmedia.me/api/fetch_user.php?username='+this.data_storage,options)
+this.http.get('http://space.appmofix.com/api/fetch_user.php?username='+this.data_storage,options)
 
    .subscribe(res => {
    

@@ -10,8 +10,7 @@ import { LivePage } from '../pages/live/live';
 import { FavoratePage } from '../pages/favorate/favorate';
 import { FilmsPage } from '../pages/films/films';
 
-import { TvSeriesPage } from '../pages/tv-series/tv-series';
-import { KidMoviesPage } from '../pages/kid-movies/kid-movies';
+
 
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -20,23 +19,13 @@ import { SettingPage } from '../pages/setting/setting';
 import { DetailPage } from '../pages/detail/detail'
 import { DetailfilmsPage } from '../pages/detailfilms/detailfilms'
 
-import { FreeLivePage } from '../pages/free-live/free-live'
-import { FreeFilmsPage } from '../pages/free-films/free-films'
+//import { FreeLivePage } from '../pages/free-live/free-live'
+//import { FreeFilmsPage } from '../pages/free-films/free-films'
 import { ListeServeLivePage } from '../pages/liste-serve-live/liste-serve-live'
 import { ListeServerFilmsPage } from '../pages/liste-server-films/liste-server-films'
-import { DetailFreeFilmsPage } from '../pages/detail-free-films/detail-free-films'
-import { DetailFreeLivePage } from '../pages/detail-free-live/detail-free-live'
-import { InfoPage } from '../pages/info/info'
+//import { DetailFreeFilmsPage } from '../pages/detail-free-films/detail-free-films'
+//import { DetailFreeLivePage } from '../pages/detail-free-live/detail-free-live'
 
-import { DownloadPage } from '../pages/download/download';
-import { AndroidAppPage } from '../pages/android-app/android-app'
- 
-
-
-import { VodExYuPage } from '../pages/vod-ex-yu/vod-ex-yu'
-import { VodGamingPage } from '../pages/vod-gaming/vod-gaming'
-
-import { VipPage } from '../pages/vip/vip'
 
 import { ContactPage } from '../pages/contact/contact';
 
@@ -59,11 +48,12 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { Market } from '@ionic-native/market';
 //import { AdMobFree } from '@ionic-native/admob-free';
 
-import { PayPal } from '@ionic-native/paypal';
+//import { PayPal } from '@ionic-native/paypal';
 import { Geolocation } from  '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { Device } from '@ionic-native/device';
+import { OneSignal } from '@ionic-native/onesignal';
 import { Network } from '@ionic-native/network';
 import {  
   FileTransfer,  
@@ -75,10 +65,15 @@ import {
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { Clipboard } from '@ionic-native/clipboard';
 import { EmailComposer } from '@ionic-native/email-composer';
-import { PrivacyTermsPage } from '../pages/privacy-terms/privacy-terms'
-import { OneSignal } from '@ionic-native/onesignal';
+import { PrivacyTermsPage } from '../pages/privacy-terms/privacy-terms';
 import { RecoveryPasswordPage } from '../pages/recovery-password/recovery-password';
-/**/
+
+//import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
+
+import { AdMobFree } from '@ionic-native/admob-free';
+import { AppRate } from '@ionic-native/app-rate';
 @NgModule({
   declarations: [
     MyApp,
@@ -97,30 +92,22 @@ import { RecoveryPasswordPage } from '../pages/recovery-password/recovery-passwo
   SettingPage,
   DetailPage,
   DetailfilmsPage,
- 
-  VodExYuPage,
-  VodGamingPage,
-
-  VipPage,
-  KidMoviesPage,
-  TvSeriesPage,
-  FreeLivePage ,
-FreeFilmsPage ,
+ // FreeLivePage ,
+//FreeFilmsPage ,
 ListeServeLivePage ,
 ListeServerFilmsPage ,
-DetailFreeFilmsPage ,
-DetailFreeLivePage ,
+//DetailFreeFilmsPage ,
+//DetailFreeLivePage ,
   ContactPage,
-  DownloadPage,
-  AndroidAppPage,
+ 
   PrivacyTermsPage,
-  InfoPage,
+  
   RecoveryPasswordPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-  
+    
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -141,23 +128,17 @@ DetailFreeLivePage ,
     DetailPage,
     DetailfilmsPage,
    
-    VodExYuPage,
-    VodGamingPage,
-  
-    VipPage,
-    KidMoviesPage,
-    TvSeriesPage,
-    FreeLivePage ,
-FreeFilmsPage ,
+   
+   // FreeLivePage ,
+//FreeFilmsPage ,
 ListeServeLivePage ,
 ListeServerFilmsPage ,
-DetailFreeFilmsPage ,
-DetailFreeLivePage ,
+//DetailFreeFilmsPage ,
+//DetailFreeLivePage ,
     ContactPage,
-    DownloadPage,
-    AndroidAppPage,
+    
     PrivacyTermsPage,
-    InfoPage,
+    
     RecoveryPasswordPage
     
   ],
@@ -171,7 +152,7 @@ DetailFreeLivePage ,
     Toast,
     SocialSharing,
     Market,
-    PayPal,
+   // PayPal,
    /**/ 
     HttpClientModule,
     /*IonicStorageModule,
@@ -189,10 +170,14 @@ DetailFreeLivePage ,
     EmailComposer ,
     OneSignal,
     Network,
+    InAppBrowser,
+  
+    //Braintree, 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     JsonDataProvider,
     DatabaseProvider
-   //, AdMobFree
+   , AdMobFree
+   ,AppRate
   ]
 })
 export class AppModule {}

@@ -130,7 +130,7 @@ signUp(){
   
     //this.http.post('http://space.iptvmedia.me/login.php',data,options)
     //this.http.post('http://127.0.0.1/iptvpay_ss/login.php',data,options)
-    this.http.post('http://space.iptvmedia.me/api/login.php',data,options)
+    this.http.post('http://space.appmofix.com/api/login.php',data,options)
 
    /// return this.http.post('http://space.iptvmedia.me/login.php',data,options)
     .map(res => res.toString())

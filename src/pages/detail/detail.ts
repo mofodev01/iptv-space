@@ -3,7 +3,7 @@ import { NavController, NavParams,Platform,LoadingController,MenuController} fro
 import { Storage } from '@ionic/storage';
 import { JsonDataProvider } from '../../providers/json-data/json-data';
 
-
+import { AdMobFree, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
 import { DatabaseProvider } from '../../providers/database/database';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 import { Toast } from '@ionic-native/toast';
@@ -15,6 +15,7 @@ import { Toast } from '@ionic-native/toast';
 export class DetailPage {
   title:any;
   categorie:any;
+  id:any;
   countries: any;
   data_storage:any;
   errorMessage: string;
@@ -32,14 +33,15 @@ column: string = 'tvname';
   constructor(public navCtrl: NavController, public navParams: NavParams
     ,public JsonDataProvider: JsonDataProvider, public loadingCtrl: LoadingController
     ,public storage: Storage,private database: DatabaseProvider,
-    public platform: Platform,private toast: Toast,private streamingMedia: StreamingMedia
-    
-    ,public menuCtrl:MenuController
+    public platform: Platform,private toast: Toast,private streamingMedia: StreamingMedia,
+   /**/ private admobFree: AdMobFree,
+    public menuCtrl:MenuController
     ) {
       this.menuCtrl.enable(true)
   
       this.categorie = this.navParams.get('categorie');
       this.title = this.navParams.get('title'); 
+
   }
 
   ionViewDidLoad() {
@@ -48,6 +50,8 @@ column: string = 'tvname';
     console.log(this.categorie);
     this.title = this.navParams.get('title'); 
     console.log(this.title);
+    this.id = this.navParams.get('id'); 
+    console.log(this.id);
 
     this.storage.get("session_storage").then((res)=>{
       this.data_storage=res;
@@ -80,10 +84,11 @@ column: string = 'tvname';
 
     this.categorie = this.navParams.get('categorie');
     console.log(this.categorie);
+    this.id = this.navParams.get('id'); 
     
   /**----------------------------------------- */
 
-    this.JsonDataProvider.getLive(this.data_storage,this.categorie)
+    this.JsonDataProvider.getLive(this.id,this.categorie)
              .subscribe(
                countries =>{
                  this.countries = countries 
@@ -107,7 +112,7 @@ column: string = 'tvname';
 }
 
 startVideo(url) {
-  
+  this.launchInterstitial();
   let options: StreamingVideoOptions = {
     successCallback: () => { console.log('Finished Video') },
     errorCallback: (e) => { console.log('Error: ', e) },
@@ -177,6 +182,60 @@ startVideo(url) {
              }, 2000);
          }
 
+        /* launchInterstitial() {
+          if (this.platform.is('android')) {
+          const interstitialConfig: AdMobFreeInterstitialConfig = {
+                  isTesting: true,// Remove in production
+                  autoShow: true,
+              //id: Your Ad Unit ID goes here
+             //id:'ca-app-pub-3000905870244951/5491408793'
+          };
+        
+          this.admobFree.interstitial.config(interstitialConfig);
+        
+          
+          this.admobFree.interstitial.prepare().then(() => {
+              // success
+              
+          });
+        
+          }else if (this.platform.is('ios')) {
+            const interstitialConfig: AdMobFreeInterstitialConfig = {
+              isTesting: true,// Remove in production
+              autoShow: true,
+          //id: Your Ad Unit ID goes here
+         //id:'ca-app-pub-3000905870244951/5491408793'
+        };
+        
+        this.admobFree.interstitial.config(interstitialConfig);
+        
+        
+        this.admobFree.interstitial.prepare().then(() => {
+          // success
+          
+        });
+        
+          }
+        }*/
 
+launchInterstitial() {
+          
+          const interstitialConfig: AdMobFreeInterstitialConfig = {
+                  isTesting: true,// Remove in production
+                  autoShow: true,
+              //id: Your Ad Unit ID goes here
+                  //id:'ca-app-pub-3000905870244951/8267257006'
+          };
+        
+          this.admobFree.interstitial.config(interstitialConfig);
+        
+          
+          this.admobFree.interstitial.prepare().then(() => {
+              // success
+              
+          });
+        
+      
+        }
 
 }

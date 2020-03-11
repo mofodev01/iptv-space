@@ -1,57 +1,21 @@
 page-profile {
-.card{
-    background-color: #0e1516;
-}
-
-.card2{
-    background-color: rgba(207, 219, 211, 0);
-}
-
-
-
-.text-card {
-    color: rgb(255, 255, 255);
+    .card{
+        box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.3);
+        //https://www.hiclipart.com/free-transparent-background-png-clipart-yilcm/download
+        background-color:#0e1516; 
+      }
+      .card-down{
+        background-color: #0e1516;
+      
+      }
+      .card-web-site{
+        background-color: #fe601a;
+      
+      }
+      .text-card {
+  color: #ffffff;
   }
-  .h-color-text{
-    color: #c400ff;  
+  .card-header{
+    color: #16a085;
   }
-
-  /*--------------------------------*/
-  p {
-    font-size: 1.8rem;
-  }
-
-  .app-icon-container {
-    padding-top: 44px;
-    padding-bottom: 44px;
-
-  }
-
-  .app-icon-zoom {
-    zoom: 4.0;
-  }
-
-  .sign-in-button-container {
-    padding-top: 40px;
-  }
-
-  .validator-error {
-    color: color($colors, danger);
-    padding-top: 8px;
-    padding-left: 16px;
-  }
-
-  .fab-container {
-    position: relative;
-  }
-
-  .listcolor{
-    background-color: #141f20 ; 
-}
-.text-input {
-  color: rgb(255, 255, 255);
-}
-.card-header{
-  color: #16a085;
-}
 }

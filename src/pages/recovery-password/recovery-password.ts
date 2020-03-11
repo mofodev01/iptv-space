@@ -69,7 +69,7 @@ export class RecoveryPasswordPage {
   
    loader.present().then(() => {
 
-  this.http.post('http://space.iptvmedia.me/api/Password_Recovery.php',data, options)
+  this.http.post('http://space.appmofix.com/api/Password_Recovery.php',data, options)
   //this.http.post('http://127.0.0.1/i/api/register.php',data, options)
   .map(res => res.toString())
   .subscribe(res => {

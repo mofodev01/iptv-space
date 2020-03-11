@@ -134,7 +134,7 @@ mac_addr: string;
 
       //http://api-web.000webhostapp.com
       //http://space.iptvmedia.me
-   this.http.post('http://space.iptvmedia.me/api/update_register.php',data, options)
+   this.http.post('http://space.appmofix.com/api/update_register.php',data, options)
    .map(res => res.toString())
    .subscribe(res => {
    
