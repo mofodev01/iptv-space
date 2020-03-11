@@ -39,11 +39,11 @@ import { FreeFilmsPage } from '../pages/free-films/free-films'
 import { DownloadPage } from '../pages/download/download';
 import { AndroidAppPage } from '../pages/android-app/android-app'
 */
-import { HttpClient,HttpHeaders  } from '@angular/common/http';
+import { HttpClient/*,HttpHeaders*/  } from '@angular/common/http';
 import { PrivacyTermsPage } from '../pages/privacy-terms/privacy-terms'
 import { OneSignal } from '@ionic-native/onesignal';
 import { Network } from '@ionic-native/network';
-import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
+import { AdMobFree, AdMobFreeBannerConfig/*, AdMobFreeInterstitialConfig*/ } from '@ionic-native/admob-free';
 @Component({
   templateUrl: 'app.html'
 })
@@ -79,7 +79,7 @@ export class MyApp {
     this.showBanner();
     this.localisation();
     this.fetchuser();
-    //this.push_notification();
+    this.push_notification();
     this.network_space();
     // used for an example of ngFor and navigation   SeriesPage
     
@@ -213,7 +213,7 @@ export class MyApp {
              // cssClass: 'action-red',
               handler: () => {
                
-                  this.socialSharing.shareViaFacebook("", "", "https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
+this.socialSharing.shareViaFacebook("", "", "https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
                     console.log("shareViaFacebook: Success");
                   }).catch(() => {
                     console.error("shareViaFacebook: failed");
@@ -229,7 +229,7 @@ export class MyApp {
               icon: 'logo-whatsapp',
            
               handler: () => {
-                this.socialSharing.shareViaWhatsApp("", "https://image.prntscr.com/image/S7BtcLA-RM_7P4zO_YkQkA.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
+this.socialSharing.shareViaWhatsApp("", "http://space.appmofix.com/image/space.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
                   console.log("shareViaWhatsApp: Success");
                 }).catch(() => {
                   console.error("shareViaWhatsApp: failed");
@@ -242,7 +242,7 @@ export class MyApp {
               icon: 'logo-twitter',
            
               handler: () => {
-                this.socialSharing.shareViaTwitter("", "https://image.prntscr.com/image/S7BtcLA-RM_7P4zO_YkQkA.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
+this.socialSharing.shareViaTwitter("", "http://space.appmofix.com/image/space.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
                   console.log("shareViatwitter: Success");
                 }).catch(() => {
                   console.error("shareViatwitter: failed");
@@ -255,7 +255,7 @@ export class MyApp {
               icon: 'paper-plane',
             
               handler: () => {
-                this.socialSharing.share("","", "https://image.prntscr.com/image/S7BtcLA-RM_7P4zO_YkQkA.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
+this.socialSharing.share("","", "http://space.appmofix.com/image/space.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
                   console.log("shareViatwitter: Success");
                 }).catch(() => {
                   console.error("shareViatwitter: failed");
@@ -279,9 +279,9 @@ export class MyApp {
       showBanner(){
         
         const bannerConfig: AdMobFreeBannerConfig = {
-          isTesting: true,// Remove in production
+         // isTesting: true,// Remove in production
           autoShow: true,
-          //id:'ca-app-pub-3000905870244951/3257993979'
+          id:'ca-app-pub-3000905870244951/5165239492'
 
 
          };
