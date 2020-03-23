@@ -20,7 +20,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="70000" />
     <preference name="loadUrlTimeoutValue" value="60000" />
-   
+   <preference name="android-targetSdkVersion" value="28" />
     <platform name="android">
         <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application">
             <application android:usesCleartextTraffic="true" />
