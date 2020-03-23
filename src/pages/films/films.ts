@@ -4,7 +4,7 @@ import { NavController, NavParams,LoadingController,MenuController} from 'ionic-
 import { JsonDataProvider } from '../../providers/json-data/json-data';
 import { ListeServerFilmsPage } from '../liste-server-films/liste-server-films';
 
-import { AdMobFree,AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
+
 
 
 @Component({
@@ -26,13 +26,13 @@ export class FilmsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams
     , public JsonDataProvider: JsonDataProvider, public loadingCtrl: LoadingController
     ,public menuCtrl:MenuController
-    ,private admobFree: AdMobFree
+    
     ) {
       this.menuCtrl.enable(true)
   }
 
   ngOnInit() {
-    this.launchInterstitial();
+    
     this.getFilmsCountry();
              }
 
@@ -68,41 +68,7 @@ push_data_country(categorie: String,title: String){
   this.navCtrl.push(ListeServerFilmsPage,{categorie: categorie,title: title});
 }
   
-launchInterstitial() {
-  //if (this.platform.is('android')) {
-  const interstitialConfig: AdMobFreeInterstitialConfig = {
-          isTesting: true,// Remove in production
-          autoShow: true,
-      //id: Your Ad Unit ID goes here
-     //id:'ca-app-pub-3000905870244951/5491408793'
-  };
 
-  this.admobFree.interstitial.config(interstitialConfig);
-
-  
-  this.admobFree.interstitial.prepare().then(() => {
-      // success
-      
-  });
-
-  /* }else if (this.platform.is('ios')) {
-    const interstitialConfig: AdMobFreeInterstitialConfig = {
-      isTesting: true,// Remove in production
-      autoShow: true,
-  //id: Your Ad Unit ID goes here
- //id:'ca-app-pub-3000905870244951/5491408793'
-};
-
-this.admobFree.interstitial.config(interstitialConfig);
-
-
-this.admobFree.interstitial.prepare().then(() => {
-  // success
-  
-});
-
-  } */
-}//fin interstitial
 
 
 }
