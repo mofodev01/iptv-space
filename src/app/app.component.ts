@@ -229,7 +229,7 @@ this.socialSharing.shareViaFacebook("", "", "https://play.google.com/store/apps/
               icon: 'logo-whatsapp',
            
               handler: () => {
-this.socialSharing.shareViaWhatsApp("", "http://space.appmofix.com/image/space.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
+this.socialSharing.shareViaWhatsApp("", "http://space.appmofix.com/image/space1.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
                   console.log("shareViaWhatsApp: Success");
                 }).catch(() => {
                   console.error("shareViaWhatsApp: failed");
@@ -242,7 +242,7 @@ this.socialSharing.shareViaWhatsApp("", "http://space.appmofix.com/image/space.p
               icon: 'logo-twitter',
            
               handler: () => {
-this.socialSharing.shareViaTwitter("", "http://space.appmofix.com/image/space.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
+this.socialSharing.shareViaTwitter("", "http://space.appmofix.com/image/space1.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
                   console.log("shareViatwitter: Success");
                 }).catch(() => {
                   console.error("shareViatwitter: failed");
@@ -255,7 +255,7 @@ this.socialSharing.shareViaTwitter("", "http://space.appmofix.com/image/space.pn
               icon: 'paper-plane',
             
               handler: () => {
-this.socialSharing.share("","", "http://space.appmofix.com/image/space.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
+this.socialSharing.share("","", "http://space.appmofix.com/image/space1.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
                   console.log("shareViatwitter: Success");
                 }).catch(() => {
                   console.error("shareViatwitter: failed");
