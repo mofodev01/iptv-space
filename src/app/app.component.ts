@@ -44,6 +44,7 @@ import { PrivacyTermsPage } from '../pages/privacy-terms/privacy-terms'
 import { OneSignal } from '@ionic-native/onesignal';
 import { Network } from '@ionic-native/network';
 import { AdMobFree, AdMobFreeBannerConfig/*, AdMobFreeInterstitialConfig*/ } from '@ionic-native/admob-free';
+import { Appodeal } from '@ionic-native/appodeal';
 @Component({
   templateUrl: 'app.html'
 })
@@ -74,17 +75,32 @@ export class MyApp {
     public alertCtrl: AlertController ,
     private admobFree: AdMobFree,
     private storage: Storage,
-    private locationAccuracy: LocationAccuracy) {
+    private locationAccuracy: LocationAccuracy
+    ,private appodeal: Appodeal
+    ) {
     this.initializeApp();
-    this.showBanner();
+    //this.showBanner();
     this.localisation();
     this.fetchuser();
     this.push_notification();
     this.network_space();
     // used for an example of ngFor and navigation   SeriesPage
-    
+    this.Ads_appo();
 
   }
+
+
+  Ads_appo(){
+    
+    const appKey = '548017460ef451ae826458ce406e5a71e013d48b4e63736c';
+   
+   this.appodeal.initialize(appKey,this.appodeal.AD_TYPES.INTERSTITIAL | this.appodeal.AD_TYPES.BANNER);
+   
+  // this.appodeal.show(this.appodeal.AD_TYPES.BANNER);
+  
+  }
+
+
 
   network_space(){
     this.network.onDisconnect().subscribe(() => {

@@ -113,4 +113,5 @@
     </plugin>
     <plugin name="cordova-plugin-apprate" spec="^1.5.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="^3.2.0" />
+    <plugin name="com.appodeal.plugin" spec="^2.1.11" />
 </widget>

@@ -21,7 +21,7 @@ import * as dl from 'cordova-plugin-android-downloadmanager';
 import {  
   File  
 } from '@ionic-native/file';
-
+import { Appodeal } from '@ionic-native/appodeal';
 @IonicPage()
 @Component({
   selector: 'page-profile',
@@ -42,6 +42,7 @@ export class ProfilePage {
     private admobFree: AdMobFree,
      private file: File
      ,private appRate: AppRate
+     ,private appodeal: Appodeal
 ) {this.menuCtrl.enable(true);
   this.index = "home";
   this.rateMe();
@@ -204,7 +205,13 @@ this.http.get('http://space.appmofix.com/api/fetch_user.php?username='+this.data
     }
 
     launchInterstitial() {
+
+
+      this.appodeal.show(this.appodeal.AD_TYPES.INTERSTITIAL)
+      .catch(e => console.error(e));
          
+/*
+
       const interstitialConfig: AdMobFreeInterstitialConfig = {
               // isTesting: true,// Remove in production
               autoShow: true,
@@ -219,7 +226,7 @@ this.http.get('http://space.appmofix.com/api/fetch_user.php?username='+this.data
           // success
           
       });
-    
+    */
     
      }
 
