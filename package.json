@@ -23,7 +23,7 @@
         "@angular/platform-browser-dynamic": "5.2.11",
         "@ionic-native/admob-free": "^4.20.0",
         "@ionic-native/app-rate": "^4.20.0",
-        "@ionic-native/appodeal": "^4.20.0",
+        
         "@ionic-native/clipboard": "^4.20.0",
         "@ionic-native/core": "~4.10.0",
         "@ionic-native/device": "^4.20.0",
@@ -47,7 +47,7 @@
         "@ionic-native/streaming-media": "^4.10.0",
         "@ionic-native/toast": "^4.11.0",
         "@ionic/storage": "^2.1.3",
-        "com.appodeal.plugin": "^2.1.11",
+        
         "cordova-admob-sdk": "^0.24.1",
         "cordova-clipboard": "^1.2.1",
         "cordova-plugin-admob-free": "^0.27.0",
@@ -122,8 +122,7 @@
                 "ADMOB_APP_ID": "ca-app-pub-3000905870244951~6543111797"
             },
             "cordova-plugin-apprate": {},
-            "cordova-plugin-inappbrowser": {},
-            "com.appodeal.plugin": {}
+            "cordova-plugin-inappbrowser": {}
         },
         "platforms": []
     }

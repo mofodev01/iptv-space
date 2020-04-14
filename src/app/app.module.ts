@@ -74,7 +74,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { AdMobFree } from '@ionic-native/admob-free';
 import { AppRate } from '@ionic-native/app-rate';
-import { Appodeal } from '@ionic-native/appodeal';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -179,7 +179,7 @@ ListeServerFilmsPage ,
     DatabaseProvider
    , AdMobFree
    ,AppRate
-   ,Appodeal
+  
   ]
 })
 export class AppModule {}
