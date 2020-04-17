@@ -45,6 +45,8 @@ import { OneSignal } from '@ionic-native/onesignal';
 import { Network } from '@ionic-native/network';
 import { AdMobFree, AdMobFreeBannerConfig/*, AdMobFreeInterstitialConfig*/ } from '@ionic-native/admob-free';
 
+declare var window: any;
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -85,7 +87,9 @@ export class MyApp {
     this.push_notification();
     this.network_space();
     // used for an example of ngFor and navigation   SeriesPage
-   
+    platform.ready().then(() => {
+      window.appodealprime.ready();
+     });
 
   }
 

@@ -22,6 +22,8 @@ import {
   File  
 } from '@ionic-native/file';
 
+declare var window: any;
+
 @IonicPage()
 @Component({
   selector: 'page-profile',
@@ -47,6 +49,10 @@ export class ProfilePage {
   this.index = "home";
   this.rateMe();
 }
+
+
+
+
 /**/
 rateMe() {
  
@@ -205,8 +211,16 @@ this.http.get('http://space.appmofix.com/api/fetch_user.php?username='+this.data
     }
 
     launchInterstitial() {
+
+      window.appodealprime.showInterstitial('548017460ef451ae826458ce406e5a71e013d48b4e63736c')
+      .then(res => {
+         console.log('interstitial show success:');
+      })
+      .catch(err => {
+         console.log('error showing interstitial:');
+      });
          
-/**/
+/*
 
       const interstitialConfig: AdMobFreeInterstitialConfig = {
               // isTesting: true,// Remove in production
@@ -222,7 +236,7 @@ this.http.get('http://space.appmofix.com/api/fetch_user.php?username='+this.data
           // success
           
       });
-    
+    */
     
      }
 

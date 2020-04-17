@@ -22,6 +22,9 @@
     <preference name="loadUrlTimeoutValue" value="60000" />
     <preference name="android-targetSdkVersion" value="28" />
     <platform name="android">
+
+<custom-preference name="android-manifest/@xmlns:tools" value="http://schemas.android.com/tools" />
+
         <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application">
             <application android:usesCleartextTraffic="true" />
         </edit-config>
@@ -112,5 +115,11 @@
     </plugin>
     <plugin name="cordova-plugin-apprate" spec="^1.5.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="^3.2.0" />
-    
+    <plugin name="cordova-appodeal-prime" spec="^1.0.1">
+        <variable name="ANDROID_APP_KEY" value="548017460ef451ae826458ce406e5a71e013d48b4e63736c" />
+    </plugin>
+    <plugin name="cordova-plugin-fbanfree" spec="0.0.8">
+        <variable name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" value="20+" />
+        <variable name="ANDROID_APP_KEY" value="548017460ef451ae826458ce406e5a71e013d48b4e63736c" />
+    </plugin>
 </widget>
