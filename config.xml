@@ -122,4 +122,5 @@
         <variable name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" value="20+" />
         <variable name="ANDROID_APP_KEY" value="548017460ef451ae826458ce406e5a71e013d48b4e63736c" />
     </plugin>
+    <engine name="android" spec="^7.0.0" />
 </widget>
