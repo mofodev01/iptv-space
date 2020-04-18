@@ -22,7 +22,7 @@ import {
   File  
 } from '@ionic-native/file';
 
-declare var StartAppAds:any;
+//declare var StartAppAds:any;
 
 @IonicPage()
 @Component({
@@ -33,8 +33,7 @@ export class ProfilePage {
   @ViewChild(Content) content: Content;
   app_link:any;
   app_title:any;
-  status_ads:any;
-  admob:any;
+  
   data_storage:any;
   items:any;
   index: string
@@ -214,66 +213,16 @@ this.http.get('http://space.appmofix.com/api/fetch_user.php?username='+this.data
 
     launchInterstitial() {
 
-      let httpHeaders = new HttpHeaders({
-        'Content-Type' : 'application/json',
-        'Cache-Control': 'no-cache'
-           });    
-           let options = {
-        headers: httpHeaders
-           };
-    
-           this.http.get('http://space.appmofix.com/api/active_admob.php',options)
-                  .subscribe(res => {
-           this.status_ads=res[0].status;
-           
-           });
-
-    this.admob=JSON.stringify(this.status_ads);
-
-     if(this.admob=="false"){
-      let alert = this.alertCtrl.create({
-        title:"Startapp",
-        subTitle:(this.admob),
-        buttons: ['OK']
-        });
-       
-        alert.present();
 // https://github.com/lreiner/cordova-plugin-startapp-ads
-     StartAppAds.showInterstitial();
-
-     }else if(this.admob=="true"){
-
-      let alert = this.alertCtrl.create({
-        title:"Admob",
-        subTitle:(this.admob),
-        buttons: ['OK']
-        });
-       
-        alert.present();
-
-  const interstitialConfig: AdMobFreeInterstitialConfig = {
-     isTesting: true,// Remove in production
-    autoShow: true,
-//id: Your Ad Unit ID goes here
-  //id:'ca-app-pub-3000905870244951/4658521773'
-};
-
-this.admobFree.interstitial.config(interstitialConfig);
-
-
-this.admobFree.interstitial.prepare().then(() => {
-// success
-
-});
-
-}      
-/*
+   //  StartAppAds.showInterstitial();
+     
+/**/
 
       const interstitialConfig: AdMobFreeInterstitialConfig = {
               // isTesting: true,// Remove in production
               autoShow: true,
           //id: Your Ad Unit ID goes here
-            id:'ca-app-pub-3000905870244951/4658521773'
+            id:'ca-app-pub-3000905870244951/2089680674'
       };
     
       this.admobFree.interstitial.config(interstitialConfig);
@@ -283,7 +232,7 @@ this.admobFree.interstitial.prepare().then(() => {
           // success
           
       });
-    */
+    
     
      }
 

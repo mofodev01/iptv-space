@@ -1,35 +1,14 @@
-SPACE IPTV
-Gratuit | Android
-ID de l'application : ca-app-pub-3000905870244951~7875163316
-
-iptv-space-Bannière:
-ca-app-pub-3000905870244951/5165239492
-
-iptv-space-Interstitiel
-ca-app-pub-3000905870244951/4658521773
+tvspace
+Android
+ID de l'application : ca-app-pub-3000905870244951~9509893743
+Bannière :
+ca-app-pub-3000905870244951/9549174772
+Interstitiel :
+ca-app-pub-3000905870244951/2089680674
 
 ------------------------------------------------------------------------------------------------
-
-
-
-<plugin name="cordova-appodeal-prime" spec="^1.0.1">
-        <variable name="ANDROID_APP_KEY" value="548017460ef451ae826458ce406e5a71e013d48b4e63736c" />
-    </plugin>
-    <plugin name="cordova-plugin-fbanfree" spec="0.0.8">
-        <variable name="ANDROID_SUPPORT_RECYCLERVIEW_VERSION" value="20+" />
-        <variable name="ANDROID_APP_KEY" value="548017460ef451ae826458ce406e5a71e013d48b4e63736c" />
-    </plugin>
-    <engine name="android" spec="^7.0.0" />
-
-
-     "cordova-appodeal-prime": {
-                "ANDROID_APP_KEY": "548017460ef451ae826458ce406e5a71e013d48b4e63736c"
-            },
-            "cordova-plugin-fbanfree": {
-                "ANDROID_SUPPORT_RECYCLERVIEW_VERSION": "20+",
-                "ANDROID_APP_KEY": "548017460ef451ae826458ce406e5a71e013d48b4e63736c"
-            },
-
-            "cordova-appodeal-prime": "^1.0.1",
-
-            "cordova-plugin-fbanfree": "0.0.8",
+startapp ads parm:
+--------------------------------------------------------
+"cordova-plugin-startapp-ads": "^1.1.0",
+"cordova-plugin-startapp-ads": {}
+<plugin name="cordova-plugin-startapp-ads" spec="^1.1.0" />

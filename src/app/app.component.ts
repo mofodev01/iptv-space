@@ -45,7 +45,7 @@ import { OneSignal } from '@ionic-native/onesignal';
 import { Network } from '@ionic-native/network';
 import { AdMobFree, AdMobFreeBannerConfig/*, AdMobFreeInterstitialConfig*/ } from '@ionic-native/admob-free';
 
-declare var StartAppAds:any;
+//declare var StartAppAds:any;
 
 @Component({
   templateUrl: 'app.html'
@@ -87,12 +87,13 @@ export class MyApp {
     this.push_notification();
     this.network_space();
     // used for an example of ngFor and navigation   SeriesPage
-   
+   /** 
     this.platform.ready().then(() => {
       if(this.platform.is("android")) {
         StartAppAds.init("203154218");
       }
     });
+    */
   }
 
 
@@ -291,13 +292,13 @@ this.socialSharing.share("","", "http://space.appmofix.com/image/space1.png" ,"h
 
    
       showBanner(){
-
+/*
         StartAppAds.showBanner();
-        /*
+ */       
         const bannerConfig: AdMobFreeBannerConfig = {
          // isTesting: true,// Remove in production
           autoShow: true,
-          id:'ca-app-pub-3000905870244951/5165239492'
+          id:'ca-app-pub-3000905870244951/9549174772'
 
 
          };
@@ -309,7 +310,7 @@ this.socialSharing.share("","", "http://space.appmofix.com/image/space1.png" ,"h
            })
            .catch(e => console.log(e));
         
-       */
+       
       }  
      
 
