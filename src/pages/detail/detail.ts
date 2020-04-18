@@ -8,6 +8,8 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 import { Toast } from '@ionic-native/toast';
 
+declare var StartAppAds:any;
+
 @Component({
   selector: 'page-detail',
   templateUrl: 'detail.html',
@@ -182,43 +184,13 @@ startVideo(url) {
              }, 2000);
          }
 
-        /* launchInterstitial() {
-          if (this.platform.is('android')) {
-          const interstitialConfig: AdMobFreeInterstitialConfig = {
-                  isTesting: true,// Remove in production
-                  autoShow: true,
-              //id: Your Ad Unit ID goes here
-             //id:'ca-app-pub-3000905870244951/5491408793'
-          };
-        
-          this.admobFree.interstitial.config(interstitialConfig);
-        
-          
-          this.admobFree.interstitial.prepare().then(() => {
-              // success
-              
-          });
-        
-          }else if (this.platform.is('ios')) {
-            const interstitialConfig: AdMobFreeInterstitialConfig = {
-              isTesting: true,// Remove in production
-              autoShow: true,
-          //id: Your Ad Unit ID goes here
-         //id:'ca-app-pub-3000905870244951/5491408793'
-        };
-        
-        this.admobFree.interstitial.config(interstitialConfig);
-        
-        
-        this.admobFree.interstitial.prepare().then(() => {
-          // success
-          
-        });
-        
-          }
-        }*/
+      
 
 launchInterstitial() {
+
+  StartAppAds.showInterstitial();
+
+  /*
           
           const interstitialConfig: AdMobFreeInterstitialConfig = {
                  // isTesting: true,// Remove in production
@@ -234,7 +206,7 @@ launchInterstitial() {
               // success
               
           });
-        
+        */
       
         }
 

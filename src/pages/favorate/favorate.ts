@@ -9,7 +9,7 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { AdMobFree, AdMobFreeInterstitialConfig} from '@ionic-native/admob-free';
 
 
-
+declare var StartAppAds:any;
 
 
 @Component({
@@ -103,7 +103,9 @@ Deletefavorate(id : any, index){
 }
 
 launchInterstitial() {
-         
+
+  StartAppAds.showInterstitial();
+   /*      
   const interstitialConfig: AdMobFreeInterstitialConfig = {
          // isTesting: true,// Remove in production
           autoShow: true,
@@ -118,7 +120,7 @@ launchInterstitial() {
       // success
       
   });
-
+*/
 
  }
 

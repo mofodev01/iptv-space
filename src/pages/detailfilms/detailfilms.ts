@@ -7,6 +7,9 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 import { Toast } from '@ionic-native/toast';
 import { AdMobFree, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
+
+declare var StartAppAds:any;
+
 @Component({
   selector: 'page-detailfilms',
   templateUrl: 'detailfilms.html',
@@ -168,6 +171,10 @@ startVideo(url) {
              }, 2000);
          }
        launchInterstitial() {
+
+        StartAppAds.showInterstitial();
+
+        /*
          
           const interstitialConfig: AdMobFreeInterstitialConfig = {
                  // isTesting: true,// Remove in production
@@ -183,7 +190,7 @@ startVideo(url) {
               // success
               
           });
-        
+        */
      
          }
 }

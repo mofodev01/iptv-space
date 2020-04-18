@@ -22,7 +22,7 @@ import {
   File  
 } from '@ionic-native/file';
 
-//declare var StartAppAds:any;
+declare var StartAppAds:any;
 
 @IonicPage()
 @Component({
@@ -214,9 +214,9 @@ this.http.get('http://space.appmofix.com/api/fetch_user.php?username='+this.data
     launchInterstitial() {
 
 // https://github.com/lreiner/cordova-plugin-startapp-ads
-   //  StartAppAds.showInterstitial();
+    StartAppAds.showInterstitial();
      
-/**/
+/*
 
       const interstitialConfig: AdMobFreeInterstitialConfig = {
               // isTesting: true,// Remove in production
@@ -232,7 +232,7 @@ this.http.get('http://space.appmofix.com/api/fetch_user.php?username='+this.data
           // success
           
       });
-    
+    */
     
      }
 

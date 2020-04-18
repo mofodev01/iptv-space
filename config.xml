@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.iptvmedia.space" version="2.3.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.iptvmedia.space" version="2.4.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Space Tv</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -113,6 +113,6 @@
     </plugin>
     <plugin name="cordova-plugin-apprate" spec="^1.5.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="^3.2.0" />
-    
+    <plugin name="cordova-plugin-startapp-ads" spec="^1.1.0" />
     
 </widget>
