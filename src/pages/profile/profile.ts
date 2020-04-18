@@ -33,6 +33,7 @@ export class ProfilePage {
   @ViewChild(Content) content: Content;
   app_link:any;
   app_title:any;
+  status:any;
   data_storage:any;
   items:any;
   index: string
@@ -212,7 +213,42 @@ this.http.get('http://space.appmofix.com/api/fetch_user.php?username='+this.data
 
     launchInterstitial() {
 
-      StartAppAds.showInterstitial();
+      let httpHeaders = new HttpHeaders({
+        'Content-Type' : 'application/json',
+        'Cache-Control': 'no-cache'
+           });    
+           let options = {
+        headers: httpHeaders
+           };
+    
+           this.http.get('http://space.appmofix.com/api/active_admob.php',options)
+                  .subscribe(res => {
+           this.status=res[0].status;
+           });
+
+     
+     if(this.status==0){
+// https://github.com/lreiner/cordova-plugin-startapp-ads
+StartAppAds.showInterstitial();
+
+     }else{
+
+  const interstitialConfig: AdMobFreeInterstitialConfig = {
+     isTesting: true,// Remove in production
+    autoShow: true,
+//id: Your Ad Unit ID goes here
+  //id:'ca-app-pub-3000905870244951/4658521773'
+};
+
+this.admobFree.interstitial.config(interstitialConfig);
+
+
+this.admobFree.interstitial.prepare().then(() => {
+// success
+
+});
+
+}      
 /*
 
       const interstitialConfig: AdMobFreeInterstitialConfig = {
