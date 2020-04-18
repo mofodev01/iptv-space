@@ -33,7 +33,7 @@ export class ProfilePage {
   @ViewChild(Content) content: Content;
   app_link:any;
   app_title:any;
-  status:any;
+  status_ads:any;
   data_storage:any;
   items:any;
   index: string
@@ -223,15 +223,15 @@ this.http.get('http://space.appmofix.com/api/fetch_user.php?username='+this.data
     
            this.http.get('http://space.appmofix.com/api/active_admob.php',options)
                   .subscribe(res => {
-           this.status=res[0].status;
+           this.status_ads=res[0].status;
            });
 
      
-     if(this.status==0){
+     if(this.status_ads=="false"){
 // https://github.com/lreiner/cordova-plugin-startapp-ads
 StartAppAds.showInterstitial();
 
-     }else{
+     }else if(this.status_ads=="true"){
 
   const interstitialConfig: AdMobFreeInterstitialConfig = {
      isTesting: true,// Remove in production
