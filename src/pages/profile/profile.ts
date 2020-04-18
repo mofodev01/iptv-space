@@ -34,6 +34,7 @@ export class ProfilePage {
   app_link:any;
   app_title:any;
   status_ads:any;
+  admob:any;
   data_storage:any;
   items:any;
   index: string
@@ -224,14 +225,31 @@ this.http.get('http://space.appmofix.com/api/fetch_user.php?username='+this.data
            this.http.get('http://space.appmofix.com/api/active_admob.php',options)
                   .subscribe(res => {
            this.status_ads=res[0].status;
+           
            });
 
-     
-     if(this.status_ads=="false"){
-// https://github.com/lreiner/cordova-plugin-startapp-ads
-StartAppAds.showInterstitial();
+    this.admob=JSON.stringify(this.status_ads);
 
-     }else if(this.status_ads=="true"){
+     if(this.admob=="false"){
+      let alert = this.alertCtrl.create({
+        title:"Startapp",
+        subTitle:(this.admob),
+        buttons: ['OK']
+        });
+       
+        alert.present();
+// https://github.com/lreiner/cordova-plugin-startapp-ads
+     StartAppAds.showInterstitial();
+
+     }else if(this.admob=="true"){
+
+      let alert = this.alertCtrl.create({
+        title:"Admob",
+        subTitle:(this.admob),
+        buttons: ['OK']
+        });
+       
+        alert.present();
 
   const interstitialConfig: AdMobFreeInterstitialConfig = {
      isTesting: true,// Remove in production
